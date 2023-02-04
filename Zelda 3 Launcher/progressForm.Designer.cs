@@ -177,7 +177,7 @@ namespace Zelda_3_Launcher
         {
             this.Refresh();
 
-            downloadZip("python", "Python.zip", new Uri("https://www.python.org/ftp/python/3.10.7/python-3.10.7-embed-win32.zip"));
+            downloadZip("tables", "Python.zip", new Uri("https://www.python.org/ftp/python/3.10.7/python-3.10.7-embed-win32.zip"));
 
             this.Close();
         }
@@ -233,7 +233,7 @@ namespace Zelda_3_Launcher
                     try
                     {
                         if (filename.Equals("Python.zip")) ZipFile.ExtractToDirectory(zip, Path.Combine(Program.repoDir, "tables"), true);
-                        else ZipFile.ExtractToDirectory(zip, Program.third_partyDir);
+                        else ZipFile.ExtractToDirectory(zip, Program.third_partyDir, true);
                         unzipped = true;
                     }
                     catch { }
@@ -313,11 +313,11 @@ namespace Zelda_3_Launcher
         }
         private Boolean checkHash(string file)
         {
-            using (SHA256Managed sha1Hasher = new SHA256Managed())
+            using (SHA256Managed sha256Hasher = new SHA256Managed())
             using (FileStream stream = new FileStream(file, FileMode.Open))
             using (BufferedStream buffer = new BufferedStream(stream))
             {
-                byte[] hash = sha1Hasher.ComputeHash(buffer);
+                byte[] hash = sha256Hasher.ComputeHash(buffer);
                 StringBuilder hashString = new StringBuilder(2 * hash.Length);
                 foreach (byte b in hash)
                 {
