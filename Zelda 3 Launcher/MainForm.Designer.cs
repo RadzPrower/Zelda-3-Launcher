@@ -20,11 +20,8 @@
             base.Dispose(disposing);
         }
 
-        private Button python;
-        private Button repo;
         private Button build;
         private Button launch;
         private Button settings;
-        private Button oneClick;
     }
 }

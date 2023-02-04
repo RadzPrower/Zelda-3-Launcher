@@ -116,7 +116,6 @@ namespace Zelda_3_Launcher
             this.build.Text = "Building...";
 
             var pythonEXE = @".\tables\python.exe";
-            var pipEXE = @".\tables\Scripts\pip.exe";
             var python310 = @".\zelda3\tables\python310._pth";
             var python310Old = @".\zelda3\tables\python310._pth.old";
 
@@ -203,6 +202,7 @@ namespace Zelda_3_Launcher
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.build = new System.Windows.Forms.Button();
             this.launch = new System.Windows.Forms.Button();
             this.settings = new System.Windows.Forms.Button();
@@ -250,6 +250,7 @@ namespace Zelda_3_Launcher
             this.Controls.Add(this.settings);
             this.Controls.Add(this.launch);
             this.Controls.Add(this.build);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(5);
