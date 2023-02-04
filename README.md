@@ -1,4 +1,3 @@
-![image](https://user-images.githubusercontent.com/37708128/216779332-64808793-2d86-4f6c-9002-692871013114.png)
 # Zelda 3 Launcher
 This launcher is intended to be a near 1-click tool for downloading, extracting, and compiling steps required to play the Zelda 3 reimplementation (created by snesrev) on Windows.
 # Prerequisites
