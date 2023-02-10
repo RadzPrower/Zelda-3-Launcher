@@ -557,12 +557,13 @@ namespace Zelda_3_Launcher
             }
 
             var MSUDir = Path.Combine(Program.repoDir, "msu");
-            var fileCount = Directory.EnumerateFiles(textBoxMSUDirectory.Text, "*.*", SearchOption.AllDirectories).Count();
-            progressMSU.Maximum = fileCount;
             
             var msu = textBoxMSUDirectory.Text.Split("/");
             if (!msu[0].Equals("msu"))
             {
+                var fileCount = Directory.EnumerateFiles(textBoxMSUDirectory.Text, "*.*", SearchOption.AllDirectories).Count();
+                progressMSU.Maximum = fileCount;
+
                 progressMSU.Visible = true;
                 labelMSUCopy.Visible = true;
                 labelMSUCopy.Enabled = true;
@@ -696,6 +697,7 @@ namespace Zelda_3_Launcher
         {
             var result = new OpenFileDialog();
 
+            result.Filter = "ZSPR sprites (*.zspr)|*.zspr";
             result.ShowDialog();
 
             if (result.FileName.Equals("")) return;
@@ -713,6 +715,7 @@ namespace Zelda_3_Launcher
         {
             var result = new OpenFileDialog();
 
+            result.Filter = "Shaders (*.glsl, *glslp)|*.glsl;*.glslp";
             result.ShowDialog();
 
             if (result.FileName.Equals("")) return;
@@ -741,7 +744,7 @@ namespace Zelda_3_Launcher
 
             result.ShowDialog();
 
-            if (Directory.GetFiles(result.SelectedPath, "*.pcm").Length.Equals(0))
+            if (!result.SelectedPath.IsNullOrEmpty() && Directory.GetFiles(result.SelectedPath, "*.pcm").Length.Equals(0))
             {
                 if (Directory.GetFiles(result.SelectedPath, "*.opuz").Length.Equals(0))
                 {
