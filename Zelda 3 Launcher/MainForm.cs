@@ -17,23 +17,7 @@ namespace Zelda_3_Launcher
 
             if (Directory.Exists(Program.repoDir))
             {
-                Repository repo = new Repository(Program.repoDir);
-
-                var status = repo.RetrieveStatus();
-
-                if (repo.Head.TrackingDetails.BehindBy > 0) this.build.Text = "Update";
-                else if (status.IsDirty) this.build.Text = "Restore";
-                else this.build.Text = "Re-build";
-
-                if (File.Exists(Path.Combine(Program.repoDir, "zelda3.exe")))
-                {
-                    this.launch.Enabled = true;
-                }
-                /*
-                if (File.Exists(Path.Combine(Program.repoDir, "zelda3.ini")))
-                {
-                    this.settings.Enabled = true;
-                }*/
+                UpdateMainForm();
             }
         }
 
@@ -46,17 +30,19 @@ namespace Zelda_3_Launcher
             this.settings.Enabled = false;
 
             this.launch.Text = "Running...";
+            this.WindowState = FormWindowState.Minimized;
             if (runProcess(@".\zelda3\zelda3.exe", ""))
             {
                 MessageBox.Show("Error occurred while launching Zelda 3.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
-                return;
             }
 
             this.launch.Text = "Launch Zelda 3";
             this.Enabled = true;
 
             this.build.Enabled = true;
-            //this.settings.Enabled = true;
+            this.settings.Enabled = true;
+
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void build_Click(object sender, EventArgs e)
@@ -65,6 +51,7 @@ namespace Zelda_3_Launcher
             this.build.Enabled = false;
 
             this.launch.Enabled = false;
+            this.settings.Enabled = false;
 
             using (progressForm cloneRepo = new progressForm("Repository Download", "Downloading a fresh copy of the zelda3 repository..."))
             {
@@ -80,6 +67,13 @@ namespace Zelda_3_Launcher
                 {
                     copyROM.Dispose();
                 }
+            }
+
+            if (!File.Exists(Path.Combine(Program.repoDir, "tables", "zelda3.sfc")))
+            {
+                MessageBox.Show("No ROM provided. Process cancelled.", "No ROM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateMainForm();
+                return;
             }
 
             using (progressForm downloadTCC = new progressForm("Downloading TCC", "Downloading TCC build tools..."))
@@ -115,12 +109,16 @@ namespace Zelda_3_Launcher
 
             this.build.Text = "Building...";
 
+            progressCompile.Visible = true;
+            labelCompileStatus.Visible = true;
+
             var pythonEXE = @".\tables\python.exe";
             var python310 = @".\zelda3\tables\python310._pth";
             var python310Old = @".\zelda3\tables\python310._pth.old";
 
             File.AppendAllText(Program.currentDirectory + "\\log.txt", "Starting commandline processess...");
 
+            labelCompileStatus.Text = "Modifying python310._pth...";
             // Modify python310._pth to allow for pip installation
             File.Move(python310, python310Old);
             using (var pythonFile = File.AppendText(python310))
@@ -134,24 +132,31 @@ namespace Zelda_3_Launcher
             File.Delete(python310Old);
 
             // Download pip
+            labelCompileStatus.Text = "Downloading pip...";
             if (runProcess("cmd.exe", "/C " + pythonEXE + @" .\tables\get-pip.py"))
             {
                 MessageBox.Show("Error occurred while downloding pip.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
                 return;
             }
 
+            // Install dependencies
+            labelCompileStatus.Text = "Installing dependencies...";
             if (runProcess("cmd.exe", @"/C " + pythonEXE + " -m pip install --upgrade pip pillow pyyaml"))
             {
                 MessageBox.Show("Error occurred while installing/updating dependencies.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
                 return;
             }
 
+            // Extract resources
+            labelCompileStatus.Text = "Extracting assets...";
             if (runProcess("cmd.exe", @"/C cd .\tables && python extract_resources.py"))
             {
                 MessageBox.Show("Error occurred while extracting resources.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
                 return;
             }
 
+            // Compile resources
+            labelCompileStatus.Text = "Compiling assets...";
             if (runProcess("cmd.exe", @"/C cd .\tables && python compile_resources.py"))
             {
                 MessageBox.Show("Error occurred while compiling resources.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
@@ -159,6 +164,7 @@ namespace Zelda_3_Launcher
             }
 
             // Need to make some small modifications to bat before exectuting
+            labelCompileStatus.Text = "Modifying installation bat...";
             var batOld = Path.Combine(Program.repoDir, "run_with_tcc.bat");
             var batNew = Path.Combine(Program.repoDir, "radzprower.bat");
             using (var pythonFile = File.AppendText(batNew))
@@ -172,14 +178,46 @@ namespace Zelda_3_Launcher
                 }
             }
 
+            // build zelda3.exe
+            labelCompileStatus.Text = "Building zelda3.exe...";
             if (runProcess("cmd.exe", @"/C radzprower.bat"))
             {
                 MessageBox.Show("Error occurred while building executable.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
                 return;
             }
 
-            File.AppendAllText(Program.currentDirectory + "\\log.txt", "\n\n\n\n");
+            labelCompileStatus.Text = "Backing up zelda3.ini...";
+            var iniFile = Path.Combine(Program.repoDir, "zelda3.ini");
+            var iniCopy = Path.Combine(Program.repoDir, "saves", "zelda3.ini");
 
+            if (File.Exists(iniCopy)) File.Delete(iniCopy);
+            File.Move(iniFile, iniCopy);
+
+            labelCompileStatus.Text = "Modifying zelda3.ini...";
+            using (var modifiedFile = File.AppendText(iniFile))
+            {
+                foreach (var line in File.ReadLines(iniCopy))
+                {
+                    if (!line.Equals("# Change the appearance of Link by loading a ZSPR file") &&
+                        !line.Equals("# See all sprites here: https://snesrev.github.io/sprites-gfx/snes/zelda3/link/") &&
+                        !line.Equals("# Download the files with \"git clone https://github.com/snesrev/sprites-gfx.git\"") &&
+                        !line.Equals("# LinkGraphics = sprites-gfx/snes/zelda3/link/sheets/megaman-x.2.zspr"))
+                    {
+                        modifiedFile.WriteLine(line);
+                    }
+                }
+            }
+
+            progressCompile.Text = "Done";
+            progressCompile.Visible = false;
+            labelCompileStatus.Visible = false;
+
+            File.AppendAllText(Program.currentDirectory + "\\log.txt", "\n\n\n\n");
+            UpdateMainForm();
+        }
+
+        private void UpdateMainForm()
+        {
             Repository repo = new Repository(Program.repoDir);
 
             var status = repo.RetrieveStatus();
@@ -192,12 +230,30 @@ namespace Zelda_3_Launcher
             if (File.Exists(Path.Combine(Program.repoDir, "zelda3.exe")))
             {
                 this.launch.Enabled = true;
-            }
-            /*
-            if (File.Exists(Path.Combine(Program.repoDir, "zelda3.ini")))
-            {
                 this.settings.Enabled = true;
-            }*/
+
+                if (File.Exists(Path.Combine(Program.repoDir, "zelda3.ini")))
+                {
+                    this.settings.Text = "Settings";
+                }
+                else
+                {
+                    this.settings.Text = "Restore INI";
+                }
+            }
+        }
+
+        private void settings_click(object sender, EventArgs e)
+        {
+            using (settingsForm settings = new settingsForm())
+            {
+                if (!settings.IsDisposed && settings.ShowDialog() == DialogResult.OK)
+                {
+                    settings.Dispose();
+                }
+            }
+
+            UpdateMainForm();
         }
 
         private void InitializeComponent()
@@ -206,6 +262,8 @@ namespace Zelda_3_Launcher
             this.build = new System.Windows.Forms.Button();
             this.launch = new System.Windows.Forms.Button();
             this.settings = new System.Windows.Forms.Button();
+            this.labelCompileStatus = new System.Windows.Forms.Label();
+            this.progressCompile = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // build
@@ -241,12 +299,35 @@ namespace Zelda_3_Launcher
             this.settings.TabIndex = 0;
             this.settings.Text = "Settings";
             this.settings.UseVisualStyleBackColor = true;
+            this.settings.Click += new System.EventHandler(this.settings_click);
+            // 
+            // labelCompileStatus
+            // 
+            this.labelCompileStatus.Location = new System.Drawing.Point(8, 173);
+            this.labelCompileStatus.Name = "labelCompileStatus";
+            this.labelCompileStatus.Size = new System.Drawing.Size(175, 23);
+            this.labelCompileStatus.TabIndex = 1;
+            this.labelCompileStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelCompileStatus.Visible = false;
+            // 
+            // progressCompile
+            // 
+            this.progressCompile.Location = new System.Drawing.Point(8, 199);
+            this.progressCompile.Maximum = 2808;
+            this.progressCompile.Minimum = 543;
+            this.progressCompile.Name = "progressCompile";
+            this.progressCompile.Size = new System.Drawing.Size(175, 23);
+            this.progressCompile.TabIndex = 2;
+            this.progressCompile.Value = 543;
+            this.progressCompile.Visible = false;
             // 
             // MainForm
             // 
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.progressCompile);
+            this.Controls.Add(this.labelCompileStatus);
             this.Controls.Add(this.settings);
             this.Controls.Add(this.launch);
             this.Controls.Add(this.build);
@@ -299,6 +380,9 @@ namespace Zelda_3_Launcher
             process.BeginErrorReadLine();
             while (!process.HasExited)
             {
+                var fileCount = Directory.GetFiles(Program.repoDir, "*", SearchOption.AllDirectories).Count();
+                if (fileCount > 2808) progressCompile.Value = fileCount - 1000;
+                else progressCompile.Value = fileCount;
                 Application.DoEvents();
             }
 

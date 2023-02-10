@@ -9,6 +9,9 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackageIcon>ЯP Flat Blue Small.png</PackageIcon>
 		<ApplicationIcon>RadzPrower.ico</ApplicationIcon>
+		<FileVersion>1.1.0.0</FileVersion>
+		<AssemblyVersion>1.1.0.0</AssemblyVersion>
+		<Version>1.1.0.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -23,7 +26,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="ini-parser" Version="2.5.2" />
 		<PackageReference Include="LibGit2Sharp" Version="0.27.0-preview-0182" />
+		<PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
 		<PackageReference Include="XAct.Core.PCL" Version="0.0.5014" />
 	</ItemGroup>
 

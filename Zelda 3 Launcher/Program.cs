@@ -17,5 +17,6 @@ namespace Zelda_3_Launcher
         public static string currentDirectory = Directory.GetCurrentDirectory();
         public static string repoDir = Path.Combine(currentDirectory, "zelda3");
         public static string third_partyDir = Path.Combine(repoDir, "third_party");
+        public static Boolean messageMSU = false;
     }
 }

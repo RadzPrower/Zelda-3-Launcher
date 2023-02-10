@@ -23,5 +23,7 @@
         private Button build;
         private Button launch;
         private Button settings;
+        private Label labelCompileStatus;
+        private ProgressBar progressCompile;
     }
 }

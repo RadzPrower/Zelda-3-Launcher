@@ -67,9 +67,9 @@ namespace Zelda_3_Launcher
                 return;
             }
 
-            if (File.Exists(Path.Combine(Program.repoDir, "zelda3.sfc")))
+            if (File.Exists(Path.Combine(Program.currentDirectory, "zelda3.sfc")))
             {
-                File.Move(Path.Combine(Program.repoDir, "zelda3.sfc"), Path.Combine(Program.repoDir, "tables", "zelda3.sfc"));
+                File.Move(Path.Combine(Program.currentDirectory, "zelda3.sfc"), Path.Combine(Program.repoDir, "tables", "zelda3.sfc"));
                 this.Close();
                 return;
             }
@@ -91,6 +91,7 @@ namespace Zelda_3_Launcher
                         if (answer == DialogResult.No) exit = true;
                     }
                 }
+                else exit = true;
             }
 
             this.Close();
