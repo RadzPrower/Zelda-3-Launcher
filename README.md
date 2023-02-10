@@ -1,4 +1,3 @@
-![image](https://user-images.githubusercontent.com/37708128/216779332-64808793-2d86-4f6c-9002-692871013114.png)
 # Zelda 3 Launcher
 This launcher is intended to be a near 1-click tool for downloading, extracting, and compiling steps required to play the Zelda 3 reimplementation (created by snesrev) on Windows.
 # Prerequisites
@@ -12,7 +11,7 @@ And that's it outside of this exectuable itself.
 
 ![image](https://user-images.githubusercontent.com/37708128/216780011-98f4ff41-01a6-4b95-9621-f1eef447df77.png)
 
-4. Click the download button. If you happen to have a `zelda.sfc` file in the same directory as the executable, it will copy it over automatically for you, but if not, a file selection dialog will open and allow you to select your ROM file (naming is not important).
+4. Click the download button. If you happen to have a `zelda3.sfc` file in the same directory as the executable, it will copy it over automatically for you, but if not, a file selection dialog will open and allow you to select your ROM file (naming is not important).
 5. The button will change from `Download` to indicate `Downloading...` This will quickly pop up a number of windows indicating download progress. Once the files are downloaded, the button will change to indicate `Building...` at which point it may take up to several minutes to complete the process depending on your system. You will know the process is complete when the window looks like this:
 
 ![image](https://user-images.githubusercontent.com/37708128/216780314-ba9ab887-88f9-46ec-970d-05b603108e7a.png)
