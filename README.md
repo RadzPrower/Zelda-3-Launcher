@@ -23,7 +23,5 @@ The top button at this point should say `Restore` which will completely re-do th
 NOTE: There have been no updates since this functionality was programmed, so there is a chance it will not work. If you notice that it is not working, please let me know.
 
 # To-Do
-1. As you can clearly see from the interface, settings are a priority. Until such a menu is completed, you can make changes in the `zelda.ini` file manually to adjust thinks like aspect ratio, widescreen, quick switching item, and MSU support.
-2. Creating a shortcut on the desktop for the launcher and/or `zelda3.exe` directly.
-3. The build process is essentially blind at this point since there's no immediate hooks for checking progress of those processes. I have an idea for how I might can get a general idea of the progress of those processes, but it will take some further tinkering. Settings are the priority over this at the moment.
-4. Allowing the launcher to self-update if a new version is released.
+1. Creating a shortcut on the desktop for the launcher and/or `zelda3.exe` directly.
+2. Allowing the launcher to self-update if a new version is released.
