@@ -14,7 +14,7 @@ And that's it outside of this exectuable itself.
 4. Click the download button. If you happen to have a `zelda3.sfc` file in the same directory as the executable, it will copy it over automatically for you, but if not, a file selection dialog will open and allow you to select your ROM file (naming is not important).
 5. The button will change from `Download` to indicate `Downloading...` This will quickly pop up a number of windows indicating download progress. Once the files are downloaded, the button will change to indicate `Building...` at which point it may take up to several minutes to complete the process depending on your system. You will know the process is complete when the window looks like this:
 
-![image](https://user-images.githubusercontent.com/37708128/216780314-ba9ab887-88f9-46ec-970d-05b603108e7a.png)
+![image](https://user-images.githubusercontent.com/37708128/218764570-c36e7ffd-f604-4de0-8116-6e1f18174b57.png)
 
 6. Click `Launch Zelda 3` and enjoy your time revisiting this classic natively on modern hardware.
 
@@ -23,5 +23,6 @@ The top button at this point should say `Restore` which will completely re-do th
 NOTE: There have been no updates since this functionality was programmed, so there is a chance it will not work. If you notice that it is not working, please let me know.
 
 # To-Do
-1. Creating a shortcut on the desktop for the launcher and/or `zelda3.exe` directly.
-2. Allowing the launcher to self-update if a new version is released.
+1. Controller and keyboard mapping via Settings menu.
+2. Creating a shortcut on the desktop for the launcher and/or `zelda3.exe` directly.
+3. Allowing the launcher to self-update if a new version is released.
