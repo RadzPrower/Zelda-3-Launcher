@@ -23,6 +23,5 @@ The top button at this point should say `Restore` which will completely re-do th
 NOTE: There have been no updates since this functionality was programmed, so there is a chance it will not work. If you notice that it is not working, please let me know.
 
 # To-Do
-1. Controller and keyboard mapping via Settings menu.
+1. Controller and keyboard mapping via Settings menu. (98% complete)
 2. Creating a shortcut on the desktop for the launcher and/or `zelda3.exe` directly.
-3. Allowing the launcher to self-update if a new version is released.
