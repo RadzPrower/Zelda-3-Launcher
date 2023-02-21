@@ -24,4 +24,3 @@ NOTE: There have been no updates since this functionality was programmed, so the
 
 # To-Do
 1. Controller and keyboard mapping via Settings menu. (98% complete)
-2. Creating a shortcut on the desktop for the launcher and/or `zelda3.exe` directly.
