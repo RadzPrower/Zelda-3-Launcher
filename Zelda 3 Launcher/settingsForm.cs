@@ -1,19 +1,10 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
+using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using IniParser;
-using IniParser.Model;
 using IniParser.Model.Configuration;
 using IniParser.Parser;
-using LibGit2Sharp;
 using XAct;
 
 namespace Zelda_3_Launcher
@@ -22,13 +13,15 @@ namespace Zelda_3_Launcher
     {
         private string v;
 
+        private static volatile int progress = 0;
+
         public settingsForm()
         {
             InitializeComponent();
 
             try
             {
-                importINI();
+                ImportINI();
             }
             catch
             {
@@ -39,8 +32,8 @@ namespace Zelda_3_Launcher
                     this.Close();
                     return;
                 }
-                
-                restoreINI();
+
+                buttonReset_Click(this, new EventArgs());
             }
 
             if (checkBoxEnableMSU.Checked == false) groupBoxMSUSettings.Enabled = false;
@@ -51,14 +44,14 @@ namespace Zelda_3_Launcher
         {
             if (customSize.Checked)
             {
-                width.Enabled = true;
                 height.Enabled = true;
+                width.Enabled = true;
                 windowSizeX.Enabled= true;
             }
             else
             {
-                width.Enabled = false;
                 height.Enabled = false;
+                width.Enabled = false;
                 windowSizeX.Enabled = false;
             }
         }
@@ -71,36 +64,104 @@ namespace Zelda_3_Launcher
 
             var answer = MessageBox.Show("This will reset the INI file immediately and cannot be reversed.\n\nDo you wish to continue?", "Confirmation", MessageBoxButtons.YesNo);
 
-            if (answer == DialogResult.No) return;
+            if (answer == DialogResult.No)
+            {
+                this.Enabled = true;
+                this.buttonReset.Text = "Reset";
+                return;
+            }
             
             restoreINI();
-            importINI();
+            try
+            {
+                ImportINI();
+            }
+            catch
+            {
+                answer = MessageBox.Show("INI backup file is corrupted and preventing the settings menu from loading.\n\nDo you want to download a clean copy from the zelda3 repository?", "Corrupted Settings", MessageBoxButtons.YesNo);
+
+                if (answer == DialogResult.No)
+                {
+                    this.Close();
+                    return;
+                }
+
+                File.Delete(Path.Combine(Program.repoDir, "saves", "zelda3.ini"));
+
+                restoreINI();
+                ImportINI();
+            }
 
             this.Enabled = true;
 
             this.buttonReset.Text = "Reset";
         }
 
-        private static void restoreINI()
+        private void restoreINI()
         {
             var iniFile = Path.Combine(Program.repoDir, "zelda3.ini");
             var iniBackup = Path.Combine(Program.repoDir, "saves", "zelda3.ini");
 
             File.Delete(iniFile);
 
+            if (!File.Exists(iniBackup)) DownloadFreshINI();
+
             using (var modifiedFile = File.AppendText(iniFile))
             {
                 foreach (var line in File.ReadLines(iniBackup))
                 {
-                    if (!line.Equals("# Change the appearance of Link by loading a ZSPR file") ||
-                        !line.Equals("# See all sprites here: https://snesrev.github.io/sprites-gfx/snes/zelda3/link/") ||
-                        !line.Equals("# Download the files with \"git clone https://github.com/snesrev/sprites-gfx.git\"") ||
+                    if (!line.Equals("# Change the appearance of Link by loading a ZSPR file") &&
+                        !line.Equals("# See all sprites here: https://snesrev.github.io/sprites-gfx/snes/zelda3/link/") &&
+                        !line.Equals("# Download the files with \"git clone https://github.com/snesrev/sprites-gfx.git\"") &&
                         !line.Equals("# LinkGraphics = sprites-gfx/snes/zelda3/link/sheets/megaman-x.2.zspr"))
                     {
                         modifiedFile.WriteLine(line);
                     }
                 }
             }
+        }
+
+        internal static void DownloadFreshINI()
+        {
+            var filename = "zelda3.ini";
+            Uri uri = new Uri("https://raw.githubusercontent.com/snesrev/zelda3/master/zelda3.ini");
+
+            var directory = Path.Combine(Program.repoDir, "saves");
+            var destination = Path.Combine(Program.repoDir, "saves", filename);
+
+            if (!progressForm.IsConnectedToInternet())
+            {
+                MessageBox.Show("Your INI backup file is missing and you are unable to connect to the internet to download a fresh copy.\n\nPlease ensure you have a stable internet connection before attempting to reset settings.",
+                    "No Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Task.Run(() =>
+            {
+                using (var client = new WebClient())
+                {
+                    if (!Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+                    client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(downloadProgress);
+                    client.DownloadFileAsync(uri, destination);
+                }
+            });
+
+            while (!File.Exists(destination))
+            {
+                Application.DoEvents();
+            }
+
+            do
+            {
+            } while (progress < 100);
+        }
+
+        private static void downloadProgress(object sender, DownloadProgressChangedEventArgs e)
+        {
+            progress = e.ProgressPercentage;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -172,23 +233,29 @@ namespace Zelda_3_Launcher
             groupBoxMSUSettings.Enabled = checkBoxEnableMSU.Checked;
         }
 
-        private void importINI()
+        private void ImportINI()
         {
-
             var iniFile = Path.Combine(Program.repoDir, "zelda3.ini");
 
             // Check for INI and if missing restore from initial install backup
             if (!File.Exists(iniFile))
             {
                 var iniBackup = Path.Combine(Program.repoDir, "saves", "zelda3.ini");
+
+                if (!File.Exists(iniBackup)) DownloadFreshINI();
+
                 using (var modifiedFile = File.AppendText(iniFile))
                 {
                     foreach (var line in File.ReadLines(iniBackup))
                     {
-                        if (!line.Equals("# Change the appearance of Link by loading a ZSPR file") ||
-                            !line.Equals("# See all sprites here: https://snesrev.github.io/sprites-gfx/snes/zelda3/link/") ||
-                            !line.Equals("# Download the files with \"git clone https://github.com/snesrev/sprites-gfx.git\"") ||
-                            !line.Equals("# LinkGraphics = sprites-gfx/snes/zelda3/link/sheets/megaman-x.2.zspr"))
+                        if (!line.Equals("# Change the appearance of Link by loading a ZSPR file") &&
+                            !line.Equals("# See all sprites here: https://snesrev.github.io/sprites-gfx/snes/zelda3/link/") &&
+                            !line.Equals("# Download the files with \"git clone https://github.com/snesrev/sprites-gfx.git\"") &&
+                            !line.Equals("# LinkGraphics = sprites-gfx/snes/zelda3/link/sheets/megaman-x.2.zspr") &&
+                            !line.Equals("# This default is suitable for QWERTZ keyboards.") &&
+                            !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, y, s, a, c, v") &&
+                            !line.Equals("# This one is suitable for AZERTY keyboards.") &&
+                            !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, w, s, q, c, v"))
                         {
                             modifiedFile.WriteLine(line);
                         }
@@ -241,14 +308,14 @@ namespace Zelda_3_Launcher
                 var resolution = settings["Graphics"]["WindowSize"].Split("x");
 
                 customSize.Checked = true;
-                height.Text = resolution[0];
-                width.Text = resolution[1];
+                width.Text = resolution[0];
+                height.Text = resolution[1];
             }
             else
             {
                 windowAuto.Checked = true;
-                height.Text = "";
                 width.Text = "";
+                height.Text = "";
             }
 
             switch (settings["Graphics"]["Fullscreen"])
@@ -467,7 +534,7 @@ namespace Zelda_3_Launcher
             switch (selection)
             {
                 case "Custom":
-                    settings["Graphics"]["WindowSize"] = width.Text + "x" + width.Text;
+                    settings["Graphics"]["WindowSize"] = width.Text + "x" + height.Text;
                     break;
                 default:
                     settings["Graphics"]["WindowSize"] = "Auto";
@@ -784,6 +851,31 @@ namespace Zelda_3_Launcher
             this.linkLabelCustomSprites.LinkVisited = true;
 
             Process.Start(new ProcessStartInfo("https://github.com/snesrev/glsl-shaders") { UseShellExecute = true });
+        }
+
+        private void buttonKeymapping_Click(object sender, EventArgs e)
+        {
+            using (keymapper keymapper = new keymapper())
+            {
+                if (!keymapper.IsDisposed && keymapper.ShowDialog() == DialogResult.OK)
+                {
+                    keymapper.Dispose();
+                }
+            }
+        }
+
+        private void linkLabelMinorFixes_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.linkLabelMinorFixes.LinkVisited = true;
+
+            Process.Start(new ProcessStartInfo("https://github.com/snesrev/zelda3/wiki/Bug-Fixes-:-Misc.") { UseShellExecute = true });
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.linkLabelMajorFixes.LinkVisited = true;
+
+            Process.Start(new ProcessStartInfo("https://github.com/snesrev/zelda3/wiki/Bug-Fixes-:-Game-Changing") { UseShellExecute = true });
         }
     }
 }

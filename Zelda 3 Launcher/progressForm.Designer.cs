@@ -1,24 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Security.Permissions;
-using System.Runtime.CompilerServices;
+﻿using System.Net;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 using LibGit2Sharp;
-using LibGit2Sharp.Handlers;
 using System.Net.NetworkInformation;
 using XSystem.Security.Cryptography;
 using System.IO.Compression;
-using System.Diagnostics;
 
 namespace Zelda_3_Launcher
 {

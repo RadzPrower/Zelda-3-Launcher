@@ -48,7 +48,10 @@ namespace Zelda_3_Launcher
             this.ClientSize = new System.Drawing.Size(1191, 806);
             this.Controls.Add(this.updateLabel);
             this.Controls.Add(this.progBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "progressForm";
+            this.Padding = new System.Windows.Forms.Padding(12, 6, 12, 6);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
 
         }

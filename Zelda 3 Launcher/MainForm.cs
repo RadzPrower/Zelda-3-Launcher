@@ -1,11 +1,5 @@
-using System;
 using System.Diagnostics;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Runtime.CompilerServices;
 using LibGit2Sharp;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using XAct.Resources;
 
 namespace Zelda_3_Launcher
 {
@@ -201,7 +195,11 @@ namespace Zelda_3_Launcher
                     if (!line.Equals("# Change the appearance of Link by loading a ZSPR file") &&
                         !line.Equals("# See all sprites here: https://snesrev.github.io/sprites-gfx/snes/zelda3/link/") &&
                         !line.Equals("# Download the files with \"git clone https://github.com/snesrev/sprites-gfx.git\"") &&
-                        !line.Equals("# LinkGraphics = sprites-gfx/snes/zelda3/link/sheets/megaman-x.2.zspr"))
+                        !line.Equals("# LinkGraphics = sprites-gfx/snes/zelda3/link/sheets/megaman-x.2.zspr") &&
+                        !line.Equals("# This default is suitable for QWERTZ keyboards.") &&
+                        !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, y, s, a, c, v") &&
+                        !line.Equals("# This one is suitable for AZERTY keyboards.") &&
+                        !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, w, s, q, c, v"))
                     {
                         modifiedFile.WriteLine(line);
                     }
@@ -272,7 +270,7 @@ namespace Zelda_3_Launcher
             this.build.Location = new System.Drawing.Point(8, 8);
             this.build.Name = "build";
             this.build.Size = new System.Drawing.Size(175, 50);
-            this.build.TabIndex = 0;
+            this.build.TabIndex = 1;
             this.build.Text = "Download";
             this.build.UseVisualStyleBackColor = true;
             this.build.Click += new System.EventHandler(this.build_Click);
@@ -296,7 +294,7 @@ namespace Zelda_3_Launcher
             this.settings.Location = new System.Drawing.Point(8, 120);
             this.settings.Name = "settings";
             this.settings.Size = new System.Drawing.Size(175, 50);
-            this.settings.TabIndex = 0;
+            this.settings.TabIndex = 2;
             this.settings.Text = "Settings";
             this.settings.UseVisualStyleBackColor = true;
             this.settings.Click += new System.EventHandler(this.settings_click);
@@ -313,7 +311,7 @@ namespace Zelda_3_Launcher
             // progressCompile
             // 
             this.progressCompile.Location = new System.Drawing.Point(8, 199);
-            this.progressCompile.Maximum = 2808;
+            this.progressCompile.Maximum = 2875;
             this.progressCompile.Minimum = 543;
             this.progressCompile.Name = "progressCompile";
             this.progressCompile.Size = new System.Drawing.Size(175, 23);
@@ -335,6 +333,7 @@ namespace Zelda_3_Launcher
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(5);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,7 +380,7 @@ namespace Zelda_3_Launcher
             while (!process.HasExited)
             {
                 var fileCount = Directory.GetFiles(Program.repoDir, "*", SearchOption.AllDirectories).Count();
-                if (fileCount > 2808) progressCompile.Value = fileCount - 1000;
+                if (fileCount > 2875) progressCompile.Value = fileCount - 1000;
                 else progressCompile.Value = fileCount;
                 Application.DoEvents();
             }
