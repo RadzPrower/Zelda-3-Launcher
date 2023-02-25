@@ -42,3 +42,33 @@ There are a number of settings available for you to change here. I will briefly 
 - [Miscelaneous Minor Fixes](https://github.com/snesrev/zelda3/wiki/Bug-Fixes-:-Misc.)
 - [Game Changing Bug Fixes](https://github.com/snesrev/zelda3/wiki/Bug-Fixes-:-Game-Changing)
 - Cancel Bird: This allows you to hit X to cancel traveling via bird/flute.
+
+### General
+- Autosave: Essentially a "sleep mode". Automatically creates savestates as you close the game and will restart you in the exact same place the next time you start your game.
+- Performance in Title: Displays the current FPS in the title bar of the window.
+- Unchange Sprites: Ensures matching behavior to the original SNES version.
+- Extend Y: Extends the vertical pixel height from 224 to 240.
+- Disable Frame Delay: Disables SDL_Delay each frame. Can provide a performance boost if your display is set to 60hz).
+- No Visual Fixes: Ensure that no graphical glitches are fixed.
+- Aspect Ratio
+  * Normal (4:3): This is the original aspect ratio of the game as output by the SNES.
+  * Widescreen (16:9): This is the standard widescreen format used by most modern monitors and televisions.
+  * Steam Deck (16:10): While not exclusively used by the Steam Deck, it is a prominent modern device that uses such as aspect ratio.
+
+### Graphics
+- Window Size
+  * Auto: This will automatically size the window based on your selected `Fullscreen Mode` and `Window Scaling`.
+  * Custom: Allows you to set the size of your window. The `Aspect Ratio` setting will still be respected, so if your window is not the same aspect ratio as that, you will end up with black bars.
+- Fullscreen Mode
+  * Windowed: This will provide you a window which can be move around your desktop. It's size can be changed via the `Window Scaling` option or using the assigned hotkey for increasing/decreasing the window size.
+  * Borderless Fullscreen: This is still a window as part of your overall desktop, but it covers everything on a single monitor to appear as if it is fullscreen. This is generally considered the best performing option of the two fullscreen options.
+  * Fullscreen: The screen is fully in control of a given monitor.
+- Optimized SNES PPU: Use a more optimized but potentially buggy SNES PPU implementation.
+- No Sprite Limit: No longer limits the number of sprites allowed to be rendered thus elminating flicker.
+- Linear Filtering: Apply a linear filter to enlarged graphics. Results in a generally blurry image.
+- Enhanced Mode7: Results in a higher resolution map.
+- Stretch: Enabling this stretches the output to match the window size, this includes fullscreen modes, resulting a squashed or stretched visual. This can however be used to emulate a CRT since the 4:3 aspect ratio of a TV did not actually match the true 8:7 aspect ratio the SNES output.
+- Window Scaling: Integer scaling of the display window. Only worked in `Windowed` mode.
+- Render Method: Allows you to choose between SDL, SDL-Software, or OpenGL rendering. **NOTE: This setting may be overridden when certain other options are selected if they require a specific renderer to be used.**
+- Custom Link Sprites: Allows you to select and load ZSPR files in order to use a custom Link sprite. A link is also provided to a database of options for quick and easy availability.
+- Use GLSL Shader: Allows you to select and load shaders to change how the visuals are rendered. A link is provided to a list of verified compatible shaders for you to select from.
