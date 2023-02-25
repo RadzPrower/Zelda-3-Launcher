@@ -72,3 +72,14 @@ There are a number of settings available for you to change here. I will briefly 
 - Render Method: Allows you to choose between SDL, SDL-Software, or OpenGL rendering. **NOTE: This setting may be overridden when certain other options are selected if they require a specific renderer to be used.**
 - Custom Link Sprites: Allows you to select and load ZSPR files in order to use a custom Link sprite. A link is also provided to a database of options for quick and easy availability.
 - Use GLSL Shader: Allows you to select and load shaders to change how the visuals are rendered. A link is provided to a list of verified compatible shaders for you to select from.
+
+### Sound
+- Enable Audio
+- Audio Channels: Mono or Stereo
+- Audio Frequency
+- Audio Samples: Defaults to 512, but the larger the number the less cracking, but the longer lag between the audio and visuals.
+- Enables MSU: Allows you to use high-quality audio tracks instead of the game's originals audio tracks.
+ * Resume MSU: Resumes a track when you return to a given area rather than restarting from the beginning each time.
+ * MSU Volume
+ * MSU Version: MSU, MSU-Deluxe, OPUZ, and OPUZ-Deluxe
+ * MSU Directory: The default MSU directory and the current file naming convention are always displayed here and only changes if the directory of a new set of MSU files. The files are copied into the required directory for use by `zelda3` and will be stored in the `msu` directory.
