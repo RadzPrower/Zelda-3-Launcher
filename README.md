@@ -79,7 +79,7 @@ There are a number of settings available for you to change here. I will briefly 
 - Audio Frequency
 - Audio Samples: Defaults to 512, but the larger the number the less cracking, but the longer lag between the audio and visuals.
 - Enables MSU: Allows you to use high-quality audio tracks instead of the game's originals audio tracks.
- * Resume MSU: Resumes a track when you return to a given area rather than restarting from the beginning each time.
- * MSU Volume
- * MSU Version: MSU, MSU-Deluxe, OPUZ, and OPUZ-Deluxe
- * MSU Directory: The default MSU directory and the current file naming convention are always displayed here and only changes if the directory of a new set of MSU files. The files are copied into the required directory for use by `zelda3` and will be stored in the `msu` directory.
+  * Resume MSU: Resumes a track when you return to a given area rather than restarting from the beginning each time.
+  * MSU Volume
+  * MSU Version: MSU, MSU-Deluxe, OPUZ, and OPUZ-Deluxe
+  * MSU Directory: The default MSU directory and the current file naming convention are always displayed here and only changes if the directory of a new set of MSU files. The files are copied into the required directory for use by `zelda3` and will be stored in the `msu` directory.
