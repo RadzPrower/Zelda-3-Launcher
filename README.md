@@ -23,7 +23,7 @@ The top button at this point should say `Restore` which will completely re-do th
 NOTE: There have been no updates since this functionality was programmed, so there is a chance it will not work. If you notice that it is not working, please let me know.
 
 # Settings Menu
-![image](https://user-images.githubusercontent.com/37708128/221297160-116ddea0-23fa-4b14-8735-44eed7293ed8.png)
+![image](https://user-images.githubusercontent.com/37708128/221378248-5f19c97a-f86a-4874-b93b-0ded284eb8a9.png)
 
 There are a number of settings available for you to change here. I will briefly explain them here.
 
@@ -83,3 +83,33 @@ There are a number of settings available for you to change here. I will briefly 
   * MSU Volume
   * MSU Version: MSU, MSU-Deluxe, OPUZ, and OPUZ-Deluxe
   * MSU Directory: The default MSU directory and the current file naming convention are always displayed here and only changes if the directory of a new set of MSU files. The files are copied into the required directory for use by `zelda3` and will be stored in the `msu` directory.
+
+# Keymapper Utility
+![image](https://user-images.githubusercontent.com/37708128/221378271-58289342-d35f-4091-a40a-b9a851bc409b.png)
+
+This utility allows you to set all the available standard controls (SNES controller) and additional hotkeys for `zelda3` exclusive functionality. The keyboard and gamepad settings are stored simultaneously for the main controls in the INI, so you must select which version you want to set for those controls specifically. The hotkeys however are unique so they can be freely set to either a gamepad or keyboard input.
+
+You can hit the `Assign All Input` button to be sequentially moved from input to input so that you can set all keys without having to click on each individual input.
+
+### Game Functions
+- Reset
+- Pause: This pauses the game without bringing up the item menu.
+- Dim When Paused: This toggles whether the screen dims when using the above pause function.
+- Increase Window Size
+- Decrease Window Size
+- Volume Up
+- Volume Down
+
+### Cheats
+- Restore Health: Full heal Link and restore magic.
+- Give One Key: This hotkey will set your dungeon key count to 1 if you have no keys.
+- No Clip: Allows you to freely walk through walls.
+- Turbo: Increases game speed while held.
+
+### Replays
+- Toggle Replay Speed: Toggles replay speed between realtime and turbo.
+- Stop Repaly: Stops the current replay and you assume control of the game.
+
+### Performance
+- Toggle Renderer: Allows you to toggle between the new optimized PPU or the original SNES PPU.
+- Toggle FPS: Toggle a FPS display in the upper left corner of the game.
