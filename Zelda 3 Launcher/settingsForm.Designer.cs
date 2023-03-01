@@ -28,1158 +28,1139 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settingsForm));
-            this.general = new System.Windows.Forms.GroupBox();
-            this.checkBoxExtend = new System.Windows.Forms.CheckBox();
-            this.disableFrameDelay = new System.Windows.Forms.CheckBox();
-            this.noVisualFixes = new System.Windows.Forms.CheckBox();
-            this.unchangedSprites = new System.Windows.Forms.CheckBox();
-            this.aspectRatio = new System.Windows.Forms.GroupBox();
-            this.steamdeck = new System.Windows.Forms.RadioButton();
-            this.widescreen = new System.Windows.Forms.RadioButton();
-            this.normal = new System.Windows.Forms.RadioButton();
-            this.performance = new System.Windows.Forms.CheckBox();
-            this.autosaveCheck = new System.Windows.Forms.CheckBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.radioFullscreenMode = new System.Windows.Forms.RadioButton();
-            this.radioFullscreen = new System.Windows.Forms.RadioButton();
-            this.radioWindowed = new System.Windows.Forms.RadioButton();
-            this.height = new System.Windows.Forms.TextBox();
-            this.width = new System.Windows.Forms.TextBox();
-            this.customSize = new System.Windows.Forms.RadioButton();
-            this.windowAuto = new System.Windows.Forms.RadioButton();
-            this.checkPPU = new System.Windows.Forms.CheckBox();
-            this.numericWindowScale = new System.Windows.Forms.NumericUpDown();
-            this.labelScale = new System.Windows.Forms.Label();
-            this.checkMode7 = new System.Windows.Forms.CheckBox();
-            this.checkStretch = new System.Windows.Forms.CheckBox();
-            this.checkSpriteLimit = new System.Windows.Forms.CheckBox();
-            this.checkLinearFiltering = new System.Windows.Forms.CheckBox();
-            this.buttonOpenShader = new System.Windows.Forms.Button();
-            this.textBoxGLSLShader = new System.Windows.Forms.TextBox();
-            this.buttonOpenSprites = new System.Windows.Forms.Button();
-            this.textBoxCustomLink = new System.Windows.Forms.TextBox();
-            this.checkBoxCustomLinkSprites = new System.Windows.Forms.CheckBox();
-            this.checkBoxShader = new System.Windows.Forms.CheckBox();
-            this.checkBoxEnableAudio = new System.Windows.Forms.CheckBox();
-            this.labelAudioFrequency = new System.Windows.Forms.Label();
-            this.labelAudioSamples = new System.Windows.Forms.Label();
-            this.checkBoxQuickSwitch = new System.Windows.Forms.CheckBox();
-            this.checkBoxLRLimit = new System.Windows.Forms.CheckBox();
-            this.checkBoxDashTurning = new System.Windows.Forms.CheckBox();
-            this.checkBoxMirrorDark = new System.Windows.Forms.CheckBox();
-            this.checkBoxSwordItems = new System.Windows.Forms.CheckBox();
-            this.checkBoxSwordPots = new System.Windows.Forms.CheckBox();
-            this.checkBoxHeartBeep = new System.Windows.Forms.CheckBox();
-            this.checkBoxIntroSkip = new System.Windows.Forms.CheckBox();
-            this.checkBoxMaxResources = new System.Windows.Forms.CheckBox();
-            this.checkBoxMoreBombs = new System.Windows.Forms.CheckBox();
-            this.checkBoxLargerWallet = new System.Windows.Forms.CheckBox();
-            this.checkBoxMiscFixes = new System.Windows.Forms.CheckBox();
-            this.checkBoxMajorFixes = new System.Windows.Forms.CheckBox();
-            this.checkBoxCancelBird = new System.Windows.Forms.CheckBox();
-            this.groupBoxMSUSettings = new System.Windows.Forms.GroupBox();
-            this.comboBoxMSU = new System.Windows.Forms.ComboBox();
-            this.textBoxMSUDirectory = new System.Windows.Forms.TextBox();
-            this.labelMSUVersion = new System.Windows.Forms.Label();
-            this.labelMSUDirectory = new System.Windows.Forms.Label();
-            this.numericMSUVolume = new System.Windows.Forms.NumericUpDown();
-            this.checkBoxResumeMSU = new System.Windows.Forms.CheckBox();
-            this.labelMSUVolume = new System.Windows.Forms.Label();
-            this.buttonMSUDirectory = new System.Windows.Forms.Button();
-            this.comboBoxSamples = new System.Windows.Forms.ComboBox();
-            this.comboBoxFrequency = new System.Windows.Forms.ComboBox();
-            this.checkBoxEnableMSU = new System.Windows.Forms.CheckBox();
-            this.radioButtonStereo = new System.Windows.Forms.RadioButton();
-            this.radioButtonMono = new System.Windows.Forms.RadioButton();
-            this.buttonReset = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.labelRenderMethod = new System.Windows.Forms.Label();
-            this.comboRenderMethod = new System.Windows.Forms.ComboBox();
-            this.linkLabelCustomSprites = new System.Windows.Forms.LinkLabel();
-            this.buttonKeymapping = new System.Windows.Forms.Button();
-            this.linkLabelMinorFixes = new System.Windows.Forms.LinkLabel();
-            this.graphics = new System.Windows.Forms.GroupBox();
-            this.linkLabelGLSLShaders = new System.Windows.Forms.LinkLabel();
-            this.fullscreenMode = new System.Windows.Forms.GroupBox();
-            this.windowSize = new System.Windows.Forms.GroupBox();
-            this.windowSizeX = new System.Windows.Forms.Label();
-            this.groupBoxSound = new System.Windows.Forms.GroupBox();
-            this.groupBoxAudioChannels = new System.Windows.Forms.GroupBox();
-            this.groupBoxGameplay = new System.Windows.Forms.GroupBox();
-            this.linkLabelMajorFixes = new System.Windows.Forms.LinkLabel();
-            this.labelHoverNote = new System.Windows.Forms.Label();
-            this.labelMSUCopy = new System.Windows.Forms.Label();
-            this.progressMSU = new System.Windows.Forms.ProgressBar();
-            this.general.SuspendLayout();
-            this.aspectRatio.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericWindowScale)).BeginInit();
-            this.groupBoxMSUSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericMSUVolume)).BeginInit();
-            this.graphics.SuspendLayout();
-            this.fullscreenMode.SuspendLayout();
-            this.windowSize.SuspendLayout();
-            this.groupBoxSound.SuspendLayout();
-            this.groupBoxAudioChannels.SuspendLayout();
-            this.groupBoxGameplay.SuspendLayout();
-            this.SuspendLayout();
+            general = new GroupBox();
+            checkBoxExtend = new CheckBox();
+            disableFrameDelay = new CheckBox();
+            noVisualFixes = new CheckBox();
+            unchangedSprites = new CheckBox();
+            aspectRatio = new GroupBox();
+            steamdeck = new RadioButton();
+            widescreen = new RadioButton();
+            normal = new RadioButton();
+            performance = new CheckBox();
+            autosaveCheck = new CheckBox();
+            toolTip1 = new ToolTip(components);
+            radioFullscreenMode = new RadioButton();
+            radioFullscreen = new RadioButton();
+            radioWindowed = new RadioButton();
+            height = new TextBox();
+            width = new TextBox();
+            customSize = new RadioButton();
+            windowAuto = new RadioButton();
+            checkPPU = new CheckBox();
+            numericWindowScale = new NumericUpDown();
+            labelScale = new Label();
+            checkMode7 = new CheckBox();
+            checkStretch = new CheckBox();
+            checkSpriteLimit = new CheckBox();
+            checkLinearFiltering = new CheckBox();
+            buttonOpenShader = new Button();
+            textBoxGLSLShader = new TextBox();
+            buttonOpenSprites = new Button();
+            textBoxCustomLink = new TextBox();
+            checkBoxCustomLinkSprites = new CheckBox();
+            checkBoxShader = new CheckBox();
+            checkBoxEnableAudio = new CheckBox();
+            labelAudioFrequency = new Label();
+            labelAudioSamples = new Label();
+            checkBoxQuickSwitch = new CheckBox();
+            checkBoxLRLimit = new CheckBox();
+            checkBoxDashTurning = new CheckBox();
+            checkBoxMirrorDark = new CheckBox();
+            checkBoxSwordItems = new CheckBox();
+            checkBoxSwordPots = new CheckBox();
+            checkBoxHeartBeep = new CheckBox();
+            checkBoxIntroSkip = new CheckBox();
+            checkBoxMaxResources = new CheckBox();
+            checkBoxMoreBombs = new CheckBox();
+            checkBoxLargerWallet = new CheckBox();
+            checkBoxMiscFixes = new CheckBox();
+            checkBoxMajorFixes = new CheckBox();
+            checkBoxCancelBird = new CheckBox();
+            groupBoxMSUSettings = new GroupBox();
+            checkBoxMSUSymlink = new CheckBox();
+            comboBoxMSU = new ComboBox();
+            textBoxMSUDirectory = new TextBox();
+            labelMSUVersion = new Label();
+            labelMSUDirectory = new Label();
+            numericMSUVolume = new NumericUpDown();
+            checkBoxResumeMSU = new CheckBox();
+            labelMSUVolume = new Label();
+            buttonMSUDirectory = new Button();
+            comboBoxSamples = new ComboBox();
+            comboBoxFrequency = new ComboBox();
+            checkBoxEnableMSU = new CheckBox();
+            radioButtonStereo = new RadioButton();
+            radioButtonMono = new RadioButton();
+            buttonReset = new Button();
+            buttonSave = new Button();
+            buttonCancel = new Button();
+            labelRenderMethod = new Label();
+            comboRenderMethod = new ComboBox();
+            linkLabelCustomSprites = new LinkLabel();
+            buttonKeymapping = new Button();
+            linkLabelMinorFixes = new LinkLabel();
+            graphics = new GroupBox();
+            linkLabelGLSLShaders = new LinkLabel();
+            fullscreenMode = new GroupBox();
+            windowSize = new GroupBox();
+            windowSizeX = new Label();
+            groupBoxSound = new GroupBox();
+            groupBoxAudioChannels = new GroupBox();
+            groupBoxGameplay = new GroupBox();
+            linkLabelMajorFixes = new LinkLabel();
+            labelHoverNote = new Label();
+            labelMSUCopy = new Label();
+            progressMSU = new ProgressBar();
+            general.SuspendLayout();
+            aspectRatio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericWindowScale).BeginInit();
+            groupBoxMSUSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericMSUVolume).BeginInit();
+            graphics.SuspendLayout();
+            fullscreenMode.SuspendLayout();
+            windowSize.SuspendLayout();
+            groupBoxSound.SuspendLayout();
+            groupBoxAudioChannels.SuspendLayout();
+            groupBoxGameplay.SuspendLayout();
+            SuspendLayout();
             // 
             // general
             // 
-            this.general.Controls.Add(this.checkBoxExtend);
-            this.general.Controls.Add(this.disableFrameDelay);
-            this.general.Controls.Add(this.noVisualFixes);
-            this.general.Controls.Add(this.unchangedSprites);
-            this.general.Controls.Add(this.aspectRatio);
-            this.general.Controls.Add(this.performance);
-            this.general.Controls.Add(this.autosaveCheck);
-            this.general.Location = new System.Drawing.Point(220, 35);
-            this.general.Name = "general";
-            this.general.Size = new System.Drawing.Size(381, 127);
-            this.general.TabIndex = 5;
-            this.general.TabStop = false;
-            this.general.Text = "General";
+            general.Controls.Add(checkBoxExtend);
+            general.Controls.Add(disableFrameDelay);
+            general.Controls.Add(noVisualFixes);
+            general.Controls.Add(unchangedSprites);
+            general.Controls.Add(aspectRatio);
+            general.Controls.Add(performance);
+            general.Controls.Add(autosaveCheck);
+            general.Location = new Point(220, 35);
+            general.Name = "general";
+            general.Size = new Size(381, 127);
+            general.TabIndex = 5;
+            general.TabStop = false;
+            general.Text = "General";
             // 
             // checkBoxExtend
             // 
-            this.checkBoxExtend.AutoSize = true;
-            this.checkBoxExtend.Location = new System.Drawing.Point(6, 47);
-            this.checkBoxExtend.Name = "checkBoxExtend";
-            this.checkBoxExtend.Size = new System.Drawing.Size(72, 19);
-            this.checkBoxExtend.TabIndex = 3;
-            this.checkBoxExtend.Text = "Extend Y";
-            this.toolTip1.SetToolTip(this.checkBoxExtend, "Displays 240 vertical lines rather than the default 224");
-            this.checkBoxExtend.UseVisualStyleBackColor = true;
+            checkBoxExtend.AutoSize = true;
+            checkBoxExtend.Location = new Point(6, 47);
+            checkBoxExtend.Name = "checkBoxExtend";
+            checkBoxExtend.Size = new Size(72, 19);
+            checkBoxExtend.TabIndex = 3;
+            checkBoxExtend.Text = "Extend Y";
+            toolTip1.SetToolTip(checkBoxExtend, "Displays 240 vertical lines rather than the default 224");
+            checkBoxExtend.UseVisualStyleBackColor = true;
             // 
             // disableFrameDelay
             // 
-            this.disableFrameDelay.AutoSize = true;
-            this.disableFrameDelay.Location = new System.Drawing.Point(99, 47);
-            this.disableFrameDelay.Name = "disableFrameDelay";
-            this.disableFrameDelay.Size = new System.Drawing.Size(132, 19);
-            this.disableFrameDelay.TabIndex = 4;
-            this.disableFrameDelay.Text = "Disable Frame Delay";
-            this.toolTip1.SetToolTip(this.disableFrameDelay, "Disable the SDL_Delay that happens on each frame (Gives slightly better performan" +
-        "ce if your display is set to exactly 60Hz)");
-            this.disableFrameDelay.UseVisualStyleBackColor = true;
+            disableFrameDelay.AutoSize = true;
+            disableFrameDelay.Location = new Point(99, 47);
+            disableFrameDelay.Name = "disableFrameDelay";
+            disableFrameDelay.Size = new Size(132, 19);
+            disableFrameDelay.TabIndex = 4;
+            disableFrameDelay.Text = "Disable Frame Delay";
+            toolTip1.SetToolTip(disableFrameDelay, "Disable the SDL_Delay that happens on each frame (Gives slightly better performance if your display is set to exactly 60Hz)");
+            disableFrameDelay.UseVisualStyleBackColor = true;
             // 
             // noVisualFixes
             // 
-            this.noVisualFixes.AutoSize = true;
-            this.noVisualFixes.Location = new System.Drawing.Point(250, 47);
-            this.noVisualFixes.Name = "noVisualFixes";
-            this.noVisualFixes.Size = new System.Drawing.Size(105, 19);
-            this.noVisualFixes.TabIndex = 5;
-            this.noVisualFixes.Text = "No Visual Fixes";
-            this.toolTip1.SetToolTip(this.noVisualFixes, "Avoid fixing some graphics glitches. If enabled, memory compare will not work.");
-            this.noVisualFixes.UseVisualStyleBackColor = true;
+            noVisualFixes.AutoSize = true;
+            noVisualFixes.Location = new Point(250, 47);
+            noVisualFixes.Name = "noVisualFixes";
+            noVisualFixes.Size = new Size(105, 19);
+            noVisualFixes.TabIndex = 5;
+            noVisualFixes.Text = "No Visual Fixes";
+            toolTip1.SetToolTip(noVisualFixes, "Avoid fixing some graphics glitches. If enabled, memory compare will not work.");
+            noVisualFixes.UseVisualStyleBackColor = true;
             // 
             // unchangedSprites
             // 
-            this.unchangedSprites.AutoSize = true;
-            this.unchangedSprites.Location = new System.Drawing.Point(250, 22);
-            this.unchangedSprites.Name = "unchangedSprites";
-            this.unchangedSprites.Size = new System.Drawing.Size(125, 19);
-            this.unchangedSprites.TabIndex = 2;
-            this.unchangedSprites.Text = "Unchanged Sprites";
-            this.toolTip1.SetToolTip(this.unchangedSprites, "Avoid changing sprite spawn/die behavior. (Required for replay compatibility)");
-            this.unchangedSprites.UseVisualStyleBackColor = true;
+            unchangedSprites.AutoSize = true;
+            unchangedSprites.Location = new Point(250, 22);
+            unchangedSprites.Name = "unchangedSprites";
+            unchangedSprites.Size = new Size(125, 19);
+            unchangedSprites.TabIndex = 2;
+            unchangedSprites.Text = "Unchanged Sprites";
+            toolTip1.SetToolTip(unchangedSprites, "Avoid changing sprite spawn/die behavior. (Required for replay compatibility)");
+            unchangedSprites.UseVisualStyleBackColor = true;
             // 
             // aspectRatio
             // 
-            this.aspectRatio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.aspectRatio.Controls.Add(this.steamdeck);
-            this.aspectRatio.Controls.Add(this.widescreen);
-            this.aspectRatio.Controls.Add(this.normal);
-            this.aspectRatio.Location = new System.Drawing.Point(6, 72);
-            this.aspectRatio.Name = "aspectRatio";
-            this.aspectRatio.Size = new System.Drawing.Size(369, 50);
-            this.aspectRatio.TabIndex = 6;
-            this.aspectRatio.TabStop = false;
-            this.aspectRatio.Text = "Aspect Ratio";
-            this.toolTip1.SetToolTip(this.aspectRatio, "This is the aspect ratio which the game will render. All aspect ratios other than" +
-        " Normal will result in black bars on the left and right in various scenarios.");
+            aspectRatio.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            aspectRatio.Controls.Add(steamdeck);
+            aspectRatio.Controls.Add(widescreen);
+            aspectRatio.Controls.Add(normal);
+            aspectRatio.Location = new Point(6, 72);
+            aspectRatio.Name = "aspectRatio";
+            aspectRatio.Size = new Size(369, 50);
+            aspectRatio.TabIndex = 6;
+            aspectRatio.TabStop = false;
+            aspectRatio.Text = "Aspect Ratio";
+            toolTip1.SetToolTip(aspectRatio, "This is the aspect ratio which the game will render. All aspect ratios other than Normal will result in black bars on the left and right in various scenarios.");
             // 
             // steamdeck
             // 
-            this.steamdeck.AutoSize = true;
-            this.steamdeck.Location = new System.Drawing.Point(238, 22);
-            this.steamdeck.Name = "steamdeck";
-            this.steamdeck.Size = new System.Drawing.Size(125, 19);
-            this.steamdeck.TabIndex = 2;
-            this.steamdeck.Text = "Steam Deck (16:10)";
-            this.toolTip1.SetToolTip(this.steamdeck, "Steam Deck\'s untraditional aspect ratio");
-            this.steamdeck.UseVisualStyleBackColor = true;
+            steamdeck.AutoSize = true;
+            steamdeck.Location = new Point(238, 22);
+            steamdeck.Name = "steamdeck";
+            steamdeck.Size = new Size(125, 19);
+            steamdeck.TabIndex = 2;
+            steamdeck.Text = "Steam Deck (16:10)";
+            toolTip1.SetToolTip(steamdeck, "Steam Deck's untraditional aspect ratio");
+            steamdeck.UseVisualStyleBackColor = true;
             // 
             // widescreen
             // 
-            this.widescreen.AutoSize = true;
-            this.widescreen.Location = new System.Drawing.Point(107, 22);
-            this.widescreen.Name = "widescreen";
-            this.widescreen.Size = new System.Drawing.Size(118, 19);
-            this.widescreen.TabIndex = 1;
-            this.widescreen.Text = "Widescreen (16:9)";
-            this.toolTip1.SetToolTip(this.widescreen, "Traditional widescreen screens");
-            this.widescreen.UseVisualStyleBackColor = true;
+            widescreen.AutoSize = true;
+            widescreen.Location = new Point(107, 22);
+            widescreen.Name = "widescreen";
+            widescreen.Size = new Size(118, 19);
+            widescreen.TabIndex = 1;
+            widescreen.Text = "Widescreen (16:9)";
+            toolTip1.SetToolTip(widescreen, "Traditional widescreen screens");
+            widescreen.UseVisualStyleBackColor = true;
             // 
             // normal
             // 
-            this.normal.AutoSize = true;
-            this.normal.Checked = true;
-            this.normal.Location = new System.Drawing.Point(6, 22);
-            this.normal.Name = "normal";
-            this.normal.Size = new System.Drawing.Size(91, 19);
-            this.normal.TabIndex = 0;
-            this.normal.TabStop = true;
-            this.normal.Text = "Normal (4:3)";
-            this.toolTip1.SetToolTip(this.normal, "Original output of the SNES");
-            this.normal.UseVisualStyleBackColor = true;
+            normal.AutoSize = true;
+            normal.Checked = true;
+            normal.Location = new Point(6, 22);
+            normal.Name = "normal";
+            normal.Size = new Size(91, 19);
+            normal.TabIndex = 0;
+            normal.TabStop = true;
+            normal.Text = "Normal (4:3)";
+            toolTip1.SetToolTip(normal, "Original output of the SNES");
+            normal.UseVisualStyleBackColor = true;
             // 
             // performance
             // 
-            this.performance.AutoSize = true;
-            this.performance.Location = new System.Drawing.Point(99, 22);
-            this.performance.Name = "performance";
-            this.performance.Size = new System.Drawing.Size(132, 19);
-            this.performance.TabIndex = 1;
-            this.performance.Text = "Performance in Title";
-            this.toolTip1.SetToolTip(this.performance, "Show current performance in window title");
-            this.performance.UseVisualStyleBackColor = true;
+            performance.AutoSize = true;
+            performance.Location = new Point(99, 22);
+            performance.Name = "performance";
+            performance.Size = new Size(132, 19);
+            performance.TabIndex = 1;
+            performance.Text = "Performance in Title";
+            toolTip1.SetToolTip(performance, "Show current performance in window title");
+            performance.UseVisualStyleBackColor = true;
             // 
             // autosaveCheck
             // 
-            this.autosaveCheck.AutoSize = true;
-            this.autosaveCheck.Location = new System.Drawing.Point(6, 22);
-            this.autosaveCheck.Name = "autosaveCheck";
-            this.autosaveCheck.Size = new System.Drawing.Size(75, 19);
-            this.autosaveCheck.TabIndex = 0;
-            this.autosaveCheck.Text = "Autosave";
-            this.toolTip1.SetToolTip(this.autosaveCheck, "Automatically save state on quit and reload on start");
-            this.autosaveCheck.UseVisualStyleBackColor = true;
+            autosaveCheck.AutoSize = true;
+            autosaveCheck.Location = new Point(6, 22);
+            autosaveCheck.Name = "autosaveCheck";
+            autosaveCheck.Size = new Size(75, 19);
+            autosaveCheck.TabIndex = 0;
+            autosaveCheck.Text = "Autosave";
+            toolTip1.SetToolTip(autosaveCheck, "Automatically save state on quit and reload on start");
+            autosaveCheck.UseVisualStyleBackColor = true;
             // 
             // toolTip1
             // 
-            this.toolTip1.Tag = "toolTip1";
+            toolTip1.Tag = "toolTip1";
             // 
             // radioFullscreenMode
             // 
-            this.radioFullscreenMode.AutoSize = true;
-            this.radioFullscreenMode.Location = new System.Drawing.Point(6, 72);
-            this.radioFullscreenMode.Name = "radioFullscreenMode";
-            this.radioFullscreenMode.Size = new System.Drawing.Size(78, 19);
-            this.radioFullscreenMode.TabIndex = 2;
-            this.radioFullscreenMode.Text = "Fullscreen";
-            this.toolTip1.SetToolTip(this.radioFullscreenMode, "Game will launch in exclusive fullscreen mode");
-            this.radioFullscreenMode.UseVisualStyleBackColor = true;
+            radioFullscreenMode.AutoSize = true;
+            radioFullscreenMode.Location = new Point(6, 72);
+            radioFullscreenMode.Name = "radioFullscreenMode";
+            radioFullscreenMode.Size = new Size(78, 19);
+            radioFullscreenMode.TabIndex = 2;
+            radioFullscreenMode.Text = "Fullscreen";
+            toolTip1.SetToolTip(radioFullscreenMode, "Game will launch in exclusive fullscreen mode");
+            radioFullscreenMode.UseVisualStyleBackColor = true;
             // 
             // radioFullscreen
             // 
-            this.radioFullscreen.AutoSize = true;
-            this.radioFullscreen.Location = new System.Drawing.Point(6, 47);
-            this.radioFullscreen.Name = "radioFullscreen";
-            this.radioFullscreen.Size = new System.Drawing.Size(135, 19);
-            this.radioFullscreen.TabIndex = 1;
-            this.radioFullscreen.Text = "Borderless Fullscreen";
-            this.toolTip1.SetToolTip(this.radioFullscreen, "Game will launch in borderless fullscreen");
-            this.radioFullscreen.UseVisualStyleBackColor = true;
+            radioFullscreen.AutoSize = true;
+            radioFullscreen.Location = new Point(6, 47);
+            radioFullscreen.Name = "radioFullscreen";
+            radioFullscreen.Size = new Size(135, 19);
+            radioFullscreen.TabIndex = 1;
+            radioFullscreen.Text = "Borderless Fullscreen";
+            toolTip1.SetToolTip(radioFullscreen, "Game will launch in borderless fullscreen");
+            radioFullscreen.UseVisualStyleBackColor = true;
             // 
             // radioWindowed
             // 
-            this.radioWindowed.AutoSize = true;
-            this.radioWindowed.Checked = true;
-            this.radioWindowed.Location = new System.Drawing.Point(6, 22);
-            this.radioWindowed.Name = "radioWindowed";
-            this.radioWindowed.Size = new System.Drawing.Size(82, 19);
-            this.radioWindowed.TabIndex = 0;
-            this.radioWindowed.TabStop = true;
-            this.radioWindowed.Text = "Windowed";
-            this.toolTip1.SetToolTip(this.radioWindowed, "The game will play within a window on the desktop at your selected aspect ratio a" +
-        "nd window scaling");
-            this.radioWindowed.UseVisualStyleBackColor = true;
+            radioWindowed.AutoSize = true;
+            radioWindowed.Checked = true;
+            radioWindowed.Location = new Point(6, 22);
+            radioWindowed.Name = "radioWindowed";
+            radioWindowed.Size = new Size(82, 19);
+            radioWindowed.TabIndex = 0;
+            radioWindowed.TabStop = true;
+            radioWindowed.Text = "Windowed";
+            toolTip1.SetToolTip(radioWindowed, "The game will play within a window on the desktop at your selected aspect ratio and window scaling");
+            radioWindowed.UseVisualStyleBackColor = true;
             // 
             // height
             // 
-            this.height.Enabled = false;
-            this.height.Location = new System.Drawing.Point(59, 71);
-            this.height.MaxLength = 4;
-            this.height.Name = "height";
-            this.height.Size = new System.Drawing.Size(35, 23);
-            this.height.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.height, "Height");
+            height.Enabled = false;
+            height.Location = new Point(59, 71);
+            height.MaxLength = 4;
+            height.Name = "height";
+            height.Size = new Size(35, 23);
+            height.TabIndex = 3;
+            toolTip1.SetToolTip(height, "Height");
             // 
             // width
             // 
-            this.width.Enabled = false;
-            this.width.Location = new System.Drawing.Point(6, 71);
-            this.width.MaxLength = 4;
-            this.width.Name = "width";
-            this.width.Size = new System.Drawing.Size(35, 23);
-            this.width.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.width, "Width");
+            width.Enabled = false;
+            width.Location = new Point(6, 71);
+            width.MaxLength = 4;
+            width.Name = "width";
+            width.Size = new Size(35, 23);
+            width.TabIndex = 2;
+            toolTip1.SetToolTip(width, "Width");
             // 
             // customSize
             // 
-            this.customSize.AutoSize = true;
-            this.customSize.Location = new System.Drawing.Point(6, 47);
-            this.customSize.Name = "customSize";
-            this.customSize.Size = new System.Drawing.Size(67, 19);
-            this.customSize.TabIndex = 1;
-            this.customSize.Text = "Custom";
-            this.toolTip1.SetToolTip(this.customSize, "Set a custom aspect ratio");
-            this.customSize.UseVisualStyleBackColor = true;
+            customSize.AutoSize = true;
+            customSize.Location = new Point(6, 47);
+            customSize.Name = "customSize";
+            customSize.Size = new Size(67, 19);
+            customSize.TabIndex = 1;
+            customSize.Text = "Custom";
+            toolTip1.SetToolTip(customSize, "Set a custom aspect ratio");
+            customSize.UseVisualStyleBackColor = true;
             // 
             // windowAuto
             // 
-            this.windowAuto.AutoSize = true;
-            this.windowAuto.Checked = true;
-            this.windowAuto.Location = new System.Drawing.Point(6, 22);
-            this.windowAuto.Name = "windowAuto";
-            this.windowAuto.Size = new System.Drawing.Size(51, 19);
-            this.windowAuto.TabIndex = 0;
-            this.windowAuto.TabStop = true;
-            this.windowAuto.Text = "Auto";
-            this.toolTip1.SetToolTip(this.windowAuto, "Automatically resize window to match selected aspect ratio");
-            this.windowAuto.UseVisualStyleBackColor = true;
-            this.windowAuto.CheckedChanged += new System.EventHandler(this.customSizeChange);
+            windowAuto.AutoSize = true;
+            windowAuto.Checked = true;
+            windowAuto.Location = new Point(6, 22);
+            windowAuto.Name = "windowAuto";
+            windowAuto.Size = new Size(51, 19);
+            windowAuto.TabIndex = 0;
+            windowAuto.TabStop = true;
+            windowAuto.Text = "Auto";
+            toolTip1.SetToolTip(windowAuto, "Automatically resize window to match selected aspect ratio");
+            windowAuto.UseVisualStyleBackColor = true;
+            windowAuto.CheckedChanged += customSizeChange;
             // 
             // checkPPU
             // 
-            this.checkPPU.AutoSize = true;
-            this.checkPPU.Checked = true;
-            this.checkPPU.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkPPU.Location = new System.Drawing.Point(6, 130);
-            this.checkPPU.Name = "checkPPU";
-            this.checkPPU.Size = new System.Drawing.Size(136, 19);
-            this.checkPPU.TabIndex = 2;
-            this.checkPPU.Text = "Optimized SNES PPU";
-            this.toolTip1.SetToolTip(this.checkPPU, "Use an optimized SNES PPU implementation (potentially buggy)");
-            this.checkPPU.UseVisualStyleBackColor = true;
+            checkPPU.AutoSize = true;
+            checkPPU.Checked = true;
+            checkPPU.CheckState = CheckState.Checked;
+            checkPPU.Location = new Point(6, 130);
+            checkPPU.Name = "checkPPU";
+            checkPPU.Size = new Size(136, 19);
+            checkPPU.TabIndex = 2;
+            checkPPU.Text = "Optimized SNES PPU";
+            toolTip1.SetToolTip(checkPPU, "Use an optimized SNES PPU implementation (potentially buggy)");
+            checkPPU.UseVisualStyleBackColor = true;
             // 
             // numericWindowScale
             // 
-            this.numericWindowScale.Location = new System.Drawing.Point(339, 151);
-            this.numericWindowScale.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericWindowScale.Name = "numericWindowScale";
-            this.numericWindowScale.Size = new System.Drawing.Size(35, 23);
-            this.numericWindowScale.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.numericWindowScale, "1 = 100%\r\n2 = 200%\r\n3 = 300%\r\netc.");
-            this.numericWindowScale.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
+            numericWindowScale.Location = new Point(339, 151);
+            numericWindowScale.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numericWindowScale.Name = "numericWindowScale";
+            numericWindowScale.Size = new Size(35, 23);
+            numericWindowScale.TabIndex = 7;
+            toolTip1.SetToolTip(numericWindowScale, "1 = 100%\r\n2 = 200%\r\n3 = 300%\r\netc.");
+            numericWindowScale.Value = new decimal(new int[] { 3, 0, 0, 0 });
             // 
             // labelScale
             // 
-            this.labelScale.Location = new System.Drawing.Point(238, 151);
-            this.labelScale.Name = "labelScale";
-            this.labelScale.Size = new System.Drawing.Size(95, 23);
-            this.labelScale.TabIndex = 4;
-            this.labelScale.Text = "Window Scaling:";
-            this.labelScale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.labelScale, "This sets the scaling of the game window when not fullscreen");
+            labelScale.Location = new Point(238, 151);
+            labelScale.Name = "labelScale";
+            labelScale.Size = new Size(95, 23);
+            labelScale.TabIndex = 4;
+            labelScale.Text = "Window Scaling:";
+            labelScale.TextAlign = ContentAlignment.MiddleRight;
+            toolTip1.SetToolTip(labelScale, "This sets the scaling of the game window when not fullscreen");
             // 
             // checkMode7
             // 
-            this.checkMode7.AutoSize = true;
-            this.checkMode7.Checked = true;
-            this.checkMode7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkMode7.Location = new System.Drawing.Point(6, 155);
-            this.checkMode7.Name = "checkMode7";
-            this.checkMode7.Size = new System.Drawing.Size(118, 19);
-            this.checkMode7.TabIndex = 5;
-            this.checkMode7.Text = "Enhanced Mode7";
-            this.toolTip1.SetToolTip(this.checkMode7, "Display the world map with higher resolution");
-            this.checkMode7.UseVisualStyleBackColor = true;
+            checkMode7.AutoSize = true;
+            checkMode7.Checked = true;
+            checkMode7.CheckState = CheckState.Checked;
+            checkMode7.Location = new Point(6, 155);
+            checkMode7.Name = "checkMode7";
+            checkMode7.Size = new Size(118, 19);
+            checkMode7.TabIndex = 5;
+            checkMode7.Text = "Enhanced Mode7";
+            toolTip1.SetToolTip(checkMode7, "Display the world map with higher resolution");
+            checkMode7.UseVisualStyleBackColor = true;
             // 
             // checkStretch
             // 
-            this.checkStretch.AutoSize = true;
-            this.checkStretch.Location = new System.Drawing.Point(152, 155);
-            this.checkStretch.Name = "checkStretch";
-            this.checkStretch.Size = new System.Drawing.Size(63, 19);
-            this.checkStretch.TabIndex = 6;
-            this.checkStretch.Text = "Stretch";
-            this.toolTip1.SetToolTip(this.checkStretch, "Stretches the graphics to take up the entire window/screen regardless of aspect r" +
-        "atio.");
-            this.checkStretch.UseVisualStyleBackColor = true;
+            checkStretch.AutoSize = true;
+            checkStretch.Location = new Point(152, 155);
+            checkStretch.Name = "checkStretch";
+            checkStretch.Size = new Size(63, 19);
+            checkStretch.TabIndex = 6;
+            checkStretch.Text = "Stretch";
+            toolTip1.SetToolTip(checkStretch, "Stretches the graphics to take up the entire window/screen regardless of aspect ratio.");
+            checkStretch.UseVisualStyleBackColor = true;
             // 
             // checkSpriteLimit
             // 
-            this.checkSpriteLimit.AutoSize = true;
-            this.checkSpriteLimit.Checked = true;
-            this.checkSpriteLimit.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkSpriteLimit.Location = new System.Drawing.Point(152, 130);
-            this.checkSpriteLimit.Name = "checkSpriteLimit";
-            this.checkSpriteLimit.Size = new System.Drawing.Size(105, 19);
-            this.checkSpriteLimit.TabIndex = 3;
-            this.checkSpriteLimit.Text = "No Sprite Limit";
-            this.toolTip1.SetToolTip(this.checkSpriteLimit, "Remove the sprite limit per scan line");
-            this.checkSpriteLimit.UseVisualStyleBackColor = true;
+            checkSpriteLimit.AutoSize = true;
+            checkSpriteLimit.Checked = true;
+            checkSpriteLimit.CheckState = CheckState.Checked;
+            checkSpriteLimit.Location = new Point(152, 130);
+            checkSpriteLimit.Name = "checkSpriteLimit";
+            checkSpriteLimit.Size = new Size(105, 19);
+            checkSpriteLimit.TabIndex = 3;
+            checkSpriteLimit.Text = "No Sprite Limit";
+            toolTip1.SetToolTip(checkSpriteLimit, "Remove the sprite limit per scan line");
+            checkSpriteLimit.UseVisualStyleBackColor = true;
             // 
             // checkLinearFiltering
             // 
-            this.checkLinearFiltering.AutoSize = true;
-            this.checkLinearFiltering.Location = new System.Drawing.Point(270, 130);
-            this.checkLinearFiltering.Name = "checkLinearFiltering";
-            this.checkLinearFiltering.Size = new System.Drawing.Size(104, 19);
-            this.checkLinearFiltering.TabIndex = 4;
-            this.checkLinearFiltering.Text = "Linear Filtering";
-            this.toolTip1.SetToolTip(this.checkLinearFiltering, "Use linear filter. Softens image and results in less crisp pixels.");
-            this.checkLinearFiltering.UseVisualStyleBackColor = true;
+            checkLinearFiltering.AutoSize = true;
+            checkLinearFiltering.Location = new Point(270, 130);
+            checkLinearFiltering.Name = "checkLinearFiltering";
+            checkLinearFiltering.Size = new Size(104, 19);
+            checkLinearFiltering.TabIndex = 4;
+            checkLinearFiltering.Text = "Linear Filtering";
+            toolTip1.SetToolTip(checkLinearFiltering, "Use linear filter. Softens image and results in less crisp pixels.");
+            checkLinearFiltering.UseVisualStyleBackColor = true;
             // 
             // buttonOpenShader
             // 
-            this.buttonOpenShader.AutoSize = true;
-            this.buttonOpenShader.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonOpenShader.Location = new System.Drawing.Point(348, 284);
-            this.buttonOpenShader.Name = "buttonOpenShader";
-            this.buttonOpenShader.Size = new System.Drawing.Size(26, 25);
-            this.buttonOpenShader.TabIndex = 13;
-            this.buttonOpenShader.Text = "...";
-            this.toolTip1.SetToolTip(this.buttonOpenShader, "Opens a dialog for selecting your GLSL shader file.");
-            this.buttonOpenShader.UseVisualStyleBackColor = true;
-            this.buttonOpenShader.Click += new System.EventHandler(this.buttonOpenShader_Click);
+            buttonOpenShader.AutoSize = true;
+            buttonOpenShader.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            buttonOpenShader.Location = new Point(348, 284);
+            buttonOpenShader.Name = "buttonOpenShader";
+            buttonOpenShader.Size = new Size(26, 25);
+            buttonOpenShader.TabIndex = 13;
+            buttonOpenShader.Text = "...";
+            toolTip1.SetToolTip(buttonOpenShader, "Opens a dialog for selecting your GLSL shader file.");
+            buttonOpenShader.UseVisualStyleBackColor = true;
+            buttonOpenShader.Click += buttonOpenShader_Click;
             // 
             // textBoxGLSLShader
             // 
-            this.textBoxGLSLShader.Location = new System.Drawing.Point(6, 285);
-            this.textBoxGLSLShader.Name = "textBoxGLSLShader";
-            this.textBoxGLSLShader.Size = new System.Drawing.Size(336, 23);
-            this.textBoxGLSLShader.TabIndex = 12;
-            this.toolTip1.SetToolTip(this.textBoxGLSLShader, "The path where your .glsl or .slslp file is located");
+            textBoxGLSLShader.Location = new Point(6, 285);
+            textBoxGLSLShader.Name = "textBoxGLSLShader";
+            textBoxGLSLShader.Size = new Size(336, 23);
+            textBoxGLSLShader.TabIndex = 12;
+            toolTip1.SetToolTip(textBoxGLSLShader, "The path where your .glsl or .slslp file is located");
             // 
             // buttonOpenSprites
             // 
-            this.buttonOpenSprites.AutoSize = true;
-            this.buttonOpenSprites.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonOpenSprites.Location = new System.Drawing.Point(348, 233);
-            this.buttonOpenSprites.Name = "buttonOpenSprites";
-            this.buttonOpenSprites.Size = new System.Drawing.Size(26, 25);
-            this.buttonOpenSprites.TabIndex = 10;
-            this.buttonOpenSprites.Text = "...";
-            this.toolTip1.SetToolTip(this.buttonOpenSprites, "Opens a dialog for selecting your ZSPR custom sprite file.");
-            this.buttonOpenSprites.UseVisualStyleBackColor = true;
-            this.buttonOpenSprites.Click += new System.EventHandler(this.buttonOpenSprites_Click);
+            buttonOpenSprites.AutoSize = true;
+            buttonOpenSprites.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            buttonOpenSprites.Location = new Point(348, 233);
+            buttonOpenSprites.Name = "buttonOpenSprites";
+            buttonOpenSprites.Size = new Size(26, 25);
+            buttonOpenSprites.TabIndex = 10;
+            buttonOpenSprites.Text = "...";
+            toolTip1.SetToolTip(buttonOpenSprites, "Opens a dialog for selecting your ZSPR custom sprite file.");
+            buttonOpenSprites.UseVisualStyleBackColor = true;
+            buttonOpenSprites.Click += buttonOpenSprites_Click;
             // 
             // textBoxCustomLink
             // 
-            this.textBoxCustomLink.Location = new System.Drawing.Point(6, 234);
-            this.textBoxCustomLink.Name = "textBoxCustomLink";
-            this.textBoxCustomLink.Size = new System.Drawing.Size(336, 23);
-            this.textBoxCustomLink.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.textBoxCustomLink, "The path where your .zspr file is located");
+            textBoxCustomLink.Location = new Point(6, 234);
+            textBoxCustomLink.Name = "textBoxCustomLink";
+            textBoxCustomLink.Size = new Size(336, 23);
+            textBoxCustomLink.TabIndex = 9;
+            toolTip1.SetToolTip(textBoxCustomLink, "The path where your .zspr file is located");
             // 
             // checkBoxCustomLinkSprites
             // 
-            this.checkBoxCustomLinkSprites.AutoSize = true;
-            this.checkBoxCustomLinkSprites.Location = new System.Drawing.Point(6, 209);
-            this.checkBoxCustomLinkSprites.Name = "checkBoxCustomLinkSprites";
-            this.checkBoxCustomLinkSprites.Size = new System.Drawing.Size(131, 19);
-            this.checkBoxCustomLinkSprites.TabIndex = 0;
-            this.checkBoxCustomLinkSprites.Text = "Custom Link Sprites";
-            this.toolTip1.SetToolTip(this.checkBoxCustomLinkSprites, "Enables custom ZSPR Link sprites");
-            this.checkBoxCustomLinkSprites.UseVisualStyleBackColor = true;
-            this.checkBoxCustomLinkSprites.CheckedChanged += new System.EventHandler(this.checkBoxCustomLinkSprites_CheckedChanged);
+            checkBoxCustomLinkSprites.AutoSize = true;
+            checkBoxCustomLinkSprites.Location = new Point(6, 209);
+            checkBoxCustomLinkSprites.Name = "checkBoxCustomLinkSprites";
+            checkBoxCustomLinkSprites.Size = new Size(131, 19);
+            checkBoxCustomLinkSprites.TabIndex = 0;
+            checkBoxCustomLinkSprites.Text = "Custom Link Sprites";
+            toolTip1.SetToolTip(checkBoxCustomLinkSprites, "Enables custom ZSPR Link sprites");
+            checkBoxCustomLinkSprites.UseVisualStyleBackColor = true;
+            checkBoxCustomLinkSprites.CheckedChanged += checkBoxCustomLinkSprites_CheckedChanged;
             // 
             // checkBoxShader
             // 
-            this.checkBoxShader.AutoSize = true;
-            this.checkBoxShader.Location = new System.Drawing.Point(6, 263);
-            this.checkBoxShader.Name = "checkBoxShader";
-            this.checkBoxShader.Size = new System.Drawing.Size(113, 19);
-            this.checkBoxShader.TabIndex = 17;
-            this.checkBoxShader.Text = "Use GLSL Shader";
-            this.toolTip1.SetToolTip(this.checkBoxShader, "This will enable the use of GLSL shaders.\r\n\r\nThis is only supported by the OpenGL" +
-        " renderer.");
-            this.checkBoxShader.UseVisualStyleBackColor = true;
-            this.checkBoxShader.CheckedChanged += new System.EventHandler(this.checkBoxShader_CheckedChanged);
+            checkBoxShader.AutoSize = true;
+            checkBoxShader.Location = new Point(6, 263);
+            checkBoxShader.Name = "checkBoxShader";
+            checkBoxShader.Size = new Size(113, 19);
+            checkBoxShader.TabIndex = 17;
+            checkBoxShader.Text = "Use GLSL Shader";
+            toolTip1.SetToolTip(checkBoxShader, "This will enable the use of GLSL shaders.\r\n\r\nThis is only supported by the OpenGL renderer.");
+            checkBoxShader.UseVisualStyleBackColor = true;
+            checkBoxShader.CheckedChanged += checkBoxShader_CheckedChanged;
             // 
             // checkBoxEnableAudio
             // 
-            this.checkBoxEnableAudio.AutoSize = true;
-            this.checkBoxEnableAudio.Checked = true;
-            this.checkBoxEnableAudio.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxEnableAudio.Location = new System.Drawing.Point(619, 47);
-            this.checkBoxEnableAudio.Name = "checkBoxEnableAudio";
-            this.checkBoxEnableAudio.Size = new System.Drawing.Size(96, 19);
-            this.checkBoxEnableAudio.TabIndex = 7;
-            this.checkBoxEnableAudio.Text = "Enable Audio";
-            this.toolTip1.SetToolTip(this.checkBoxEnableAudio, "Enable audio output by the game");
-            this.checkBoxEnableAudio.UseVisualStyleBackColor = true;
-            this.checkBoxEnableAudio.CheckedChanged += new System.EventHandler(this.checkBoxEnableAudio_CheckedChanged);
+            checkBoxEnableAudio.AutoSize = true;
+            checkBoxEnableAudio.Checked = true;
+            checkBoxEnableAudio.CheckState = CheckState.Checked;
+            checkBoxEnableAudio.Location = new Point(619, 47);
+            checkBoxEnableAudio.Name = "checkBoxEnableAudio";
+            checkBoxEnableAudio.Size = new Size(96, 19);
+            checkBoxEnableAudio.TabIndex = 7;
+            checkBoxEnableAudio.Text = "Enable Audio";
+            toolTip1.SetToolTip(checkBoxEnableAudio, "Enable audio output by the game");
+            checkBoxEnableAudio.UseVisualStyleBackColor = true;
+            checkBoxEnableAudio.CheckedChanged += checkBoxEnableAudio_CheckedChanged;
             // 
             // labelAudioFrequency
             // 
-            this.labelAudioFrequency.AutoSize = true;
-            this.labelAudioFrequency.Location = new System.Drawing.Point(35, 84);
-            this.labelAudioFrequency.Name = "labelAudioFrequency";
-            this.labelAudioFrequency.Size = new System.Drawing.Size(100, 15);
-            this.labelAudioFrequency.TabIndex = 1;
-            this.labelAudioFrequency.Text = "Audio Frequency:";
-            this.toolTip1.SetToolTip(this.labelAudioFrequency, "DSP frequency in samples per second");
+            labelAudioFrequency.AutoSize = true;
+            labelAudioFrequency.Location = new Point(35, 84);
+            labelAudioFrequency.Name = "labelAudioFrequency";
+            labelAudioFrequency.Size = new Size(100, 15);
+            labelAudioFrequency.TabIndex = 1;
+            labelAudioFrequency.Text = "Audio Frequency:";
+            toolTip1.SetToolTip(labelAudioFrequency, "DSP frequency in samples per second");
             // 
             // labelAudioSamples
             // 
-            this.labelAudioSamples.AutoSize = true;
-            this.labelAudioSamples.Location = new System.Drawing.Point(46, 112);
-            this.labelAudioSamples.Name = "labelAudioSamples";
-            this.labelAudioSamples.Size = new System.Drawing.Size(89, 15);
-            this.labelAudioSamples.TabIndex = 2;
-            this.labelAudioSamples.Text = "Audio Samples:";
-            this.toolTip1.SetToolTip(this.labelAudioSamples, "Audio buffer size in samples");
+            labelAudioSamples.AutoSize = true;
+            labelAudioSamples.Location = new Point(46, 112);
+            labelAudioSamples.Name = "labelAudioSamples";
+            labelAudioSamples.Size = new Size(89, 15);
+            labelAudioSamples.TabIndex = 2;
+            labelAudioSamples.Text = "Audio Samples:";
+            toolTip1.SetToolTip(labelAudioSamples, "Audio buffer size in samples");
             // 
             // checkBoxQuickSwitch
             // 
-            this.checkBoxQuickSwitch.AutoSize = true;
-            this.checkBoxQuickSwitch.Location = new System.Drawing.Point(6, 22);
-            this.checkBoxQuickSwitch.Name = "checkBoxQuickSwitch";
-            this.checkBoxQuickSwitch.Size = new System.Drawing.Size(157, 19);
-            this.checkBoxQuickSwitch.TabIndex = 0;
-            this.checkBoxQuickSwitch.Text = "Advanced Item Selection";
-            this.toolTip1.SetToolTip(this.checkBoxQuickSwitch, resources.GetString("checkBoxQuickSwitch.ToolTip"));
-            this.checkBoxQuickSwitch.UseVisualStyleBackColor = true;
-            this.checkBoxQuickSwitch.CheckedChanged += new System.EventHandler(this.checkBoxQuickSwitch_CheckedChanged);
+            checkBoxQuickSwitch.AutoSize = true;
+            checkBoxQuickSwitch.Location = new Point(6, 22);
+            checkBoxQuickSwitch.Name = "checkBoxQuickSwitch";
+            checkBoxQuickSwitch.Size = new Size(157, 19);
+            checkBoxQuickSwitch.TabIndex = 0;
+            checkBoxQuickSwitch.Text = "Advanced Item Selection";
+            toolTip1.SetToolTip(checkBoxQuickSwitch, resources.GetString("checkBoxQuickSwitch.ToolTip"));
+            checkBoxQuickSwitch.UseVisualStyleBackColor = true;
+            checkBoxQuickSwitch.CheckedChanged += checkBoxQuickSwitch_CheckedChanged;
             // 
             // checkBoxLRLimit
             // 
-            this.checkBoxLRLimit.AutoSize = true;
-            this.checkBoxLRLimit.Location = new System.Drawing.Point(6, 47);
-            this.checkBoxLRLimit.Name = "checkBoxLRLimit";
-            this.checkBoxLRLimit.Size = new System.Drawing.Size(192, 19);
-            this.checkBoxLRLimit.TabIndex = 1;
-            this.checkBoxLRLimit.Text = "Limit L/R Switch to First 4 Items";
-            this.toolTip1.SetToolTip(this.checkBoxLRLimit, "Limit the items you will cycle through to just the first four items");
-            this.checkBoxLRLimit.UseVisualStyleBackColor = true;
+            checkBoxLRLimit.AutoSize = true;
+            checkBoxLRLimit.Location = new Point(6, 47);
+            checkBoxLRLimit.Name = "checkBoxLRLimit";
+            checkBoxLRLimit.Size = new Size(192, 19);
+            checkBoxLRLimit.TabIndex = 1;
+            checkBoxLRLimit.Text = "Limit L/R Switch to First 4 Items";
+            toolTip1.SetToolTip(checkBoxLRLimit, "Limit the items you will cycle through to just the first four items");
+            checkBoxLRLimit.UseVisualStyleBackColor = true;
             // 
             // checkBoxDashTurning
             // 
-            this.checkBoxDashTurning.AutoSize = true;
-            this.checkBoxDashTurning.Location = new System.Drawing.Point(6, 72);
-            this.checkBoxDashTurning.Name = "checkBoxDashTurning";
-            this.checkBoxDashTurning.Size = new System.Drawing.Size(179, 19);
-            this.checkBoxDashTurning.TabIndex = 2;
-            this.checkBoxDashTurning.Text = "Allow Turning While Dashing";
-            this.toolTip1.SetToolTip(this.checkBoxDashTurning, "Allows you to turn when dashing");
-            this.checkBoxDashTurning.UseVisualStyleBackColor = true;
+            checkBoxDashTurning.AutoSize = true;
+            checkBoxDashTurning.Location = new Point(6, 72);
+            checkBoxDashTurning.Name = "checkBoxDashTurning";
+            checkBoxDashTurning.Size = new Size(179, 19);
+            checkBoxDashTurning.TabIndex = 2;
+            checkBoxDashTurning.Text = "Allow Turning While Dashing";
+            toolTip1.SetToolTip(checkBoxDashTurning, "Allows you to turn when dashing");
+            checkBoxDashTurning.UseVisualStyleBackColor = true;
             // 
             // checkBoxMirrorDark
             // 
-            this.checkBoxMirrorDark.AutoSize = true;
-            this.checkBoxMirrorDark.Location = new System.Drawing.Point(6, 97);
-            this.checkBoxMirrorDark.Name = "checkBoxMirrorDark";
-            this.checkBoxMirrorDark.Size = new System.Drawing.Size(185, 19);
-            this.checkBoxMirrorDark.TabIndex = 3;
-            this.checkBoxMirrorDark.Text = "Mirror Teleports to Dark World";
-            this.toolTip1.SetToolTip(this.checkBoxMirrorDark, "Magic Mirror works in both directions");
-            this.checkBoxMirrorDark.UseVisualStyleBackColor = true;
+            checkBoxMirrorDark.AutoSize = true;
+            checkBoxMirrorDark.Location = new Point(6, 97);
+            checkBoxMirrorDark.Name = "checkBoxMirrorDark";
+            checkBoxMirrorDark.Size = new Size(185, 19);
+            checkBoxMirrorDark.TabIndex = 3;
+            checkBoxMirrorDark.Text = "Mirror Teleports to Dark World";
+            toolTip1.SetToolTip(checkBoxMirrorDark, "Magic Mirror works in both directions");
+            checkBoxMirrorDark.UseVisualStyleBackColor = true;
             // 
             // checkBoxSwordItems
             // 
-            this.checkBoxSwordItems.AutoSize = true;
-            this.checkBoxSwordItems.Location = new System.Drawing.Point(6, 122);
-            this.checkBoxSwordItems.Name = "checkBoxSwordItems";
-            this.checkBoxSwordItems.Size = new System.Drawing.Size(148, 19);
-            this.checkBoxSwordItems.TabIndex = 4;
-            this.checkBoxSwordItems.Text = "Collect Items w/ Sword";
-            this.toolTip1.SetToolTip(this.checkBoxSwordItems, "You can collect items with your sword from a distance");
-            this.checkBoxSwordItems.UseVisualStyleBackColor = true;
+            checkBoxSwordItems.AutoSize = true;
+            checkBoxSwordItems.Location = new Point(6, 122);
+            checkBoxSwordItems.Name = "checkBoxSwordItems";
+            checkBoxSwordItems.Size = new Size(148, 19);
+            checkBoxSwordItems.TabIndex = 4;
+            checkBoxSwordItems.Text = "Collect Items w/ Sword";
+            toolTip1.SetToolTip(checkBoxSwordItems, "You can collect items with your sword from a distance");
+            checkBoxSwordItems.UseVisualStyleBackColor = true;
             // 
             // checkBoxSwordPots
             // 
-            this.checkBoxSwordPots.AutoSize = true;
-            this.checkBoxSwordPots.Location = new System.Drawing.Point(6, 147);
-            this.checkBoxSwordPots.Name = "checkBoxSwordPots";
-            this.checkBoxSwordPots.Size = new System.Drawing.Size(134, 19);
-            this.checkBoxSwordPots.TabIndex = 5;
-            this.checkBoxSwordPots.Text = "Break Pots w/ Sword";
-            this.toolTip1.SetToolTip(this.checkBoxSwordPots, "You can break pots if you have a L2 or higher sword");
-            this.checkBoxSwordPots.UseVisualStyleBackColor = true;
+            checkBoxSwordPots.AutoSize = true;
+            checkBoxSwordPots.Location = new Point(6, 147);
+            checkBoxSwordPots.Name = "checkBoxSwordPots";
+            checkBoxSwordPots.Size = new Size(134, 19);
+            checkBoxSwordPots.TabIndex = 5;
+            checkBoxSwordPots.Text = "Break Pots w/ Sword";
+            toolTip1.SetToolTip(checkBoxSwordPots, "You can break pots if you have a L2 or higher sword");
+            checkBoxSwordPots.UseVisualStyleBackColor = true;
             // 
             // checkBoxHeartBeep
             // 
-            this.checkBoxHeartBeep.AutoSize = true;
-            this.checkBoxHeartBeep.Location = new System.Drawing.Point(6, 172);
-            this.checkBoxHeartBeep.Name = "checkBoxHeartBeep";
-            this.checkBoxHeartBeep.Size = new System.Drawing.Size(150, 19);
-            this.checkBoxHeartBeep.TabIndex = 6;
-            this.checkBoxHeartBeep.Text = "Disable Low Heart Beep";
-            this.toolTip1.SetToolTip(this.checkBoxHeartBeep, "Disables the beeping when you are low health");
-            this.checkBoxHeartBeep.UseVisualStyleBackColor = true;
+            checkBoxHeartBeep.AutoSize = true;
+            checkBoxHeartBeep.Location = new Point(6, 172);
+            checkBoxHeartBeep.Name = "checkBoxHeartBeep";
+            checkBoxHeartBeep.Size = new Size(150, 19);
+            checkBoxHeartBeep.TabIndex = 6;
+            checkBoxHeartBeep.Text = "Disable Low Heart Beep";
+            toolTip1.SetToolTip(checkBoxHeartBeep, "Disables the beeping when you are low health");
+            checkBoxHeartBeep.UseVisualStyleBackColor = true;
             // 
             // checkBoxIntroSkip
             // 
-            this.checkBoxIntroSkip.AutoSize = true;
-            this.checkBoxIntroSkip.Location = new System.Drawing.Point(6, 197);
-            this.checkBoxIntroSkip.Name = "checkBoxIntroSkip";
-            this.checkBoxIntroSkip.Size = new System.Drawing.Size(142, 19);
-            this.checkBoxIntroSkip.TabIndex = 7;
-            this.checkBoxIntroSkip.Text = "Skip Intro w/ Keypress";
-            this.toolTip1.SetToolTip(this.checkBoxIntroSkip, "Allows you to skip the intro by pressing a key");
-            this.checkBoxIntroSkip.UseVisualStyleBackColor = true;
+            checkBoxIntroSkip.AutoSize = true;
+            checkBoxIntroSkip.Location = new Point(6, 197);
+            checkBoxIntroSkip.Name = "checkBoxIntroSkip";
+            checkBoxIntroSkip.Size = new Size(142, 19);
+            checkBoxIntroSkip.TabIndex = 7;
+            checkBoxIntroSkip.Text = "Skip Intro w/ Keypress";
+            toolTip1.SetToolTip(checkBoxIntroSkip, "Allows you to skip the intro by pressing a key");
+            checkBoxIntroSkip.UseVisualStyleBackColor = true;
             // 
             // checkBoxMaxResources
             // 
-            this.checkBoxMaxResources.AutoSize = true;
-            this.checkBoxMaxResources.Location = new System.Drawing.Point(6, 222);
-            this.checkBoxMaxResources.Name = "checkBoxMaxResources";
-            this.checkBoxMaxResources.Size = new System.Drawing.Size(150, 19);
-            this.checkBoxMaxResources.TabIndex = 8;
-            this.checkBoxMaxResources.Text = "Indicate Max Resources";
-            this.toolTip1.SetToolTip(this.checkBoxMaxResources, "Values will appear as yellow/orange when you have max resources (rupees, arrows, " +
-        "bombs)");
-            this.checkBoxMaxResources.UseVisualStyleBackColor = true;
+            checkBoxMaxResources.AutoSize = true;
+            checkBoxMaxResources.Location = new Point(6, 222);
+            checkBoxMaxResources.Name = "checkBoxMaxResources";
+            checkBoxMaxResources.Size = new Size(150, 19);
+            checkBoxMaxResources.TabIndex = 8;
+            checkBoxMaxResources.Text = "Indicate Max Resources";
+            toolTip1.SetToolTip(checkBoxMaxResources, "Values will appear as yellow/orange when you have max resources (rupees, arrows, bombs)");
+            checkBoxMaxResources.UseVisualStyleBackColor = true;
             // 
             // checkBoxMoreBombs
             // 
-            this.checkBoxMoreBombs.AutoSize = true;
-            this.checkBoxMoreBombs.Location = new System.Drawing.Point(6, 247);
-            this.checkBoxMoreBombs.Name = "checkBoxMoreBombs";
-            this.checkBoxMoreBombs.Size = new System.Drawing.Size(130, 19);
-            this.checkBoxMoreBombs.TabIndex = 9;
-            this.checkBoxMoreBombs.Text = "More Active Bombs";
-            this.toolTip1.SetToolTip(this.checkBoxMoreBombs, "Can have 4 active bombs instead of 2");
-            this.checkBoxMoreBombs.UseVisualStyleBackColor = true;
+            checkBoxMoreBombs.AutoSize = true;
+            checkBoxMoreBombs.Location = new Point(6, 247);
+            checkBoxMoreBombs.Name = "checkBoxMoreBombs";
+            checkBoxMoreBombs.Size = new Size(130, 19);
+            checkBoxMoreBombs.TabIndex = 9;
+            checkBoxMoreBombs.Text = "More Active Bombs";
+            toolTip1.SetToolTip(checkBoxMoreBombs, "Can have 4 active bombs instead of 2");
+            checkBoxMoreBombs.UseVisualStyleBackColor = true;
             // 
             // checkBoxLargerWallet
             // 
-            this.checkBoxLargerWallet.AutoSize = true;
-            this.checkBoxLargerWallet.Location = new System.Drawing.Point(6, 272);
-            this.checkBoxLargerWallet.Name = "checkBoxLargerWallet";
-            this.checkBoxLargerWallet.Size = new System.Drawing.Size(95, 19);
-            this.checkBoxLargerWallet.TabIndex = 10;
-            this.checkBoxLargerWallet.Text = "Larger Wallet";
-            this.toolTip1.SetToolTip(this.checkBoxLargerWallet, "Can carry 9999 rupees");
-            this.checkBoxLargerWallet.UseVisualStyleBackColor = true;
+            checkBoxLargerWallet.AutoSize = true;
+            checkBoxLargerWallet.Location = new Point(6, 272);
+            checkBoxLargerWallet.Name = "checkBoxLargerWallet";
+            checkBoxLargerWallet.Size = new Size(95, 19);
+            checkBoxLargerWallet.TabIndex = 10;
+            checkBoxLargerWallet.Text = "Larger Wallet";
+            toolTip1.SetToolTip(checkBoxLargerWallet, "Can carry 9999 rupees");
+            checkBoxLargerWallet.UseVisualStyleBackColor = true;
             // 
             // checkBoxMiscFixes
             // 
-            this.checkBoxMiscFixes.AutoSize = true;
-            this.checkBoxMiscFixes.Location = new System.Drawing.Point(6, 297);
-            this.checkBoxMiscFixes.Name = "checkBoxMiscFixes";
-            this.checkBoxMiscFixes.Size = new System.Drawing.Size(165, 19);
-            this.checkBoxMiscFixes.TabIndex = 11;
-            this.checkBoxMiscFixes.Text = "Miscellaneous Minor Fixes";
-            this.toolTip1.SetToolTip(this.checkBoxMiscFixes, "Miscellaneous bug fixes");
-            this.checkBoxMiscFixes.UseVisualStyleBackColor = true;
+            checkBoxMiscFixes.AutoSize = true;
+            checkBoxMiscFixes.Location = new Point(6, 297);
+            checkBoxMiscFixes.Name = "checkBoxMiscFixes";
+            checkBoxMiscFixes.Size = new Size(165, 19);
+            checkBoxMiscFixes.TabIndex = 11;
+            checkBoxMiscFixes.Text = "Miscellaneous Minor Fixes";
+            toolTip1.SetToolTip(checkBoxMiscFixes, "Miscellaneous bug fixes");
+            checkBoxMiscFixes.UseVisualStyleBackColor = true;
             // 
             // checkBoxMajorFixes
             // 
-            this.checkBoxMajorFixes.AutoSize = true;
-            this.checkBoxMajorFixes.Location = new System.Drawing.Point(6, 322);
-            this.checkBoxMajorFixes.Name = "checkBoxMajorFixes";
-            this.checkBoxMajorFixes.Size = new System.Drawing.Size(165, 19);
-            this.checkBoxMajorFixes.TabIndex = 12;
-            this.checkBoxMajorFixes.Text = "Game Changing Bug Fixes";
-            this.toolTip1.SetToolTip(this.checkBoxMajorFixes, "Some bug fixes that are significant enough to impact game behavior");
-            this.checkBoxMajorFixes.UseVisualStyleBackColor = true;
+            checkBoxMajorFixes.AutoSize = true;
+            checkBoxMajorFixes.Location = new Point(6, 322);
+            checkBoxMajorFixes.Name = "checkBoxMajorFixes";
+            checkBoxMajorFixes.Size = new Size(165, 19);
+            checkBoxMajorFixes.TabIndex = 12;
+            checkBoxMajorFixes.Text = "Game Changing Bug Fixes";
+            toolTip1.SetToolTip(checkBoxMajorFixes, "Some bug fixes that are significant enough to impact game behavior");
+            checkBoxMajorFixes.UseVisualStyleBackColor = true;
             // 
             // checkBoxCancelBird
             // 
-            this.checkBoxCancelBird.AutoSize = true;
-            this.checkBoxCancelBird.Location = new System.Drawing.Point(6, 347);
-            this.checkBoxCancelBird.Name = "checkBoxCancelBird";
-            this.checkBoxCancelBird.Size = new System.Drawing.Size(86, 19);
-            this.checkBoxCancelBird.TabIndex = 13;
-            this.checkBoxCancelBird.Text = "Cancel Bird";
-            this.toolTip1.SetToolTip(this.checkBoxCancelBird, "Allows you to cancel bird travel by hitting the X button");
-            this.checkBoxCancelBird.UseVisualStyleBackColor = true;
+            checkBoxCancelBird.AutoSize = true;
+            checkBoxCancelBird.Location = new Point(6, 347);
+            checkBoxCancelBird.Name = "checkBoxCancelBird";
+            checkBoxCancelBird.Size = new Size(86, 19);
+            checkBoxCancelBird.TabIndex = 13;
+            checkBoxCancelBird.Text = "Cancel Bird";
+            toolTip1.SetToolTip(checkBoxCancelBird, "Allows you to cancel bird travel by hitting the X button");
+            checkBoxCancelBird.UseVisualStyleBackColor = true;
             // 
             // groupBoxMSUSettings
             // 
-            this.groupBoxMSUSettings.Controls.Add(this.comboBoxMSU);
-            this.groupBoxMSUSettings.Controls.Add(this.textBoxMSUDirectory);
-            this.groupBoxMSUSettings.Controls.Add(this.labelMSUVersion);
-            this.groupBoxMSUSettings.Controls.Add(this.labelMSUDirectory);
-            this.groupBoxMSUSettings.Controls.Add(this.numericMSUVolume);
-            this.groupBoxMSUSettings.Controls.Add(this.checkBoxResumeMSU);
-            this.groupBoxMSUSettings.Controls.Add(this.labelMSUVolume);
-            this.groupBoxMSUSettings.Controls.Add(this.buttonMSUDirectory);
-            this.groupBoxMSUSettings.Location = new System.Drawing.Point(6, 155);
-            this.groupBoxMSUSettings.Name = "groupBoxMSUSettings";
-            this.groupBoxMSUSettings.Size = new System.Drawing.Size(190, 145);
-            this.groupBoxMSUSettings.TabIndex = 4;
-            this.groupBoxMSUSettings.TabStop = false;
-            this.groupBoxMSUSettings.Text = "MSU Settings";
-            this.toolTip1.SetToolTip(this.groupBoxMSUSettings, "Settings specifically for MSU");
+            groupBoxMSUSettings.Controls.Add(checkBoxMSUSymlink);
+            groupBoxMSUSettings.Controls.Add(comboBoxMSU);
+            groupBoxMSUSettings.Controls.Add(textBoxMSUDirectory);
+            groupBoxMSUSettings.Controls.Add(labelMSUVersion);
+            groupBoxMSUSettings.Controls.Add(labelMSUDirectory);
+            groupBoxMSUSettings.Controls.Add(numericMSUVolume);
+            groupBoxMSUSettings.Controls.Add(checkBoxResumeMSU);
+            groupBoxMSUSettings.Controls.Add(labelMSUVolume);
+            groupBoxMSUSettings.Controls.Add(buttonMSUDirectory);
+            groupBoxMSUSettings.Location = new Point(6, 155);
+            groupBoxMSUSettings.Name = "groupBoxMSUSettings";
+            groupBoxMSUSettings.Size = new Size(190, 223);
+            groupBoxMSUSettings.TabIndex = 4;
+            groupBoxMSUSettings.TabStop = false;
+            groupBoxMSUSettings.Text = "MSU Settings";
+            toolTip1.SetToolTip(groupBoxMSUSettings, "Settings specifically for MSU");
+            // 
+            // checkBoxMSUSymlink
+            // 
+            checkBoxMSUSymlink.AutoSize = true;
+            checkBoxMSUSymlink.Location = new Point(6, 149);
+            checkBoxMSUSymlink.Name = "checkBoxMSUSymlink";
+            checkBoxMSUSymlink.Size = new Size(122, 19);
+            checkBoxMSUSymlink.TabIndex = 9;
+            checkBoxMSUSymlink.Text = "Use Symbolic Link";
+            toolTip1.SetToolTip(checkBoxMSUSymlink, "Creates a Symbolic Link to the target folder, instead of copying its files.\\nSaves space, but only works on NTFS filesystems.");
+            checkBoxMSUSymlink.UseVisualStyleBackColor = true;
+            checkBoxMSUSymlink.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // comboBoxMSU
             // 
-            this.comboBoxMSU.FormattingEnabled = true;
-            this.comboBoxMSU.Items.AddRange(new object[] {
-            "MSU",
-            "MSU Deluxe",
-            "OPUZ",
-            "OPUZ Deluxe"});
-            this.comboBoxMSU.Location = new System.Drawing.Point(85, 68);
-            this.comboBoxMSU.MaxDropDownItems = 4;
-            this.comboBoxMSU.Name = "comboBoxMSU";
-            this.comboBoxMSU.Size = new System.Drawing.Size(99, 23);
-            this.comboBoxMSU.TabIndex = 2;
-            this.comboBoxMSU.Text = "MSU";
-            this.toolTip1.SetToolTip(this.comboBoxMSU, "Select the version of MSU you wish to use");
+            comboBoxMSU.FormattingEnabled = true;
+            comboBoxMSU.Items.AddRange(new object[] { "MSU", "MSU Deluxe", "OPUZ", "OPUZ Deluxe" });
+            comboBoxMSU.Location = new Point(85, 73);
+            comboBoxMSU.MaxDropDownItems = 4;
+            comboBoxMSU.Name = "comboBoxMSU";
+            comboBoxMSU.Size = new Size(99, 23);
+            comboBoxMSU.TabIndex = 2;
+            comboBoxMSU.Text = "MSU";
+            toolTip1.SetToolTip(comboBoxMSU, "Select the version of MSU you wish to use");
+            comboBoxMSU.SelectedIndexChanged += comboBoxMSU_SelectedIndexChanged;
             // 
             // textBoxMSUDirectory
             // 
-            this.textBoxMSUDirectory.Location = new System.Drawing.Point(6, 115);
-            this.textBoxMSUDirectory.Name = "textBoxMSUDirectory";
-            this.textBoxMSUDirectory.Size = new System.Drawing.Size(146, 23);
-            this.textBoxMSUDirectory.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.textBoxMSUDirectory, "MSU directory path");
+            textBoxMSUDirectory.Location = new Point(6, 120);
+            textBoxMSUDirectory.Name = "textBoxMSUDirectory";
+            textBoxMSUDirectory.Size = new Size(146, 23);
+            textBoxMSUDirectory.TabIndex = 3;
+            toolTip1.SetToolTip(textBoxMSUDirectory, "MSU directory path");
+            textBoxMSUDirectory.TextChanged += textBoxMSUDirectory_TextChanged;
             // 
             // labelMSUVersion
             // 
-            this.labelMSUVersion.AutoSize = true;
-            this.labelMSUVersion.Location = new System.Drawing.Point(6, 71);
-            this.labelMSUVersion.Name = "labelMSUVersion";
-            this.labelMSUVersion.Size = new System.Drawing.Size(73, 15);
-            this.labelMSUVersion.TabIndex = 7;
-            this.labelMSUVersion.Text = "MSU Version";
+            labelMSUVersion.AutoSize = true;
+            labelMSUVersion.Location = new Point(6, 76);
+            labelMSUVersion.Name = "labelMSUVersion";
+            labelMSUVersion.Size = new Size(73, 15);
+            labelMSUVersion.TabIndex = 7;
+            labelMSUVersion.Text = "MSU Version";
+            labelMSUVersion.Click += labelMSUVersion_Click;
             // 
             // labelMSUDirectory
             // 
-            this.labelMSUDirectory.AutoSize = true;
-            this.labelMSUDirectory.Location = new System.Drawing.Point(6, 94);
-            this.labelMSUDirectory.Name = "labelMSUDirectory";
-            this.labelMSUDirectory.Size = new System.Drawing.Size(86, 15);
-            this.labelMSUDirectory.TabIndex = 8;
-            this.labelMSUDirectory.Text = "MSU Directory:";
-            this.toolTip1.SetToolTip(this.labelMSUDirectory, "Directory where MSU files are located");
+            labelMSUDirectory.AutoSize = true;
+            labelMSUDirectory.Location = new Point(6, 99);
+            labelMSUDirectory.Name = "labelMSUDirectory";
+            labelMSUDirectory.Size = new Size(86, 15);
+            labelMSUDirectory.TabIndex = 8;
+            labelMSUDirectory.Text = "MSU Directory:";
+            toolTip1.SetToolTip(labelMSUDirectory, "Directory where MSU files are located");
+            labelMSUDirectory.Click += labelMSUDirectory_Click;
             // 
             // numericMSUVolume
             // 
-            this.numericMSUVolume.Location = new System.Drawing.Point(90, 39);
-            this.numericMSUVolume.Name = "numericMSUVolume";
-            this.numericMSUVolume.Size = new System.Drawing.Size(42, 23);
-            this.numericMSUVolume.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.numericMSUVolume, "Volume of MSU output (0-100)");
-            this.numericMSUVolume.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
+            numericMSUVolume.Location = new Point(90, 44);
+            numericMSUVolume.Name = "numericMSUVolume";
+            numericMSUVolume.Size = new Size(42, 23);
+            numericMSUVolume.TabIndex = 1;
+            toolTip1.SetToolTip(numericMSUVolume, "Volume of MSU output (0-100)");
+            numericMSUVolume.Value = new decimal(new int[] { 100, 0, 0, 0 });
+            numericMSUVolume.ValueChanged += numericMSUVolume_ValueChanged;
             // 
             // checkBoxResumeMSU
             // 
-            this.checkBoxResumeMSU.AutoSize = true;
-            this.checkBoxResumeMSU.Location = new System.Drawing.Point(6, 20);
-            this.checkBoxResumeMSU.Name = "checkBoxResumeMSU";
-            this.checkBoxResumeMSU.Size = new System.Drawing.Size(96, 19);
-            this.checkBoxResumeMSU.TabIndex = 0;
-            this.checkBoxResumeMSU.Text = "Resume MSU";
-            this.toolTip1.SetToolTip(this.checkBoxResumeMSU, "Resume MSU music from the same point in the track when returning to an area");
-            this.checkBoxResumeMSU.UseVisualStyleBackColor = true;
+            checkBoxResumeMSU.AutoSize = true;
+            checkBoxResumeMSU.Location = new Point(6, 20);
+            checkBoxResumeMSU.Name = "checkBoxResumeMSU";
+            checkBoxResumeMSU.Size = new Size(96, 19);
+            checkBoxResumeMSU.TabIndex = 0;
+            checkBoxResumeMSU.Text = "Resume MSU";
+            toolTip1.SetToolTip(checkBoxResumeMSU, "Resume MSU music from the same point in the track when returning to an area");
+            checkBoxResumeMSU.UseVisualStyleBackColor = true;
             // 
             // labelMSUVolume
             // 
-            this.labelMSUVolume.AutoSize = true;
-            this.labelMSUVolume.Location = new System.Drawing.Point(6, 43);
-            this.labelMSUVolume.Name = "labelMSUVolume";
-            this.labelMSUVolume.Size = new System.Drawing.Size(78, 15);
-            this.labelMSUVolume.TabIndex = 8;
-            this.labelMSUVolume.Text = "MSU Volume:";
-            this.toolTip1.SetToolTip(this.labelMSUVolume, "Volume of MSU output (0-100)");
+            labelMSUVolume.AutoSize = true;
+            labelMSUVolume.Location = new Point(6, 48);
+            labelMSUVolume.Name = "labelMSUVolume";
+            labelMSUVolume.Size = new Size(78, 15);
+            labelMSUVolume.TabIndex = 8;
+            labelMSUVolume.Text = "MSU Volume:";
+            toolTip1.SetToolTip(labelMSUVolume, "Volume of MSU output (0-100)");
+            labelMSUVolume.Click += labelMSUVolume_Click;
             // 
             // buttonMSUDirectory
             // 
-            this.buttonMSUDirectory.AutoSize = true;
-            this.buttonMSUDirectory.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonMSUDirectory.Location = new System.Drawing.Point(158, 114);
-            this.buttonMSUDirectory.Name = "buttonMSUDirectory";
-            this.buttonMSUDirectory.Size = new System.Drawing.Size(26, 25);
-            this.buttonMSUDirectory.TabIndex = 4;
-            this.buttonMSUDirectory.Text = "...";
-            this.toolTip1.SetToolTip(this.buttonMSUDirectory, "Open dialog to select MSU directory");
-            this.buttonMSUDirectory.UseVisualStyleBackColor = true;
-            this.buttonMSUDirectory.Click += new System.EventHandler(this.buttonMSUDirectory_Click);
+            buttonMSUDirectory.AutoSize = true;
+            buttonMSUDirectory.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            buttonMSUDirectory.Location = new Point(158, 119);
+            buttonMSUDirectory.Name = "buttonMSUDirectory";
+            buttonMSUDirectory.Size = new Size(26, 25);
+            buttonMSUDirectory.TabIndex = 4;
+            buttonMSUDirectory.Text = "...";
+            toolTip1.SetToolTip(buttonMSUDirectory, "Open dialog to select MSU directory");
+            buttonMSUDirectory.UseVisualStyleBackColor = true;
+            buttonMSUDirectory.Click += buttonMSUDirectory_Click;
             // 
             // comboBoxSamples
             // 
-            this.comboBoxSamples.FormattingEnabled = true;
-            this.comboBoxSamples.Items.AddRange(new object[] {
-            "512",
-            "1024",
-            "2048",
-            "4096"});
-            this.comboBoxSamples.Location = new System.Drawing.Point(141, 109);
-            this.comboBoxSamples.MaxDropDownItems = 4;
-            this.comboBoxSamples.Name = "comboBoxSamples";
-            this.comboBoxSamples.Size = new System.Drawing.Size(55, 23);
-            this.comboBoxSamples.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.comboBoxSamples, "Audio buffer size in samples");
+            comboBoxSamples.FormattingEnabled = true;
+            comboBoxSamples.Items.AddRange(new object[] { "512", "1024", "2048", "4096" });
+            comboBoxSamples.Location = new Point(141, 109);
+            comboBoxSamples.MaxDropDownItems = 4;
+            comboBoxSamples.Name = "comboBoxSamples";
+            comboBoxSamples.Size = new Size(55, 23);
+            comboBoxSamples.TabIndex = 2;
+            toolTip1.SetToolTip(comboBoxSamples, "Audio buffer size in samples");
             // 
             // comboBoxFrequency
             // 
-            this.comboBoxFrequency.FormattingEnabled = true;
-            this.comboBoxFrequency.Items.AddRange(new object[] {
-            "48000",
-            "44100",
-            "32000",
-            "22050",
-            "11025"});
-            this.comboBoxFrequency.Location = new System.Drawing.Point(141, 80);
-            this.comboBoxFrequency.MaxDropDownItems = 5;
-            this.comboBoxFrequency.Name = "comboBoxFrequency";
-            this.comboBoxFrequency.Size = new System.Drawing.Size(55, 23);
-            this.comboBoxFrequency.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.comboBoxFrequency, "DSP frequency in samples per second");
+            comboBoxFrequency.FormattingEnabled = true;
+            comboBoxFrequency.Items.AddRange(new object[] { "48000", "44100", "32000", "22050", "11025" });
+            comboBoxFrequency.Location = new Point(141, 80);
+            comboBoxFrequency.MaxDropDownItems = 5;
+            comboBoxFrequency.Name = "comboBoxFrequency";
+            comboBoxFrequency.Size = new Size(55, 23);
+            comboBoxFrequency.TabIndex = 1;
+            toolTip1.SetToolTip(comboBoxFrequency, "DSP frequency in samples per second");
             // 
             // checkBoxEnableMSU
             // 
-            this.checkBoxEnableMSU.AutoSize = true;
-            this.checkBoxEnableMSU.Location = new System.Drawing.Point(6, 130);
-            this.checkBoxEnableMSU.Name = "checkBoxEnableMSU";
-            this.checkBoxEnableMSU.Size = new System.Drawing.Size(89, 19);
-            this.checkBoxEnableMSU.TabIndex = 3;
-            this.checkBoxEnableMSU.Text = "Enable MSU";
-            this.toolTip1.SetToolTip(this.checkBoxEnableMSU, resources.GetString("checkBoxEnableMSU.ToolTip"));
-            this.checkBoxEnableMSU.UseVisualStyleBackColor = true;
-            this.checkBoxEnableMSU.CheckedChanged += new System.EventHandler(this.checkBoxEnableMSU_CheckedChanged);
+            checkBoxEnableMSU.AutoSize = true;
+            checkBoxEnableMSU.Location = new Point(6, 130);
+            checkBoxEnableMSU.Name = "checkBoxEnableMSU";
+            checkBoxEnableMSU.Size = new Size(89, 19);
+            checkBoxEnableMSU.TabIndex = 3;
+            checkBoxEnableMSU.Text = "Enable MSU";
+            toolTip1.SetToolTip(checkBoxEnableMSU, resources.GetString("checkBoxEnableMSU.ToolTip"));
+            checkBoxEnableMSU.UseVisualStyleBackColor = true;
+            checkBoxEnableMSU.CheckedChanged += checkBoxEnableMSU_CheckedChanged;
             // 
             // radioButtonStereo
             // 
-            this.radioButtonStereo.AutoSize = true;
-            this.radioButtonStereo.Checked = true;
-            this.radioButtonStereo.Location = new System.Drawing.Point(92, 22);
-            this.radioButtonStereo.Name = "radioButtonStereo";
-            this.radioButtonStereo.Size = new System.Drawing.Size(58, 19);
-            this.radioButtonStereo.TabIndex = 1;
-            this.radioButtonStereo.TabStop = true;
-            this.radioButtonStereo.Text = "Stereo";
-            this.toolTip1.SetToolTip(this.radioButtonStereo, "Outputs audio to the left or right speakers based where the sound is generated on" +
-        " screen");
-            this.radioButtonStereo.UseVisualStyleBackColor = true;
+            radioButtonStereo.AutoSize = true;
+            radioButtonStereo.Checked = true;
+            radioButtonStereo.Location = new Point(92, 22);
+            radioButtonStereo.Name = "radioButtonStereo";
+            radioButtonStereo.Size = new Size(58, 19);
+            radioButtonStereo.TabIndex = 1;
+            radioButtonStereo.TabStop = true;
+            radioButtonStereo.Text = "Stereo";
+            toolTip1.SetToolTip(radioButtonStereo, "Outputs audio to the left or right speakers based where the sound is generated on screen");
+            radioButtonStereo.UseVisualStyleBackColor = true;
             // 
             // radioButtonMono
             // 
-            this.radioButtonMono.AutoSize = true;
-            this.radioButtonMono.Location = new System.Drawing.Point(29, 22);
-            this.radioButtonMono.Name = "radioButtonMono";
-            this.radioButtonMono.Size = new System.Drawing.Size(57, 19);
-            this.radioButtonMono.TabIndex = 0;
-            this.radioButtonMono.Text = "Mono";
-            this.toolTip1.SetToolTip(this.radioButtonMono, "Uniform audio output across all speakers");
-            this.radioButtonMono.UseVisualStyleBackColor = true;
+            radioButtonMono.AutoSize = true;
+            radioButtonMono.Location = new Point(29, 22);
+            radioButtonMono.Name = "radioButtonMono";
+            radioButtonMono.Size = new Size(57, 19);
+            radioButtonMono.TabIndex = 0;
+            radioButtonMono.Text = "Mono";
+            toolTip1.SetToolTip(radioButtonMono, "Uniform audio output across all speakers");
+            radioButtonMono.UseVisualStyleBackColor = true;
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(607, 373);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(202, 35);
-            this.buttonReset.TabIndex = 3;
-            this.buttonReset.Text = "Reset";
-            this.toolTip1.SetToolTip(this.buttonReset, "Reset all settings to their default values");
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            buttonReset.Location = new Point(12, 491);
+            buttonReset.Name = "buttonReset";
+            buttonReset.Size = new Size(202, 35);
+            buttonReset.TabIndex = 3;
+            buttonReset.Text = "Default";
+            toolTip1.SetToolTip(buttonReset, "Reset all settings to their default values");
+            buttonReset.UseVisualStyleBackColor = true;
+            buttonReset.Click += buttonReset_Click;
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(607, 412);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(202, 35);
-            this.buttonSave.TabIndex = 2;
-            this.buttonSave.Text = "Save";
-            this.toolTip1.SetToolTip(this.buttonSave, "Save current settings and close window");
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            buttonSave.Location = new Point(399, 491);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(202, 35);
+            buttonSave.TabIndex = 2;
+            buttonSave.Text = "Save";
+            toolTip1.SetToolTip(buttonSave, "Save current settings and close window");
+            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(607, 450);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(202, 35);
-            this.buttonCancel.TabIndex = 1;
-            this.buttonCancel.Text = "Cancel";
-            this.toolTip1.SetToolTip(this.buttonCancel, "Close window without saving any settings");
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            buttonCancel.Location = new Point(607, 491);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(202, 35);
+            buttonCancel.TabIndex = 1;
+            buttonCancel.Text = "Cancel";
+            toolTip1.SetToolTip(buttonCancel, "Close window without saving any settings");
+            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // labelRenderMethod
             // 
-            this.labelRenderMethod.AutoSize = true;
-            this.labelRenderMethod.Location = new System.Drawing.Point(6, 183);
-            this.labelRenderMethod.Name = "labelRenderMethod";
-            this.labelRenderMethod.Size = new System.Drawing.Size(92, 15);
-            this.labelRenderMethod.TabIndex = 11;
-            this.labelRenderMethod.Text = "Render Method:";
-            this.toolTip1.SetToolTip(this.labelRenderMethod, "Rendering software used. SDL-software rendering may give better performance on Ra" +
-        "spberry Pi");
+            labelRenderMethod.AutoSize = true;
+            labelRenderMethod.Location = new Point(6, 183);
+            labelRenderMethod.Name = "labelRenderMethod";
+            labelRenderMethod.Size = new Size(92, 15);
+            labelRenderMethod.TabIndex = 11;
+            labelRenderMethod.Text = "Render Method:";
+            toolTip1.SetToolTip(labelRenderMethod, "Rendering software used. SDL-software rendering may give better performance on Raspberry Pi");
             // 
             // comboRenderMethod
             // 
-            this.comboRenderMethod.FormattingEnabled = true;
-            this.comboRenderMethod.Items.AddRange(new object[] {
-            "SDL (Default)",
-            "SDL-Software",
-            "OpenGL"});
-            this.comboRenderMethod.Location = new System.Drawing.Point(104, 180);
-            this.comboRenderMethod.MaxDropDownItems = 3;
-            this.comboRenderMethod.Name = "comboRenderMethod";
-            this.comboRenderMethod.Size = new System.Drawing.Size(144, 23);
-            this.comboRenderMethod.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.comboRenderMethod, "Rendering software used. SDL-software rendering may give better performance on Ra" +
-        "spberry Pi");
+            comboRenderMethod.FormattingEnabled = true;
+            comboRenderMethod.Items.AddRange(new object[] { "SDL (Default)", "SDL-Software", "OpenGL" });
+            comboRenderMethod.Location = new Point(104, 180);
+            comboRenderMethod.MaxDropDownItems = 3;
+            comboRenderMethod.Name = "comboRenderMethod";
+            comboRenderMethod.Size = new Size(144, 23);
+            comboRenderMethod.TabIndex = 8;
+            toolTip1.SetToolTip(comboRenderMethod, "Rendering software used. SDL-software rendering may give better performance on Raspberry Pi");
             // 
             // linkLabelCustomSprites
             // 
-            this.linkLabelCustomSprites.AutoSize = true;
-            this.linkLabelCustomSprites.Location = new System.Drawing.Point(230, 210);
-            this.linkLabelCustomSprites.Name = "linkLabelCustomSprites";
-            this.linkLabelCustomSprites.Size = new System.Drawing.Size(144, 15);
-            this.linkLabelCustomSprites.TabIndex = 11;
-            this.linkLabelCustomSprites.TabStop = true;
-            this.linkLabelCustomSprites.Text = "Custom Sprite Downloads";
-            this.toolTip1.SetToolTip(this.linkLabelCustomSprites, "Click here for some custom sprites you can download");
-            this.linkLabelCustomSprites.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCustomSprites_LinkClicked);
+            linkLabelCustomSprites.AutoSize = true;
+            linkLabelCustomSprites.Location = new Point(230, 210);
+            linkLabelCustomSprites.Name = "linkLabelCustomSprites";
+            linkLabelCustomSprites.Size = new Size(144, 15);
+            linkLabelCustomSprites.TabIndex = 11;
+            linkLabelCustomSprites.TabStop = true;
+            linkLabelCustomSprites.Text = "Custom Sprite Downloads";
+            toolTip1.SetToolTip(linkLabelCustomSprites, "Click here for some custom sprites you can download");
+            linkLabelCustomSprites.LinkClicked += linkLabelCustomSprites_LinkClicked;
             // 
             // buttonKeymapping
             // 
-            this.buttonKeymapping.Location = new System.Drawing.Point(12, 450);
-            this.buttonKeymapping.Name = "buttonKeymapping";
-            this.buttonKeymapping.Size = new System.Drawing.Size(202, 35);
-            this.buttonKeymapping.TabIndex = 0;
-            this.buttonKeymapping.Text = "Keymapping";
-            this.toolTip1.SetToolTip(this.buttonKeymapping, "Open a new settings menu exclusively for configuring keymappings for the game");
-            this.buttonKeymapping.UseVisualStyleBackColor = true;
-            this.buttonKeymapping.Click += new System.EventHandler(this.buttonKeymapping_Click);
+            buttonKeymapping.Location = new Point(12, 450);
+            buttonKeymapping.Name = "buttonKeymapping";
+            buttonKeymapping.Size = new Size(202, 35);
+            buttonKeymapping.TabIndex = 0;
+            buttonKeymapping.Text = "Keymapping";
+            toolTip1.SetToolTip(buttonKeymapping, "Open a new settings menu exclusively for configuring keymappings for the game");
+            buttonKeymapping.UseVisualStyleBackColor = true;
+            buttonKeymapping.Click += buttonKeymapping_Click;
             // 
             // linkLabelMinorFixes
             // 
-            this.linkLabelMinorFixes.AutoSize = true;
-            this.linkLabelMinorFixes.Location = new System.Drawing.Point(165, 298);
-            this.linkLabelMinorFixes.Name = "linkLabelMinorFixes";
-            this.linkLabelMinorFixes.Size = new System.Drawing.Size(12, 15);
-            this.linkLabelMinorFixes.TabIndex = 9;
-            this.linkLabelMinorFixes.TabStop = true;
-            this.linkLabelMinorFixes.Text = "?";
-            this.toolTip1.SetToolTip(this.linkLabelMinorFixes, "This webpage will list the specific fixes");
-            this.linkLabelMinorFixes.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelMinorFixes_LinkClicked);
+            linkLabelMinorFixes.AutoSize = true;
+            linkLabelMinorFixes.Location = new Point(165, 298);
+            linkLabelMinorFixes.Name = "linkLabelMinorFixes";
+            linkLabelMinorFixes.Size = new Size(12, 15);
+            linkLabelMinorFixes.TabIndex = 9;
+            linkLabelMinorFixes.TabStop = true;
+            linkLabelMinorFixes.Text = "?";
+            toolTip1.SetToolTip(linkLabelMinorFixes, "This webpage will list the specific fixes");
+            linkLabelMinorFixes.LinkClicked += linkLabelMinorFixes_LinkClicked;
             // 
             // graphics
             // 
-            this.graphics.Controls.Add(this.linkLabelGLSLShaders);
-            this.graphics.Controls.Add(this.linkLabelCustomSprites);
-            this.graphics.Controls.Add(this.checkBoxShader);
-            this.graphics.Controls.Add(this.checkBoxCustomLinkSprites);
-            this.graphics.Controls.Add(this.textBoxCustomLink);
-            this.graphics.Controls.Add(this.buttonOpenSprites);
-            this.graphics.Controls.Add(this.checkStretch);
-            this.graphics.Controls.Add(this.textBoxGLSLShader);
-            this.graphics.Controls.Add(this.buttonOpenShader);
-            this.graphics.Controls.Add(this.labelRenderMethod);
-            this.graphics.Controls.Add(this.comboRenderMethod);
-            this.graphics.Controls.Add(this.checkLinearFiltering);
-            this.graphics.Controls.Add(this.checkSpriteLimit);
-            this.graphics.Controls.Add(this.checkMode7);
-            this.graphics.Controls.Add(this.numericWindowScale);
-            this.graphics.Controls.Add(this.labelScale);
-            this.graphics.Controls.Add(this.checkPPU);
-            this.graphics.Controls.Add(this.fullscreenMode);
-            this.graphics.Controls.Add(this.windowSize);
-            this.graphics.Location = new System.Drawing.Point(220, 168);
-            this.graphics.Name = "graphics";
-            this.graphics.Size = new System.Drawing.Size(381, 317);
-            this.graphics.TabIndex = 6;
-            this.graphics.TabStop = false;
-            this.graphics.Text = "Graphics";
+            graphics.Controls.Add(linkLabelGLSLShaders);
+            graphics.Controls.Add(linkLabelCustomSprites);
+            graphics.Controls.Add(checkBoxShader);
+            graphics.Controls.Add(checkBoxCustomLinkSprites);
+            graphics.Controls.Add(textBoxCustomLink);
+            graphics.Controls.Add(buttonOpenSprites);
+            graphics.Controls.Add(checkStretch);
+            graphics.Controls.Add(textBoxGLSLShader);
+            graphics.Controls.Add(buttonOpenShader);
+            graphics.Controls.Add(labelRenderMethod);
+            graphics.Controls.Add(comboRenderMethod);
+            graphics.Controls.Add(checkLinearFiltering);
+            graphics.Controls.Add(checkSpriteLimit);
+            graphics.Controls.Add(checkMode7);
+            graphics.Controls.Add(numericWindowScale);
+            graphics.Controls.Add(labelScale);
+            graphics.Controls.Add(checkPPU);
+            graphics.Controls.Add(fullscreenMode);
+            graphics.Controls.Add(windowSize);
+            graphics.Location = new Point(220, 168);
+            graphics.Name = "graphics";
+            graphics.Size = new Size(381, 317);
+            graphics.TabIndex = 6;
+            graphics.TabStop = false;
+            graphics.Text = "Graphics";
             // 
             // linkLabelGLSLShaders
             // 
-            this.linkLabelGLSLShaders.AutoSize = true;
-            this.linkLabelGLSLShaders.Location = new System.Drawing.Point(268, 264);
-            this.linkLabelGLSLShaders.Name = "linkLabelGLSLShaders";
-            this.linkLabelGLSLShaders.Size = new System.Drawing.Size(106, 15);
-            this.linkLabelGLSLShaders.TabIndex = 14;
-            this.linkLabelGLSLShaders.TabStop = true;
-            this.linkLabelGLSLShaders.Text = "Suggested Shaders";
-            this.linkLabelGLSLShaders.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGLSLShaders_LinkClicked);
+            linkLabelGLSLShaders.AutoSize = true;
+            linkLabelGLSLShaders.Location = new Point(268, 264);
+            linkLabelGLSLShaders.Name = "linkLabelGLSLShaders";
+            linkLabelGLSLShaders.Size = new Size(106, 15);
+            linkLabelGLSLShaders.TabIndex = 14;
+            linkLabelGLSLShaders.TabStop = true;
+            linkLabelGLSLShaders.Text = "Suggested Shaders";
+            linkLabelGLSLShaders.LinkClicked += linkLabelGLSLShaders_LinkClicked;
             // 
             // fullscreenMode
             // 
-            this.fullscreenMode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.fullscreenMode.Controls.Add(this.radioFullscreenMode);
-            this.fullscreenMode.Controls.Add(this.radioFullscreen);
-            this.fullscreenMode.Controls.Add(this.radioWindowed);
-            this.fullscreenMode.Location = new System.Drawing.Point(189, 22);
-            this.fullscreenMode.Name = "fullscreenMode";
-            this.fullscreenMode.Size = new System.Drawing.Size(185, 102);
-            this.fullscreenMode.TabIndex = 1;
-            this.fullscreenMode.TabStop = false;
-            this.fullscreenMode.Text = "Fullscreen Mode";
+            fullscreenMode.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            fullscreenMode.Controls.Add(radioFullscreenMode);
+            fullscreenMode.Controls.Add(radioFullscreen);
+            fullscreenMode.Controls.Add(radioWindowed);
+            fullscreenMode.Location = new Point(189, 22);
+            fullscreenMode.Name = "fullscreenMode";
+            fullscreenMode.Size = new Size(185, 102);
+            fullscreenMode.TabIndex = 1;
+            fullscreenMode.TabStop = false;
+            fullscreenMode.Text = "Fullscreen Mode";
             // 
             // windowSize
             // 
-            this.windowSize.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.windowSize.Controls.Add(this.height);
-            this.windowSize.Controls.Add(this.windowSizeX);
-            this.windowSize.Controls.Add(this.width);
-            this.windowSize.Controls.Add(this.customSize);
-            this.windowSize.Controls.Add(this.windowAuto);
-            this.windowSize.Location = new System.Drawing.Point(6, 22);
-            this.windowSize.Name = "windowSize";
-            this.windowSize.Size = new System.Drawing.Size(177, 102);
-            this.windowSize.TabIndex = 0;
-            this.windowSize.TabStop = false;
-            this.windowSize.Text = "Window Size";
+            windowSize.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            windowSize.Controls.Add(height);
+            windowSize.Controls.Add(windowSizeX);
+            windowSize.Controls.Add(width);
+            windowSize.Controls.Add(customSize);
+            windowSize.Controls.Add(windowAuto);
+            windowSize.Location = new Point(6, 22);
+            windowSize.Name = "windowSize";
+            windowSize.Size = new Size(177, 102);
+            windowSize.TabIndex = 0;
+            windowSize.TabStop = false;
+            windowSize.Text = "Window Size";
             // 
             // windowSizeX
             // 
-            this.windowSizeX.AutoSize = true;
-            this.windowSizeX.Enabled = false;
-            this.windowSizeX.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.windowSizeX.Location = new System.Drawing.Point(43, 76);
-            this.windowSizeX.Name = "windowSizeX";
-            this.windowSizeX.Size = new System.Drawing.Size(14, 15);
-            this.windowSizeX.TabIndex = 3;
-            this.windowSizeX.Text = "X";
+            windowSizeX.AutoSize = true;
+            windowSizeX.Enabled = false;
+            windowSizeX.ForeColor = SystemColors.ControlText;
+            windowSizeX.Location = new Point(43, 76);
+            windowSizeX.Name = "windowSizeX";
+            windowSizeX.Size = new Size(14, 15);
+            windowSizeX.TabIndex = 3;
+            windowSizeX.Text = "X";
             // 
             // groupBoxSound
             // 
-            this.groupBoxSound.Controls.Add(this.groupBoxMSUSettings);
-            this.groupBoxSound.Controls.Add(this.comboBoxSamples);
-            this.groupBoxSound.Controls.Add(this.comboBoxFrequency);
-            this.groupBoxSound.Controls.Add(this.checkBoxEnableMSU);
-            this.groupBoxSound.Controls.Add(this.groupBoxAudioChannels);
-            this.groupBoxSound.Controls.Add(this.labelAudioSamples);
-            this.groupBoxSound.Controls.Add(this.labelAudioFrequency);
-            this.groupBoxSound.Location = new System.Drawing.Point(607, 66);
-            this.groupBoxSound.Name = "groupBoxSound";
-            this.groupBoxSound.Size = new System.Drawing.Size(202, 305);
-            this.groupBoxSound.TabIndex = 8;
-            this.groupBoxSound.TabStop = false;
-            this.groupBoxSound.Text = "Sound";
+            groupBoxSound.Controls.Add(groupBoxMSUSettings);
+            groupBoxSound.Controls.Add(comboBoxSamples);
+            groupBoxSound.Controls.Add(comboBoxFrequency);
+            groupBoxSound.Controls.Add(checkBoxEnableMSU);
+            groupBoxSound.Controls.Add(groupBoxAudioChannels);
+            groupBoxSound.Controls.Add(labelAudioSamples);
+            groupBoxSound.Controls.Add(labelAudioFrequency);
+            groupBoxSound.Location = new Point(607, 66);
+            groupBoxSound.Name = "groupBoxSound";
+            groupBoxSound.Size = new Size(202, 419);
+            groupBoxSound.TabIndex = 8;
+            groupBoxSound.TabStop = false;
+            groupBoxSound.Text = "Sound";
             // 
             // groupBoxAudioChannels
             // 
-            this.groupBoxAudioChannels.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBoxAudioChannels.Controls.Add(this.radioButtonStereo);
-            this.groupBoxAudioChannels.Controls.Add(this.radioButtonMono);
-            this.groupBoxAudioChannels.Location = new System.Drawing.Point(6, 22);
-            this.groupBoxAudioChannels.Name = "groupBoxAudioChannels";
-            this.groupBoxAudioChannels.Size = new System.Drawing.Size(190, 54);
-            this.groupBoxAudioChannels.TabIndex = 0;
-            this.groupBoxAudioChannels.TabStop = false;
-            this.groupBoxAudioChannels.Text = "Audio Channels";
+            groupBoxAudioChannels.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            groupBoxAudioChannels.Controls.Add(radioButtonStereo);
+            groupBoxAudioChannels.Controls.Add(radioButtonMono);
+            groupBoxAudioChannels.Location = new Point(6, 22);
+            groupBoxAudioChannels.Name = "groupBoxAudioChannels";
+            groupBoxAudioChannels.Size = new Size(190, 54);
+            groupBoxAudioChannels.TabIndex = 0;
+            groupBoxAudioChannels.TabStop = false;
+            groupBoxAudioChannels.Text = "Audio Channels";
             // 
             // groupBoxGameplay
             // 
-            this.groupBoxGameplay.Controls.Add(this.linkLabelMajorFixes);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxCancelBird);
-            this.groupBoxGameplay.Controls.Add(this.linkLabelMinorFixes);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxMajorFixes);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxLargerWallet);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxMoreBombs);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxMiscFixes);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxMaxResources);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxIntroSkip);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxHeartBeep);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxSwordPots);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxSwordItems);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxMirrorDark);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxDashTurning);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxLRLimit);
-            this.groupBoxGameplay.Controls.Add(this.checkBoxQuickSwitch);
-            this.groupBoxGameplay.Location = new System.Drawing.Point(12, 35);
-            this.groupBoxGameplay.Name = "groupBoxGameplay";
-            this.groupBoxGameplay.Size = new System.Drawing.Size(202, 409);
-            this.groupBoxGameplay.TabIndex = 4;
-            this.groupBoxGameplay.TabStop = false;
-            this.groupBoxGameplay.Text = "Gameplay";
+            groupBoxGameplay.Controls.Add(linkLabelMajorFixes);
+            groupBoxGameplay.Controls.Add(checkBoxCancelBird);
+            groupBoxGameplay.Controls.Add(linkLabelMinorFixes);
+            groupBoxGameplay.Controls.Add(checkBoxMajorFixes);
+            groupBoxGameplay.Controls.Add(checkBoxLargerWallet);
+            groupBoxGameplay.Controls.Add(checkBoxMoreBombs);
+            groupBoxGameplay.Controls.Add(checkBoxMiscFixes);
+            groupBoxGameplay.Controls.Add(checkBoxMaxResources);
+            groupBoxGameplay.Controls.Add(checkBoxIntroSkip);
+            groupBoxGameplay.Controls.Add(checkBoxHeartBeep);
+            groupBoxGameplay.Controls.Add(checkBoxSwordPots);
+            groupBoxGameplay.Controls.Add(checkBoxSwordItems);
+            groupBoxGameplay.Controls.Add(checkBoxMirrorDark);
+            groupBoxGameplay.Controls.Add(checkBoxDashTurning);
+            groupBoxGameplay.Controls.Add(checkBoxLRLimit);
+            groupBoxGameplay.Controls.Add(checkBoxQuickSwitch);
+            groupBoxGameplay.Location = new Point(12, 35);
+            groupBoxGameplay.Name = "groupBoxGameplay";
+            groupBoxGameplay.Size = new Size(202, 409);
+            groupBoxGameplay.TabIndex = 4;
+            groupBoxGameplay.TabStop = false;
+            groupBoxGameplay.Text = "Gameplay";
             // 
             // linkLabelMajorFixes
             // 
-            this.linkLabelMajorFixes.AutoSize = true;
-            this.linkLabelMajorFixes.Location = new System.Drawing.Point(165, 323);
-            this.linkLabelMajorFixes.Name = "linkLabelMajorFixes";
-            this.linkLabelMajorFixes.Size = new System.Drawing.Size(12, 15);
-            this.linkLabelMajorFixes.TabIndex = 9;
-            this.linkLabelMajorFixes.TabStop = true;
-            this.linkLabelMajorFixes.Text = "?";
-            this.linkLabelMajorFixes.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            linkLabelMajorFixes.AutoSize = true;
+            linkLabelMajorFixes.Location = new Point(165, 323);
+            linkLabelMajorFixes.Name = "linkLabelMajorFixes";
+            linkLabelMajorFixes.Size = new Size(12, 15);
+            linkLabelMajorFixes.TabIndex = 9;
+            linkLabelMajorFixes.TabStop = true;
+            linkLabelMajorFixes.Text = "?";
+            linkLabelMajorFixes.LinkClicked += linkLabel2_LinkClicked;
             // 
             // labelHoverNote
             // 
-            this.labelHoverNote.Location = new System.Drawing.Point(6, 9);
-            this.labelHoverNote.Name = "labelHoverNote";
-            this.labelHoverNote.Size = new System.Drawing.Size(797, 23);
-            this.labelHoverNote.TabIndex = 5;
-            this.labelHoverNote.Text = "NOTE: You can hover over an option to get a more detailed description of what eac" +
-    "h setting does.";
-            this.labelHoverNote.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            labelHoverNote.Location = new Point(6, 9);
+            labelHoverNote.Name = "labelHoverNote";
+            labelHoverNote.Size = new Size(797, 23);
+            labelHoverNote.TabIndex = 5;
+            labelHoverNote.Text = "NOTE: You can hover over an option to get a more detailed description of what each setting does.";
+            labelHoverNote.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // labelMSUCopy
             // 
-            this.labelMSUCopy.Location = new System.Drawing.Point(12, 488);
-            this.labelMSUCopy.Name = "labelMSUCopy";
-            this.labelMSUCopy.Size = new System.Drawing.Size(797, 23);
-            this.labelMSUCopy.TabIndex = 6;
-            this.labelMSUCopy.Text = "Copying MSU Files...";
-            this.labelMSUCopy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelMSUCopy.Visible = false;
+            labelMSUCopy.Location = new Point(12, 538);
+            labelMSUCopy.Name = "labelMSUCopy";
+            labelMSUCopy.Size = new Size(797, 23);
+            labelMSUCopy.TabIndex = 6;
+            labelMSUCopy.Text = "Copying MSU Files...";
+            labelMSUCopy.TextAlign = ContentAlignment.MiddleCenter;
+            labelMSUCopy.Visible = false;
             // 
             // progressMSU
             // 
-            this.progressMSU.Location = new System.Drawing.Point(15, 514);
-            this.progressMSU.Name = "progressMSU";
-            this.progressMSU.Size = new System.Drawing.Size(797, 23);
-            this.progressMSU.TabIndex = 7;
-            this.progressMSU.Visible = false;
+            progressMSU.Location = new Point(15, 564);
+            progressMSU.Name = "progressMSU";
+            progressMSU.Size = new Size(797, 23);
+            progressMSU.TabIndex = 7;
+            progressMSU.Visible = false;
             // 
             // settingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(821, 619);
-            this.Controls.Add(this.buttonKeymapping);
-            this.Controls.Add(this.progressMSU);
-            this.Controls.Add(this.labelMSUCopy);
-            this.Controls.Add(this.labelHoverNote);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.buttonReset);
-            this.Controls.Add(this.groupBoxGameplay);
-            this.Controls.Add(this.groupBoxSound);
-            this.Controls.Add(this.graphics);
-            this.Controls.Add(this.general);
-            this.Controls.Add(this.checkBoxEnableAudio);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "settingsForm";
-            this.Padding = new System.Windows.Forms.Padding(6);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Settings";
-            this.general.ResumeLayout(false);
-            this.general.PerformLayout();
-            this.aspectRatio.ResumeLayout(false);
-            this.aspectRatio.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericWindowScale)).EndInit();
-            this.groupBoxMSUSettings.ResumeLayout(false);
-            this.groupBoxMSUSettings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericMSUVolume)).EndInit();
-            this.graphics.ResumeLayout(false);
-            this.graphics.PerformLayout();
-            this.fullscreenMode.ResumeLayout(false);
-            this.fullscreenMode.PerformLayout();
-            this.windowSize.ResumeLayout(false);
-            this.windowSize.PerformLayout();
-            this.groupBoxSound.ResumeLayout(false);
-            this.groupBoxSound.PerformLayout();
-            this.groupBoxAudioChannels.ResumeLayout(false);
-            this.groupBoxAudioChannels.PerformLayout();
-            this.groupBoxGameplay.ResumeLayout(false);
-            this.groupBoxGameplay.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(821, 680);
+            Controls.Add(buttonKeymapping);
+            Controls.Add(progressMSU);
+            Controls.Add(labelMSUCopy);
+            Controls.Add(labelHoverNote);
+            Controls.Add(buttonCancel);
+            Controls.Add(buttonSave);
+            Controls.Add(buttonReset);
+            Controls.Add(groupBoxGameplay);
+            Controls.Add(groupBoxSound);
+            Controls.Add(graphics);
+            Controls.Add(general);
+            Controls.Add(checkBoxEnableAudio);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            Name = "settingsForm";
+            Padding = new Padding(6);
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Settings";
+            general.ResumeLayout(false);
+            general.PerformLayout();
+            aspectRatio.ResumeLayout(false);
+            aspectRatio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericWindowScale).EndInit();
+            groupBoxMSUSettings.ResumeLayout(false);
+            groupBoxMSUSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericMSUVolume).EndInit();
+            graphics.ResumeLayout(false);
+            graphics.PerformLayout();
+            fullscreenMode.ResumeLayout(false);
+            fullscreenMode.PerformLayout();
+            windowSize.ResumeLayout(false);
+            windowSize.PerformLayout();
+            groupBoxSound.ResumeLayout(false);
+            groupBoxSound.PerformLayout();
+            groupBoxAudioChannels.ResumeLayout(false);
+            groupBoxAudioChannels.PerformLayout();
+            groupBoxGameplay.ResumeLayout(false);
+            groupBoxGameplay.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -1267,5 +1248,6 @@
         private Button buttonKeymapping;
         private LinkLabel linkLabelMinorFixes;
         private LinkLabel linkLabelMajorFixes;
+        private CheckBox checkBoxMSUSymlink;
     }
 }

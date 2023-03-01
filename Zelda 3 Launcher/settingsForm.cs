@@ -37,7 +37,7 @@ namespace Zelda_3_Launcher
             }
 
             if (checkBoxEnableMSU.Checked == false) groupBoxMSUSettings.Enabled = false;
-            if (checkBoxEnableAudio.Checked == false) groupBoxSound.Enabled= false;
+            if (checkBoxEnableAudio.Checked == false) groupBoxSound.Enabled = false;
         }
 
         private void ToggleCustomSizeTextFields()
@@ -46,7 +46,7 @@ namespace Zelda_3_Launcher
             {
                 height.Enabled = true;
                 width.Enabled = true;
-                windowSizeX.Enabled= true;
+                windowSizeX.Enabled = true;
             }
             else
             {
@@ -70,7 +70,7 @@ namespace Zelda_3_Launcher
                 this.buttonReset.Text = "Reset";
                 return;
             }
-            
+
             restoreINI();
             try
             {
@@ -282,7 +282,7 @@ namespace Zelda_3_Launcher
             noVisualFixes.Checked = false;
             checkBoxExtend.Checked = false;
             var ratioSettings = settings["General"]["ExtendedAspectRatio"].Split(',');
-            foreach(var item in ratioSettings)
+            foreach (var item in ratioSettings)
             {
                 switch (item.Trim())
                 {
@@ -337,7 +337,7 @@ namespace Zelda_3_Launcher
             checkStretch.Checked = settings["Graphics"]["IgnoreAspectRatio"].ToBool();
             checkSpriteLimit.Checked = settings["Graphics"]["NoSpriteLimits"].ToBool();
             checkLinearFiltering.Checked = settings["Graphics"]["LinearFiltering"].ToBool();
-            
+
             switch (settings["Graphics"]["OutputMethod"])
             {
                 case "SDL":
@@ -460,7 +460,7 @@ namespace Zelda_3_Launcher
             if (settings["Features"]["ItemSwitchLR"].ToBool())
             {
                 checkBoxQuickSwitch.Checked = true;
-                checkBoxLRLimit.Enabled= true;
+                checkBoxLRLimit.Enabled = true;
             }
             else
             {
@@ -563,7 +563,7 @@ namespace Zelda_3_Launcher
             settings["Graphics"]["EnhancedMode7"] = Convert.ToInt32(checkMode7.Checked).ToString();
             settings["Graphics"]["IgnoreAspectRatio"] = Convert.ToInt32(checkStretch.Checked).ToString();
             settings["Graphics"]["WindowScale"] = Convert.ToInt32(numericWindowScale.Value).ToString();
-            
+
             switch (comboRenderMethod.SelectedIndex)
             {
                 case 0:
@@ -624,7 +624,7 @@ namespace Zelda_3_Launcher
             }
 
             var MSUDir = Path.Combine(Program.repoDir, "msu");
-            
+
             var msu = textBoxMSUDirectory.Text.Split("/");
             if (!msu[0].Equals("msu"))
             {
@@ -639,19 +639,37 @@ namespace Zelda_3_Launcher
                 if (!MSUDir.Equals(textBoxMSUDirectory.Text))
                 {
                     if (Directory.Exists(MSUDir)) Directory.Delete(MSUDir, true);
-                    Directory.CreateDirectory(MSUDir);
 
-                    //Now Create all of the directories
-                    foreach (string dirPath in Directory.GetDirectories(textBoxMSUDirectory.Text, "*", SearchOption.AllDirectories))
+                    bool msusymlink = checkBoxMSUSymlink.Checked;
+
+                    if (msusymlink)
                     {
-                        Directory.CreateDirectory(dirPath.Replace(textBoxMSUDirectory.Text, MSUDir));
+                        try
+                        {
+                            Directory.CreateSymbolicLink(MSUDir, textBoxMSUDirectory.Text);
+                        }
+                        catch
+                        {
+                            msusymlink = false;
+                            if (Directory.Exists(MSUDir)) Directory.Delete(MSUDir, true);
+                        }
                     }
-
-                    //Copy all the files & Replaces any files with the same name
-                    foreach (string newPath in Directory.GetFiles(textBoxMSUDirectory.Text, "*.*", SearchOption.AllDirectories))
+                    if (!msusymlink)
                     {
-                        File.Copy(newPath, newPath.Replace(textBoxMSUDirectory.Text, MSUDir), true);
-                        progressMSU.Value = Directory.EnumerateFiles(MSUDir, "*.*", SearchOption.AllDirectories).Count();
+                        Directory.CreateDirectory(MSUDir);
+
+                        //Now Create all of the directories
+                        foreach (string dirPath in Directory.GetDirectories(textBoxMSUDirectory.Text, "*", SearchOption.AllDirectories))
+                        {
+                            Directory.CreateDirectory(dirPath.Replace(textBoxMSUDirectory.Text, MSUDir));
+                        }
+
+                        //Copy all the files & Replaces any files with the same name
+                        foreach (string newPath in Directory.GetFiles(textBoxMSUDirectory.Text, "*.*", SearchOption.AllDirectories))
+                        {
+                            File.Copy(newPath, newPath.Replace(textBoxMSUDirectory.Text, MSUDir), true);
+                            progressMSU.Value = Directory.EnumerateFiles(MSUDir, "*.*", SearchOption.AllDirectories).Count();
+                        }
                     }
                 }
 
@@ -876,6 +894,35 @@ namespace Zelda_3_Launcher
             this.linkLabelMajorFixes.LinkVisited = true;
 
             Process.Start(new ProcessStartInfo("https://github.com/snesrev/zelda3/wiki/Bug-Fixes-:-Game-Changing") { UseShellExecute = true });
+        }
+
+        private void labelMSUVolume_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxMSU_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void textBoxMSUDirectory_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void labelMSUVersion_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void labelMSUDirectory_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void numericMSUVolume_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
         }
     }
 }
