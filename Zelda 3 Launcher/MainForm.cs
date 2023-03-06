@@ -380,7 +380,7 @@ namespace Zelda_3_Launcher
             while (!process.HasExited)
             {
                 var fileCount = Directory.GetFiles(Program.repoDir, "*", SearchOption.AllDirectories).Count();
-                if (fileCount > 2875) progressCompile.Value = fileCount - 1000;
+                if (fileCount > 2900) progressCompile.Value = fileCount - 1000;
                 else progressCompile.Value = fileCount;
                 Application.DoEvents();
             }

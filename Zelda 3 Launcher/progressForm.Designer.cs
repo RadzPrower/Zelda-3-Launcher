@@ -62,6 +62,7 @@ namespace Zelda_3_Launcher
 
             Boolean exit = false;
             var result = new OpenFileDialog();
+            result.Filter = "Zelda 3 ROM (*.sfc)|*.sfc";
             while (!exit)
             {
                 if (result.ShowDialog() == DialogResult.OK)
@@ -155,7 +156,7 @@ namespace Zelda_3_Launcher
         {
             this.Refresh();
 
-            downloadZip("SDL2-2.24.1", "SDL2.zip", new Uri("https://github.com/libsdl-org/SDL/releases/download/release-2.24.1/SDL2-devel-2.24.1-VC.zip"));
+            downloadZip("SDL2-2.26.3", "SDL2.zip", new Uri("https://github.com/libsdl-org/SDL/releases/download/release-2.26.3/SDL2-devel-2.26.3-VC.zip"));
 
             this.Close();
         }
