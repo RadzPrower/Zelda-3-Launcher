@@ -453,7 +453,7 @@
     <value>When you click on one of the fields for a given input selection, you will have 5 seconds to hit a key or button on your controller to set the value. If you let the time expire, the setting will not be changed.</value>
   </data>
   <data name="labelReplaysNote.Text" xml:space="preserve">
-    <value> 1 - Backspace: Built-in post-dunegon savestates/replays
+    <value> 1 - Backspace: Built-in post-dungeon savestates/replays
       F1 - F10: Personal savestates/replays
 Shift+F1 - F10: Saves a savestate/replay to the pressed function key.
 

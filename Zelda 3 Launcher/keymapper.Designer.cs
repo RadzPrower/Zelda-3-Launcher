@@ -607,7 +607,7 @@
             this.groupBoxReplays.Controls.Add(this.labelReplayToggle);
             this.groupBoxReplays.Controls.Add(this.textBoxStopReplay);
             this.groupBoxReplays.Controls.Add(this.labelStopReplay);
-            this.groupBoxReplays.Location = new System.Drawing.Point(12, 347);
+            this.groupBoxReplays.Location = new System.Drawing.Point(12, 349);
             this.groupBoxReplays.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.groupBoxReplays.Name = "groupBoxReplays";
             this.groupBoxReplays.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
@@ -652,7 +652,7 @@
             this.groupBoxPerformance.Controls.Add(this.labelToggleFPS);
             this.groupBoxPerformance.Controls.Add(this.textBoxRenderer);
             this.groupBoxPerformance.Controls.Add(this.textBoxFPS);
-            this.groupBoxPerformance.Location = new System.Drawing.Point(378, 347);
+            this.groupBoxPerformance.Location = new System.Drawing.Point(378, 349);
             this.groupBoxPerformance.Name = "groupBoxPerformance";
             this.groupBoxPerformance.Size = new System.Drawing.Size(332, 49);
             this.groupBoxPerformance.TabIndex = 8;
