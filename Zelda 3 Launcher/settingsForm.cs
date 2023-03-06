@@ -37,7 +37,7 @@ namespace Zelda_3_Launcher
             }
 
             if (checkBoxEnableMSU.Checked == false) groupBoxMSUSettings.Enabled = false;
-            if (checkBoxEnableAudio.Checked == false) groupBoxSound.Enabled= false;
+            if (checkBoxEnableAudio.Checked == false) groupBoxSound.Enabled = false;
         }
 
         private void ToggleCustomSizeTextFields()
@@ -46,7 +46,7 @@ namespace Zelda_3_Launcher
             {
                 height.Enabled = true;
                 width.Enabled = true;
-                windowSizeX.Enabled= true;
+                windowSizeX.Enabled = true;
             }
             else
             {
@@ -337,6 +337,7 @@ namespace Zelda_3_Launcher
             checkStretch.Checked = settings["Graphics"]["IgnoreAspectRatio"].ToBool();
             checkSpriteLimit.Checked = settings["Graphics"]["NoSpriteLimits"].ToBool();
             checkLinearFiltering.Checked = settings["Graphics"]["LinearFiltering"].ToBool();
+            checkBoxDimFlashing.Checked = settings["Graphics"]["DimFlashes"].ToBool();
             
             switch (settings["Graphics"]["OutputMethod"])
             {
@@ -563,6 +564,7 @@ namespace Zelda_3_Launcher
             settings["Graphics"]["EnhancedMode7"] = Convert.ToInt32(checkMode7.Checked).ToString();
             settings["Graphics"]["IgnoreAspectRatio"] = Convert.ToInt32(checkStretch.Checked).ToString();
             settings["Graphics"]["WindowScale"] = Convert.ToInt32(numericWindowScale.Value).ToString();
+            settings["Graphics"]["DimFlashes"] = Convert.ToInt32(checkBoxDimFlashing.Checked).ToString();
             
             switch (comboRenderMethod.SelectedIndex)
             {
@@ -639,31 +641,51 @@ namespace Zelda_3_Launcher
                 if (!MSUDir.Equals(textBoxMSUDirectory.Text))
                 {
                     if (Directory.Exists(MSUDir)) Directory.Delete(MSUDir, true);
-                    Directory.CreateDirectory(MSUDir);
-
-                    //Now Create all of the directories
-                    foreach (string dirPath in Directory.GetDirectories(textBoxMSUDirectory.Text, "*", SearchOption.AllDirectories))
+                    try
                     {
-                        Directory.CreateDirectory(dirPath.Replace(textBoxMSUDirectory.Text, MSUDir));
+                        Directory.CreateSymbolicLink(MSUDir, textBoxMSUDirectory.Text);
                     }
-
-                    //Copy all the files & Replaces any files with the same name
-                    foreach (string newPath in Directory.GetFiles(textBoxMSUDirectory.Text, "*.*", SearchOption.AllDirectories))
+                    catch
                     {
-                        File.Copy(newPath, newPath.Replace(textBoxMSUDirectory.Text, MSUDir), true);
-                        progressMSU.Value = Directory.EnumerateFiles(MSUDir, "*.*", SearchOption.AllDirectories).Count();
+                        var answer = MessageBox.Show("A symlink could not be created.\n\n" +
+                            "It could be due to a lack of privileges, so running as administrator could allow for symlink creation. " +
+                            "If you are already running the launcher as an administrator, your problem is likely filesystem related and cannot be avoided.\n\n" +
+                            "At this point, you can copy the files instead of creating a symlink, but this will take up more space on your drive. " +
+                            "Alternatively, you can choose to not copy the files over and the MSU directory setting will not be saved at which point you can restart the launcher as administrator and attempt again.\n\n" +
+                            "Would you like to copy the files instead?", "Symlink Creation Failed", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (answer == DialogResult.Yes)
+                        {
+                            Directory.CreateDirectory(MSUDir);
+
+                            //Now Create all of the directories
+                            foreach (string dirPath in Directory.GetDirectories(textBoxMSUDirectory.Text, "*", SearchOption.AllDirectories))
+                            {
+                                Directory.CreateDirectory(dirPath.Replace(textBoxMSUDirectory.Text, MSUDir));
+                            }
+
+                            //Copy all the files & Replaces any files with the same name
+                            foreach (string newPath in Directory.GetFiles(textBoxMSUDirectory.Text, "*.*", SearchOption.AllDirectories))
+                            {
+                                File.Copy(newPath, newPath.Replace(textBoxMSUDirectory.Text, MSUDir), true);
+                                progressMSU.Value = Directory.EnumerateFiles(MSUDir, "*.*", SearchOption.AllDirectories).Count();
+                            }
+                        }
                     }
                 }
 
-                var files = Directory.EnumerateFiles(MSUDir, "*.pcm").Select(Path.GetFileName);
-                if (files.Count<string>() == 0)
+                if (Directory.Exists(MSUDir))
                 {
-                    files = Directory.EnumerateFiles(MSUDir, "*.opuz").Select(Path.GetFileName);
+                    var files = Directory.EnumerateFiles(MSUDir, "*.pcm").Select(Path.GetFileName);
+                    if (files.Count<string>() == 0)
+                    {
+                        files = Directory.EnumerateFiles(MSUDir, "*.opuz").Select(Path.GetFileName);
+                    }
+
+                    var prefix = findMSUPrefix(files);
+
+                    settings["Sound"]["MSUPath"] = "msu/" + prefix;
                 }
-
-                var prefix = findMSUPrefix(files);
-
-                settings["Sound"]["MSUPath"] = "msu/" + prefix;
 
                 labelMSUCopy.Visible = false;
                 progressMSU.Visible = false;
@@ -798,15 +820,6 @@ namespace Zelda_3_Launcher
 
         private void buttonMSUDirectory_Click(object sender, EventArgs e)
         {
-            if (!Program.messageMSU)
-            {
-                MessageBox.Show("MSU files MUST be within the zelda3 directory structure. "
-                    + "Therefore, whatever directory you select will be entirely copied to the proper location. "
-                    + "Please be cautious in your directory selection.", "Caution", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                Program.messageMSU = true;
-            }
-
             var result = new FolderBrowserDialog();
 
             result.ShowDialog();

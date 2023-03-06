@@ -113,6 +113,7 @@
             this.labelHoverNote = new System.Windows.Forms.Label();
             this.labelMSUCopy = new System.Windows.Forms.Label();
             this.progressMSU = new System.Windows.Forms.ProgressBar();
+            this.checkBoxDimFlashing = new System.Windows.Forms.CheckBox();
             this.general.SuspendLayout();
             this.aspectRatio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericWindowScale)).BeginInit();
@@ -359,7 +360,7 @@
             // 
             // numericWindowScale
             // 
-            this.numericWindowScale.Location = new System.Drawing.Point(339, 151);
+            this.numericWindowScale.Location = new System.Drawing.Point(340, 180);
             this.numericWindowScale.Maximum = new decimal(new int[] {
             10,
             0,
@@ -377,7 +378,7 @@
             // 
             // labelScale
             // 
-            this.labelScale.Location = new System.Drawing.Point(238, 151);
+            this.labelScale.Location = new System.Drawing.Point(239, 180);
             this.labelScale.Name = "labelScale";
             this.labelScale.Size = new System.Drawing.Size(95, 23);
             this.labelScale.TabIndex = 4;
@@ -917,11 +918,12 @@
             this.comboRenderMethod.Items.AddRange(new object[] {
             "SDL (Default)",
             "SDL-Software",
-            "OpenGL"});
+            "OpenGL",
+            "OpenGL ES"});
             this.comboRenderMethod.Location = new System.Drawing.Point(104, 180);
             this.comboRenderMethod.MaxDropDownItems = 3;
             this.comboRenderMethod.Name = "comboRenderMethod";
-            this.comboRenderMethod.Size = new System.Drawing.Size(144, 23);
+            this.comboRenderMethod.Size = new System.Drawing.Size(129, 23);
             this.comboRenderMethod.TabIndex = 8;
             this.toolTip1.SetToolTip(this.comboRenderMethod, "Rendering software used. SDL-software rendering may give better performance on Ra" +
         "spberry Pi");
@@ -963,6 +965,7 @@
             // 
             // graphics
             // 
+            this.graphics.Controls.Add(this.checkBoxDimFlashing);
             this.graphics.Controls.Add(this.linkLabelGLSLShaders);
             this.graphics.Controls.Add(this.linkLabelCustomSprites);
             this.graphics.Controls.Add(this.checkBoxShader);
@@ -1131,6 +1134,16 @@
             this.progressMSU.TabIndex = 7;
             this.progressMSU.Visible = false;
             // 
+            // checkBoxDimFlashing
+            // 
+            this.checkBoxDimFlashing.AutoSize = true;
+            this.checkBoxDimFlashing.Location = new System.Drawing.Point(270, 155);
+            this.checkBoxDimFlashing.Name = "checkBoxDimFlashing";
+            this.checkBoxDimFlashing.Size = new System.Drawing.Size(95, 19);
+            this.checkBoxDimFlashing.TabIndex = 9;
+            this.checkBoxDimFlashing.Text = "Dim Flashing";
+            this.checkBoxDimFlashing.UseVisualStyleBackColor = true;
+            // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1267,5 +1280,6 @@
         private Button buttonKeymapping;
         private LinkLabel linkLabelMinorFixes;
         private LinkLabel linkLabelMajorFixes;
+        private CheckBox checkBoxDimFlashing;
     }
 }
