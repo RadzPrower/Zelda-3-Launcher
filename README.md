@@ -7,7 +7,7 @@ And that's it outside of this exectuable itself.
 # Build Instructions
 1. [Download the the latest release](https://github.com/RadzPrower/Zelda-3-Launcher/releases/latest)
 2. Unzip the file.
-3. Run `Zelda 3 Launcher.exe` at which point you will be greated by a window that looks like this:
+3. Run `Zelda 3 Launcher.exe` at which point you will be greeted by a window that looks like this:
 
 ![image](https://user-images.githubusercontent.com/37708128/216780011-98f4ff41-01a6-4b95-9621-f1eef447df77.png)
 
