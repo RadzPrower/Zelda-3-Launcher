@@ -23,7 +23,7 @@ The top button at this point should say `Restore` which will completely re-do th
 NOTE: There have been no updates since this functionality was programmed, so there is a chance it will not work. If you notice that it is not working, please let me know.
 
 # Settings Menu
-![image](https://user-images.githubusercontent.com/37708128/223177369-dbfd8e1c-3c18-4764-8051-316c96cd493a.png)
+![image](https://user-images.githubusercontent.com/37708128/226472052-a12d4d64-4fe6-443c-85b0-283c5a335d1f.png)
 
 There are a number of settings available for you to change here. I will briefly explain them here.
 
