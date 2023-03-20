@@ -23,7 +23,7 @@ The top button at this point should say `Restore` which will completely re-do th
 NOTE: There have been no updates since this functionality was programmed, so there is a chance it will not work. If you notice that it is not working, please let me know.
 
 # Settings Menu
-![image](https://user-images.githubusercontent.com/37708128/221378248-5f19c97a-f86a-4874-b93b-0ded284eb8a9.png)
+![image](https://user-images.githubusercontent.com/37708128/223177369-dbfd8e1c-3c18-4764-8051-316c96cd493a.png)
 
 There are a number of settings available for you to change here. I will briefly explain them here.
 
@@ -67,6 +67,7 @@ There are a number of settings available for you to change here. I will briefly 
 - No Sprite Limit: No longer limits the number of sprites allowed to be rendered thus elminating flicker.
 - Linear Filtering: Apply a linear filter to enlarged graphics. Results in a generally blurry image.
 - Enhanced Mode7: Results in a higher resolution map.
+- Dim Flashing: Lessens the flashing present in the game to a level much like the Virtual Console re-releases
 - Stretch: Enabling this stretches the output to match the window size, this includes fullscreen modes, resulting a squashed or stretched visual. This can however be used to emulate a CRT since the 4:3 aspect ratio of a TV did not actually match the true 8:7 aspect ratio the SNES output.
 - Window Scaling: Integer scaling of the display window. Only worked in `Windowed` mode.
 - Render Method: Allows you to choose between SDL, SDL-Software, or OpenGL rendering. **NOTE: This setting may be overridden when certain other options are selected if they require a specific renderer to be used.**
@@ -85,7 +86,7 @@ There are a number of settings available for you to change here. I will briefly 
   * MSU Directory: The default MSU directory and the current file naming convention are always displayed here and only changes if the directory of a new set of MSU files. The files are copied into the required directory for use by `zelda3` and will be stored in the `msu` directory.
 
 # Keymapper Utility
-![image](https://user-images.githubusercontent.com/37708128/221378271-58289342-d35f-4091-a40a-b9a851bc409b.png)
+![image](https://user-images.githubusercontent.com/37708128/223178075-c2030a81-55d4-45c6-a2e6-842267aa2789.png)
 
 This utility allows you to set all the available standard controls (SNES controller) and additional hotkeys for `zelda3` exclusive functionality. The keyboard and gamepad settings are stored simultaneously for the main controls in the INI, so you must select which version you want to set for those controls specifically. The hotkeys however are unique so they can be freely set to either a gamepad or keyboard input.
 
