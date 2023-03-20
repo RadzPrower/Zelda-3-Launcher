@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text;
 using LibGit2Sharp;
 
 namespace Zelda_3_Launcher
@@ -27,7 +28,7 @@ namespace Zelda_3_Launcher
             this.WindowState = FormWindowState.Minimized;
             if (runProcess(@".\zelda3\zelda3.exe", ""))
             {
-                MessageBox.Show("Error occurred while launching Zelda 3.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
+                MessageBox.Show("Error occurred while launching Zelda 3.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
             }
 
             this.launch.Text = "Launch Zelda 3";
@@ -53,6 +54,12 @@ namespace Zelda_3_Launcher
                 {
                     cloneRepo.Dispose();
                 }
+            }
+
+            if (!Directory.Exists(Program.repoDir))
+            {
+                ExitBuild();
+                return;
             }
 
             using (progressForm copyROM = new progressForm("Copying ROM File", "Copying ROM file to proper directory..."))
@@ -110,7 +117,7 @@ namespace Zelda_3_Launcher
             var python310 = @".\zelda3\tables\python310._pth";
             var python310Old = @".\zelda3\tables\python310._pth.old";
 
-            File.AppendAllText(Program.currentDirectory + "\\log.txt", "Starting commandline processess...");
+            File.AppendAllText(Program.currentDirectory + "\\zelda3.log", "Starting commandline processess...");
 
             labelCompileStatus.Text = "Modifying python310._pth...";
             // Modify python310._pth to allow for pip installation
@@ -129,7 +136,7 @@ namespace Zelda_3_Launcher
             labelCompileStatus.Text = "Downloading pip...";
             if (runProcess("cmd.exe", "/C " + pythonEXE + @" .\tables\get-pip.py"))
             {
-                MessageBox.Show("Error occurred while downloding pip.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
+                MessageBox.Show("Error occurred while downloding pip.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
                 return;
             }
 
@@ -137,23 +144,14 @@ namespace Zelda_3_Launcher
             labelCompileStatus.Text = "Installing dependencies...";
             if (runProcess("cmd.exe", @"/C " + pythonEXE + " -m pip install --upgrade pip pillow pyyaml"))
             {
-                MessageBox.Show("Error occurred while installing/updating dependencies.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
+                MessageBox.Show("Error occurred while installing/updating dependencies.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
                 return;
             }
 
-            // Extract resources
             labelCompileStatus.Text = "Extracting assets...";
-            if (runProcess("cmd.exe", @"/C cd .\tables && python extract_resources.py"))
+            if (runProcess("cmd.exe", @"/C cd .\tables && python restool.py --extract-from-rom"))
             {
-                MessageBox.Show("Error occurred while extracting resources.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
-                return;
-            }
-
-            // Compile resources
-            labelCompileStatus.Text = "Compiling assets...";
-            if (runProcess("cmd.exe", @"/C cd .\tables && python compile_resources.py"))
-            {
-                MessageBox.Show("Error occurred while compiling resources.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
+                MessageBox.Show("Error occurred while extracting resources.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
                 return;
             }
 
@@ -176,7 +174,7 @@ namespace Zelda_3_Launcher
             labelCompileStatus.Text = "Building zelda3.exe...";
             if (runProcess("cmd.exe", @"/C radzprower.bat"))
             {
-                MessageBox.Show("Error occurred while building executable.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "log.txt") + " for further details.");
+                MessageBox.Show("Error occurred while building executable.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
                 return;
             }
 
@@ -199,30 +197,44 @@ namespace Zelda_3_Launcher
                         !line.Equals("# This default is suitable for QWERTZ keyboards.") &&
                         !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, y, s, a, c, v") &&
                         !line.Equals("# This one is suitable for AZERTY keyboards.") &&
-                        !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, w, s, q, c, v"))
+                        !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, w, s, q, c, v") &&
+                        !line.Equals("# Language = de"))
                     {
                         modifiedFile.WriteLine(line);
+                    }
+                    else if (line.Equals("# Language = de"))
+                    {
+                        modifiedFile.WriteLine("Language = us");
                     }
                 }
             }
 
+            ExitBuild();
+        }
+
+        private void ExitBuild()
+        {
             progressCompile.Text = "Done";
             progressCompile.Visible = false;
             labelCompileStatus.Visible = false;
 
-            File.AppendAllText(Program.currentDirectory + "\\log.txt", "\n\n\n\n");
+            File.AppendAllText(Program.currentDirectory + "\\zelda3.log", "\n\n\n\n");
             UpdateMainForm();
         }
 
         private void UpdateMainForm()
         {
-            Repository repo = new Repository(Program.repoDir);
+            this.build.Text = "Download";
+            if (Directory.Exists(Program.repoDir))
+            {
+                Repository repo = new Repository(Program.repoDir);
 
-            var status = repo.RetrieveStatus();
+                var status = repo.RetrieveStatus();
 
-            if (repo.Head.TrackingDetails.BehindBy > 0) this.build.Text = "Update";
-            else if (status.IsDirty) this.build.Text = "Restore";
-            else this.build.Text = "Re-build";
+                if (repo.Head.TrackingDetails.BehindBy > 0) this.build.Text = "Update";
+                else if (status.IsDirty) this.build.Text = "Restore";
+                else this.build.Text = "Re-build";
+            }
             this.build.Enabled = true;
 
             if (File.Exists(Path.Combine(Program.repoDir, "zelda3.exe")))
@@ -311,7 +323,7 @@ namespace Zelda_3_Launcher
             // progressCompile
             // 
             this.progressCompile.Location = new System.Drawing.Point(8, 199);
-            this.progressCompile.Maximum = 2875;
+            this.progressCompile.Maximum = 3000;
             this.progressCompile.Minimum = 543;
             this.progressCompile.Name = "progressCompile";
             this.progressCompile.Size = new System.Drawing.Size(175, 23);
@@ -341,9 +353,11 @@ namespace Zelda_3_Launcher
 
         public Boolean runProcess(string filename, string arguments)
         {
-            File.AppendAllText(Program.currentDirectory + "\\log.txt", "\n" + DateTime.Now.ToString() + "\n----------------------------\n");
+            var logFile = Program.currentDirectory + "\\zelda3.log";
 
-            File.AppendAllText(Program.currentDirectory + "\\log.txt", "Executing via " + filename + ":\n " + arguments + "\n");
+            File.AppendAllText(logFile, "\n" + DateTime.Now.ToString() + "\n----------------------------\n");
+
+            File.AppendAllText(logFile, "Executing via " + filename + ":\n " + arguments + "\n");
 
             ProcessStartInfo sInfo = new ProcessStartInfo();
             sInfo.FileName = filename;
@@ -358,11 +372,16 @@ namespace Zelda_3_Launcher
             process.StartInfo = sInfo;
             processes.Add(process);
 
+            while (!IsHandleCreated)
+            {
+                this.CreateHandle();
+            }
+
             process.OutputDataReceived += new DataReceivedEventHandler((s, e) =>
             {
                 this.BeginInvoke(new MethodInvoker(() =>
                 {
-                    File.AppendAllText(Program.currentDirectory + "\\log.txt", e.Data + "\n");
+                    File.AppendAllText(logFile, e.Data + "\n");
                 }));
             });
 
@@ -370,7 +389,7 @@ namespace Zelda_3_Launcher
             {
                 this.BeginInvoke(new MethodInvoker(() =>
                 {
-                    File.AppendAllText(Program.currentDirectory + "\\log.txt", e.Data + "\n");
+                    File.AppendAllText(logFile, e.Data + "\n");
                 }));
             });
 
@@ -379,9 +398,12 @@ namespace Zelda_3_Launcher
             process.BeginErrorReadLine();
             while (!process.HasExited)
             {
-                var fileCount = Directory.GetFiles(Program.repoDir, "*", SearchOption.AllDirectories).Count();
-                if (fileCount > 2900) progressCompile.Value = fileCount - 1000;
-                else progressCompile.Value = fileCount;
+                if (!filename.Equals(".\\zelda3\\zelda3.exe"))
+                {
+                    var fileCount = Directory.GetFiles(Program.repoDir, "*", SearchOption.AllDirectories).Count();
+                    if (fileCount > 2900) progressCompile.Value = fileCount - 1000;
+                    else progressCompile.Value = fileCount;
+                }
                 Application.DoEvents();
             }
 
@@ -394,7 +416,21 @@ namespace Zelda_3_Launcher
 
             process.Close();
 
-            File.AppendAllText(Program.currentDirectory + "\\log.txt", "\n");
+            File.AppendAllText(logFile, "\n");
+
+            if (File.Exists(logFile))
+            {
+                var fileInfo = new FileInfo(logFile);
+
+                while (fileInfo.Length > (51200))
+                {
+                    var lines = File.ReadLines(logFile).ToArray();
+
+                    File.WriteAllLines(logFile, lines.Skip(1).ToArray());
+
+                    fileInfo = new FileInfo(logFile);
+                }
+            }
 
             return false;
         }

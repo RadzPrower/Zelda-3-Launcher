@@ -67,14 +67,18 @@ namespace Zelda_3_Launcher
             {
                 if (result.ShowDialog() == DialogResult.OK)
                 {
-                    if (checkHash(result.FileName))
+                    var hashCheck = checkHash(result.FileName);
+                    if (hashCheck.success)
                     {
                         File.Copy(result.FileName, Path.Combine(Program.repoDir, "tables", "zelda3.sfc"));
                         exit = true;
                     }
                     else
                     {
-                        var answer = MessageBox.Show("ROM hash is not valid.\n\nWould you like to select another?", "Invalid ROM Hash", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        var answer = MessageBox.Show("ROM hash is not valid for the English (US) version.\n\n" +
+                            "The hash of the file selected is " + hashCheck.yourHash + ".\n\n" + 
+                            "The correct hash is " + hashCheck.hash + ".\n\n" +
+                            "Would you like to select another?", "Invalid ROM Hash", MessageBoxButtons.YesNo, MessageBoxIcon.Error); ;
                         if (answer == DialogResult.No) exit = true;
                     }
                 }
@@ -287,34 +291,99 @@ namespace Zelda_3_Launcher
 
         public static bool IsConnectedToInternet()
         {
-            string host = "google.com";
-            bool result = false;
             Ping p = new Ping();
             try
             {
-                PingReply reply = p.Send(host, 3000);
+                PingReply reply = p.Send("github.com", 10000);
                 if (reply.Status == IPStatus.Success)
                     return true;
             }
             catch { }
-            return result;
+            try
+            {
+                PingReply reply = p.Send("python.org", 10000);
+                if (reply.Status == IPStatus.Success)
+                    return true;
+            }
+            catch { }
+            try
+            {
+                PingReply reply = p.Send("google.com", 10000);
+                if (reply.Status == IPStatus.Success)
+                    return true;
+            }
+            catch { }
+
+            return false;
         }
-        private Boolean checkHash(string file)
+
+        public (Boolean success, string hash, string yourHash) checkHash(string file, string version="us")
         {
-            using (SHA256Managed sha256Hasher = new SHA256Managed())
+            using (SHA1Managed sha1Hasher = new SHA1Managed())
             using (FileStream stream = new FileStream(file, FileMode.Open))
             using (BufferedStream buffer = new BufferedStream(stream))
             {
-                byte[] hash = sha256Hasher.ComputeHash(buffer);
+                byte[] hash = sha1Hasher.ComputeHash(buffer);
                 StringBuilder hashString = new StringBuilder(2 * hash.Length);
                 foreach (byte b in hash)
                 {
                     hashString.AppendFormat("{0:x2}", b);
                 }
 
-                if (hashString.ToString() == "66871d66be19ad2c34c927d6b14cd8eb6fc3181965b6e517cb361f7316009cfb") return true;
+                string versionHash;
+                var yourHash = hashString.ToString().ToUpper();
+
+                switch (version)
+                {
+                    case "us":
+                        versionHash = "6D4F10A8B10E10DBE624CB23CF03B88BB8252973";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                    case "de":
+                        versionHash = "2E62494967FB0AFDF5DA1635607F9641DF7C6559";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                    case "fr":
+                        versionHash = "229364A1B92A05167CD38609B1AA98F7041987CC";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                    case "fr-c":
+                        versionHash = "C1C6C7F76FFF936C534FF11F87A54162FC0AA100";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                    case "en":
+                        versionHash = "7C073A222569B9B8E8CA5FCB5DFEC3B5E31DA895";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                    case "es":
+                        versionHash = "461FCBD700D1332009C0E85A7A136E2A8E4B111E";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                    case "pl":
+                        versionHash = "3C4D605EEFDA1D76F101965138F238476655B11D";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                    case "pt":
+                        versionHash = "D0D09ED41F9C373FE6AFDCCAFBF0DA8C88D3D90D";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                    case "redux":
+                        versionHash = "B2A07A59E64C498BC1B2F28728F9BF4014C8D582";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        versionHash = "9325C22EB0A2A1F0017157C8B620BC3A605CEDE1";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                    case "nl":
+                        versionHash = "FA8ADFDBA2697C9A54D583A1284A22AC764C7637";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                    case "sv":
+                        versionHash = "43CD3438469B2C3FE879EA2F410B3EF3CB3F1CA4";
+                        if (yourHash == versionHash) return (true, versionHash, yourHash);
+                        return (false, versionHash, yourHash);
+                }
             }
-            return false;
+            return (false, "NULL", "NULL");
         }
 
         private ProgressBar progBar;

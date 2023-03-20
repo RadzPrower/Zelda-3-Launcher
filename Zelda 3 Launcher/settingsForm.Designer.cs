@@ -101,7 +101,9 @@
             this.linkLabelCustomSprites = new System.Windows.Forms.LinkLabel();
             this.buttonKeymapping = new System.Windows.Forms.Button();
             this.linkLabelMinorFixes = new System.Windows.Forms.LinkLabel();
+            this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
             this.graphics = new System.Windows.Forms.GroupBox();
+            this.checkBoxDimFlashing = new System.Windows.Forms.CheckBox();
             this.linkLabelGLSLShaders = new System.Windows.Forms.LinkLabel();
             this.fullscreenMode = new System.Windows.Forms.GroupBox();
             this.windowSize = new System.Windows.Forms.GroupBox();
@@ -113,7 +115,7 @@
             this.labelHoverNote = new System.Windows.Forms.Label();
             this.labelMSUCopy = new System.Windows.Forms.Label();
             this.progressMSU = new System.Windows.Forms.ProgressBar();
-            this.checkBoxDimFlashing = new System.Windows.Forms.CheckBox();
+            this.labelLanguage = new System.Windows.Forms.Label();
             this.general.SuspendLayout();
             this.aspectRatio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericWindowScale)).BeginInit();
@@ -539,7 +541,7 @@
             // checkBoxQuickSwitch
             // 
             this.checkBoxQuickSwitch.AutoSize = true;
-            this.checkBoxQuickSwitch.Location = new System.Drawing.Point(6, 22);
+            this.checkBoxQuickSwitch.Location = new System.Drawing.Point(6, 26);
             this.checkBoxQuickSwitch.Name = "checkBoxQuickSwitch";
             this.checkBoxQuickSwitch.Size = new System.Drawing.Size(157, 19);
             this.checkBoxQuickSwitch.TabIndex = 0;
@@ -551,7 +553,7 @@
             // checkBoxLRLimit
             // 
             this.checkBoxLRLimit.AutoSize = true;
-            this.checkBoxLRLimit.Location = new System.Drawing.Point(6, 47);
+            this.checkBoxLRLimit.Location = new System.Drawing.Point(6, 51);
             this.checkBoxLRLimit.Name = "checkBoxLRLimit";
             this.checkBoxLRLimit.Size = new System.Drawing.Size(192, 19);
             this.checkBoxLRLimit.TabIndex = 1;
@@ -562,7 +564,7 @@
             // checkBoxDashTurning
             // 
             this.checkBoxDashTurning.AutoSize = true;
-            this.checkBoxDashTurning.Location = new System.Drawing.Point(6, 72);
+            this.checkBoxDashTurning.Location = new System.Drawing.Point(6, 76);
             this.checkBoxDashTurning.Name = "checkBoxDashTurning";
             this.checkBoxDashTurning.Size = new System.Drawing.Size(179, 19);
             this.checkBoxDashTurning.TabIndex = 2;
@@ -573,7 +575,7 @@
             // checkBoxMirrorDark
             // 
             this.checkBoxMirrorDark.AutoSize = true;
-            this.checkBoxMirrorDark.Location = new System.Drawing.Point(6, 97);
+            this.checkBoxMirrorDark.Location = new System.Drawing.Point(6, 101);
             this.checkBoxMirrorDark.Name = "checkBoxMirrorDark";
             this.checkBoxMirrorDark.Size = new System.Drawing.Size(185, 19);
             this.checkBoxMirrorDark.TabIndex = 3;
@@ -584,7 +586,7 @@
             // checkBoxSwordItems
             // 
             this.checkBoxSwordItems.AutoSize = true;
-            this.checkBoxSwordItems.Location = new System.Drawing.Point(6, 122);
+            this.checkBoxSwordItems.Location = new System.Drawing.Point(6, 126);
             this.checkBoxSwordItems.Name = "checkBoxSwordItems";
             this.checkBoxSwordItems.Size = new System.Drawing.Size(148, 19);
             this.checkBoxSwordItems.TabIndex = 4;
@@ -595,7 +597,7 @@
             // checkBoxSwordPots
             // 
             this.checkBoxSwordPots.AutoSize = true;
-            this.checkBoxSwordPots.Location = new System.Drawing.Point(6, 147);
+            this.checkBoxSwordPots.Location = new System.Drawing.Point(6, 151);
             this.checkBoxSwordPots.Name = "checkBoxSwordPots";
             this.checkBoxSwordPots.Size = new System.Drawing.Size(134, 19);
             this.checkBoxSwordPots.TabIndex = 5;
@@ -606,7 +608,7 @@
             // checkBoxHeartBeep
             // 
             this.checkBoxHeartBeep.AutoSize = true;
-            this.checkBoxHeartBeep.Location = new System.Drawing.Point(6, 172);
+            this.checkBoxHeartBeep.Location = new System.Drawing.Point(6, 176);
             this.checkBoxHeartBeep.Name = "checkBoxHeartBeep";
             this.checkBoxHeartBeep.Size = new System.Drawing.Size(150, 19);
             this.checkBoxHeartBeep.TabIndex = 6;
@@ -617,7 +619,7 @@
             // checkBoxIntroSkip
             // 
             this.checkBoxIntroSkip.AutoSize = true;
-            this.checkBoxIntroSkip.Location = new System.Drawing.Point(6, 197);
+            this.checkBoxIntroSkip.Location = new System.Drawing.Point(6, 201);
             this.checkBoxIntroSkip.Name = "checkBoxIntroSkip";
             this.checkBoxIntroSkip.Size = new System.Drawing.Size(142, 19);
             this.checkBoxIntroSkip.TabIndex = 7;
@@ -628,7 +630,7 @@
             // checkBoxMaxResources
             // 
             this.checkBoxMaxResources.AutoSize = true;
-            this.checkBoxMaxResources.Location = new System.Drawing.Point(6, 222);
+            this.checkBoxMaxResources.Location = new System.Drawing.Point(6, 226);
             this.checkBoxMaxResources.Name = "checkBoxMaxResources";
             this.checkBoxMaxResources.Size = new System.Drawing.Size(150, 19);
             this.checkBoxMaxResources.TabIndex = 8;
@@ -640,7 +642,7 @@
             // checkBoxMoreBombs
             // 
             this.checkBoxMoreBombs.AutoSize = true;
-            this.checkBoxMoreBombs.Location = new System.Drawing.Point(6, 247);
+            this.checkBoxMoreBombs.Location = new System.Drawing.Point(6, 251);
             this.checkBoxMoreBombs.Name = "checkBoxMoreBombs";
             this.checkBoxMoreBombs.Size = new System.Drawing.Size(130, 19);
             this.checkBoxMoreBombs.TabIndex = 9;
@@ -651,7 +653,7 @@
             // checkBoxLargerWallet
             // 
             this.checkBoxLargerWallet.AutoSize = true;
-            this.checkBoxLargerWallet.Location = new System.Drawing.Point(6, 272);
+            this.checkBoxLargerWallet.Location = new System.Drawing.Point(6, 276);
             this.checkBoxLargerWallet.Name = "checkBoxLargerWallet";
             this.checkBoxLargerWallet.Size = new System.Drawing.Size(95, 19);
             this.checkBoxLargerWallet.TabIndex = 10;
@@ -662,7 +664,7 @@
             // checkBoxMiscFixes
             // 
             this.checkBoxMiscFixes.AutoSize = true;
-            this.checkBoxMiscFixes.Location = new System.Drawing.Point(6, 297);
+            this.checkBoxMiscFixes.Location = new System.Drawing.Point(6, 301);
             this.checkBoxMiscFixes.Name = "checkBoxMiscFixes";
             this.checkBoxMiscFixes.Size = new System.Drawing.Size(165, 19);
             this.checkBoxMiscFixes.TabIndex = 11;
@@ -673,7 +675,7 @@
             // checkBoxMajorFixes
             // 
             this.checkBoxMajorFixes.AutoSize = true;
-            this.checkBoxMajorFixes.Location = new System.Drawing.Point(6, 322);
+            this.checkBoxMajorFixes.Location = new System.Drawing.Point(6, 326);
             this.checkBoxMajorFixes.Name = "checkBoxMajorFixes";
             this.checkBoxMajorFixes.Size = new System.Drawing.Size(165, 19);
             this.checkBoxMajorFixes.TabIndex = 12;
@@ -684,7 +686,7 @@
             // checkBoxCancelBird
             // 
             this.checkBoxCancelBird.AutoSize = true;
-            this.checkBoxCancelBird.Location = new System.Drawing.Point(6, 347);
+            this.checkBoxCancelBird.Location = new System.Drawing.Point(6, 351);
             this.checkBoxCancelBird.Name = "checkBoxCancelBird";
             this.checkBoxCancelBird.Size = new System.Drawing.Size(86, 19);
             this.checkBoxCancelBird.TabIndex = 13;
@@ -954,7 +956,7 @@
             // linkLabelMinorFixes
             // 
             this.linkLabelMinorFixes.AutoSize = true;
-            this.linkLabelMinorFixes.Location = new System.Drawing.Point(165, 298);
+            this.linkLabelMinorFixes.Location = new System.Drawing.Point(165, 302);
             this.linkLabelMinorFixes.Name = "linkLabelMinorFixes";
             this.linkLabelMinorFixes.Size = new System.Drawing.Size(12, 15);
             this.linkLabelMinorFixes.TabIndex = 9;
@@ -962,6 +964,29 @@
             this.linkLabelMinorFixes.Text = "?";
             this.toolTip1.SetToolTip(this.linkLabelMinorFixes, "This webpage will list the specific fixes");
             this.linkLabelMinorFixes.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelMinorFixes_LinkClicked);
+            // 
+            // comboBoxLanguage
+            // 
+            this.comboBoxLanguage.FormattingEnabled = true;
+            this.comboBoxLanguage.Items.AddRange(new object[] {
+            "Dutch",
+            "English (EU)",
+            "English (Redux)",
+            "English (US)",
+            "French (CA)",
+            "French (EU)",
+            "German",
+            "Polish",
+            "Portuguese",
+            "Spanish",
+            "Swedish"});
+            this.comboBoxLanguage.Location = new System.Drawing.Point(76, 421);
+            this.comboBoxLanguage.Name = "comboBoxLanguage";
+            this.comboBoxLanguage.Size = new System.Drawing.Size(138, 23);
+            this.comboBoxLanguage.Sorted = true;
+            this.comboBoxLanguage.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.comboBoxLanguage, "Select the language you would like to use.");
+            this.comboBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguage_Select);
             // 
             // graphics
             // 
@@ -991,6 +1016,16 @@
             this.graphics.TabIndex = 6;
             this.graphics.TabStop = false;
             this.graphics.Text = "Graphics";
+            // 
+            // checkBoxDimFlashing
+            // 
+            this.checkBoxDimFlashing.AutoSize = true;
+            this.checkBoxDimFlashing.Location = new System.Drawing.Point(270, 155);
+            this.checkBoxDimFlashing.Name = "checkBoxDimFlashing";
+            this.checkBoxDimFlashing.Size = new System.Drawing.Size(95, 19);
+            this.checkBoxDimFlashing.TabIndex = 9;
+            this.checkBoxDimFlashing.Text = "Dim Flashing";
+            this.checkBoxDimFlashing.UseVisualStyleBackColor = true;
             // 
             // linkLabelGLSLShaders
             // 
@@ -1090,7 +1125,7 @@
             this.groupBoxGameplay.Controls.Add(this.checkBoxQuickSwitch);
             this.groupBoxGameplay.Location = new System.Drawing.Point(12, 35);
             this.groupBoxGameplay.Name = "groupBoxGameplay";
-            this.groupBoxGameplay.Size = new System.Drawing.Size(202, 409);
+            this.groupBoxGameplay.Size = new System.Drawing.Size(202, 380);
             this.groupBoxGameplay.TabIndex = 4;
             this.groupBoxGameplay.TabStop = false;
             this.groupBoxGameplay.Text = "Gameplay";
@@ -1098,7 +1133,7 @@
             // linkLabelMajorFixes
             // 
             this.linkLabelMajorFixes.AutoSize = true;
-            this.linkLabelMajorFixes.Location = new System.Drawing.Point(165, 323);
+            this.linkLabelMajorFixes.Location = new System.Drawing.Point(165, 327);
             this.linkLabelMajorFixes.Name = "linkLabelMajorFixes";
             this.linkLabelMajorFixes.Size = new System.Drawing.Size(12, 15);
             this.linkLabelMajorFixes.TabIndex = 9;
@@ -1134,15 +1169,14 @@
             this.progressMSU.TabIndex = 7;
             this.progressMSU.Visible = false;
             // 
-            // checkBoxDimFlashing
+            // labelLanguage
             // 
-            this.checkBoxDimFlashing.AutoSize = true;
-            this.checkBoxDimFlashing.Location = new System.Drawing.Point(270, 155);
-            this.checkBoxDimFlashing.Name = "checkBoxDimFlashing";
-            this.checkBoxDimFlashing.Size = new System.Drawing.Size(95, 19);
-            this.checkBoxDimFlashing.TabIndex = 9;
-            this.checkBoxDimFlashing.Text = "Dim Flashing";
-            this.checkBoxDimFlashing.UseVisualStyleBackColor = true;
+            this.labelLanguage.AutoSize = true;
+            this.labelLanguage.Location = new System.Drawing.Point(8, 424);
+            this.labelLanguage.Name = "labelLanguage";
+            this.labelLanguage.Size = new System.Drawing.Size(62, 15);
+            this.labelLanguage.TabIndex = 9;
+            this.labelLanguage.Text = "Language:";
             // 
             // settingsForm
             // 
@@ -1151,6 +1185,8 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(821, 619);
+            this.Controls.Add(this.comboBoxLanguage);
+            this.Controls.Add(this.labelLanguage);
             this.Controls.Add(this.buttonKeymapping);
             this.Controls.Add(this.progressMSU);
             this.Controls.Add(this.labelMSUCopy);
@@ -1281,5 +1317,7 @@
         private LinkLabel linkLabelMinorFixes;
         private LinkLabel linkLabelMajorFixes;
         private CheckBox checkBoxDimFlashing;
+        private Label labelLanguage;
+        private ComboBox comboBoxLanguage;
     }
 }

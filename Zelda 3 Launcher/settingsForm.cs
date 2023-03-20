@@ -40,6 +40,101 @@ namespace Zelda_3_Launcher
             if (checkBoxEnableAudio.Checked == false) groupBoxSound.Enabled = false;
         }
 
+        private void comboBoxLanguage_Select(object sender, EventArgs e)
+        {
+            if (comboBoxLanguage.SelectedIndex == 3) return;
+
+            var language = GetLanguage();
+
+            if (!File.Exists(Path.Combine(Program.repoDir, "tables", "dialogue_" + language.abbreviated + ".txt")) &&
+                !File.Exists(Path.Combine(Program.repoDir, "tables", "font_" + language.abbreviated + ".png")))
+            {
+                var answer = MessageBox.Show("A " + comboBoxLanguage.Text + " ROM is required to extract the dialogue and unique font.\n\n" +
+                    "Would you like to select one now?", comboBoxLanguage.Text + " ROM Required", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (answer == DialogResult.No)
+                {
+                    comboBoxLanguage.SelectedIndex = 3;
+                    return;
+                }
+
+                Boolean exit = false;
+                var result = new OpenFileDialog();
+                result.Filter = "Zelda 3 ROM (*.sfc)|*.sfc";
+                while (!exit)
+                {
+                    if (result.ShowDialog() == DialogResult.OK)
+                    {
+                        using (progressForm pf = new progressForm())
+                        {
+                            var hashCheck = pf.checkHash(result.FileName, language.abbreviated);
+                            if (hashCheck.success)
+                            {
+                                File.Copy(result.FileName, Path.Combine(Program.repoDir, "tables", language.full.ToLower() + ".sfc"), true);
+                                exit = true;
+                            }
+                            else
+                            {
+                                answer = MessageBox.Show("ROM hash is not valid for the " + language.full + " version.\n\n" +
+                                    "The hash of the file selected is " + hashCheck.yourHash + ".\n\n" +
+                                    "The correct hash is " + hashCheck.hash + ".\n\n" + 
+                                    "Would you like to select another?", "Invalid ROM Hash", MessageBoxButtons.YesNo, MessageBoxIcon.Error); ;
+                                if (answer == DialogResult.No)
+                                {
+                                    comboBoxLanguage.SelectedIndex = 3;
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    else exit = true;
+                }
+
+                if (runProcess("cmd.exe", "/C cd .\\tables && python restool.py --extract-dialogue -r " + language.full.ToLower() + ".sfc"))
+                {
+                    MessageBox.Show("Error occurred while extracting dialog.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
+                    return;
+                }
+
+                if (runProcess("cmd.exe", @"/C cd .\tables && python restool.py --languages=" + language.abbreviated))
+                {
+                    MessageBox.Show("Error occurred while generating language files.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
+                    return;
+                }
+            }
+        }
+
+        private (string abbreviated, string full) GetLanguage()
+        {
+            switch (comboBoxLanguage.SelectedIndex)
+            {
+                case 0:
+                    return ("nl", "Dutch");
+                case 1:
+                    return ("en", "European");
+                case 2:
+                    return ("redux", "Redux");
+                case 3:
+                    return ("us", "English");
+                case 4:
+                    return ("fr-c", "French-Canadian");
+                case 5:
+                    return ("fr", "French");
+                case 6:
+                    return ("de", "German");
+                case 7:
+                    return ("pl", "Polish");
+                case 8:
+                    return ("pt", "Portuguese");
+                case 9:
+                    return ("es", "Spanish");
+                case 10:
+                    return ("sv", "Swedish");
+                default:
+                    return ("us", "English");
+            }
+        }
+
         private void ToggleCustomSizeTextFields()
         {
             if (customSize.Checked)
@@ -113,9 +208,18 @@ namespace Zelda_3_Launcher
                     if (!line.Equals("# Change the appearance of Link by loading a ZSPR file") &&
                         !line.Equals("# See all sprites here: https://snesrev.github.io/sprites-gfx/snes/zelda3/link/") &&
                         !line.Equals("# Download the files with \"git clone https://github.com/snesrev/sprites-gfx.git\"") &&
-                        !line.Equals("# LinkGraphics = sprites-gfx/snes/zelda3/link/sheets/megaman-x.2.zspr"))
+                        !line.Equals("# LinkGraphics = sprites-gfx/snes/zelda3/link/sheets/megaman-x.2.zspr") &&
+                        !line.Equals("# This default is suitable for QWERTZ keyboards.") &&
+                        !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, y, s, a, c, v") &&
+                        !line.Equals("# This one is suitable for AZERTY keyboards.") &&
+                        !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, w, s, q, c, v") &&
+                        !line.Equals("# Language = de"))
                     {
                         modifiedFile.WriteLine(line);
+                    }
+                    else if (line.Equals("# Language = de"))
+                    {
+                        modifiedFile.WriteLine("Language = us");
                     }
                 }
             }
@@ -255,9 +359,14 @@ namespace Zelda_3_Launcher
                             !line.Equals("# This default is suitable for QWERTZ keyboards.") &&
                             !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, y, s, a, c, v") &&
                             !line.Equals("# This one is suitable for AZERTY keyboards.") &&
-                            !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, w, s, q, c, v"))
+                            !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, w, s, q, c, v") &&
+                            !line.Equals("# Language = de"))
                         {
                             modifiedFile.WriteLine(line);
+                        }
+                        else if (line.Equals("# Language = de"))
+                        {
+                            modifiedFile.WriteLine("Language = us");
                         }
                     }
                 }
@@ -282,7 +391,7 @@ namespace Zelda_3_Launcher
             noVisualFixes.Checked = false;
             checkBoxExtend.Checked = false;
             var ratioSettings = settings["General"]["ExtendedAspectRatio"].Split(',');
-            foreach(var item in ratioSettings)
+            foreach (var item in ratioSettings)
             {
                 switch (item.Trim())
                 {
@@ -299,6 +408,43 @@ namespace Zelda_3_Launcher
                         SetAspectRatio(item.Trim());
                         break;
                 }
+            }
+
+            switch (settings["General"]["Language"])
+            {
+                case "nl":
+                    comboBoxLanguage.SelectedIndex = 0;
+                    break;
+                case "en":
+                    comboBoxLanguage.SelectedIndex = 1;
+                    break;
+                case "redux":
+                    comboBoxLanguage.SelectedIndex = 2;
+                    break;
+                case "us":
+                    comboBoxLanguage.SelectedIndex = 3;
+                    break;
+                case "fr-c":
+                    comboBoxLanguage.SelectedIndex = 4;
+                    break;
+                case "fr":
+                    comboBoxLanguage.SelectedIndex = 5;
+                    break;
+                case "de":
+                    comboBoxLanguage.SelectedIndex = 6;
+                    break;
+                case "pl":
+                    comboBoxLanguage.SelectedIndex = 7;
+                    break;
+                case "pt":
+                    comboBoxLanguage.SelectedIndex = 8;
+                    break;
+                case "es":
+                    comboBoxLanguage.SelectedIndex = 9;
+                    break;
+                case "sv":
+                    comboBoxLanguage.SelectedIndex = 10;
+                    break;
             }
 
             // Graphics Settings
@@ -338,7 +484,7 @@ namespace Zelda_3_Launcher
             checkSpriteLimit.Checked = settings["Graphics"]["NoSpriteLimits"].ToBool();
             checkLinearFiltering.Checked = settings["Graphics"]["LinearFiltering"].ToBool();
             checkBoxDimFlashing.Checked = settings["Graphics"]["DimFlashes"].ToBool();
-            
+
             switch (settings["Graphics"]["OutputMethod"])
             {
                 case "SDL":
@@ -461,7 +607,7 @@ namespace Zelda_3_Launcher
             if (settings["Features"]["ItemSwitchLR"].ToBool())
             {
                 checkBoxQuickSwitch.Checked = true;
-                checkBoxLRLimit.Enabled= true;
+                checkBoxLRLimit.Enabled = true;
             }
             else
             {
@@ -524,6 +670,8 @@ namespace Zelda_3_Launcher
             if (unchangedSprites.Checked) settings["General"]["ExtendedAspectRatio"] += ", unchanged_sprites";
             if (noVisualFixes.Checked) settings["General"]["ExtendedAspectRatio"] += ", no_visual_fixes";
             if (checkBoxExtend.Checked) settings["General"]["ExtendedAspectRatio"] += ", extend_y";
+
+            settings["General"]["Language"] = GetLanguage().abbreviated;
 
             //
             // Graphics Settings
@@ -890,5 +1038,78 @@ namespace Zelda_3_Launcher
 
             Process.Start(new ProcessStartInfo("https://github.com/snesrev/zelda3/wiki/Bug-Fixes-:-Game-Changing") { UseShellExecute = true });
         }
+
+        public Boolean runProcess(string filename, string arguments)
+        {
+            var logFile = Program.currentDirectory + "\\zelda3.log";
+            var fileInfo = new FileInfo(logFile);
+
+            if (File.Exists(logFile) && fileInfo.Length > (51200))
+            {
+                var lines = File.ReadLines(logFile).Skip(10).ToArray();
+                File.WriteAllLines(logFile, lines);
+            }
+
+            File.AppendAllText(logFile, "\n" + DateTime.Now.ToString() + "\n----------------------------\n");
+
+            File.AppendAllText(logFile, "Executing via " + filename + ":\n " + arguments + "\n");
+
+            ProcessStartInfo sInfo = new ProcessStartInfo();
+            sInfo.FileName = filename;
+            sInfo.Arguments = arguments;
+            sInfo.WorkingDirectory = Program.repoDir;
+            sInfo.RedirectStandardOutput = true;
+            sInfo.RedirectStandardError = true;
+            sInfo.UseShellExecute = false;
+            sInfo.CreateNoWindow = true;
+
+            Process process = new Process();
+            process.StartInfo = sInfo;
+            processes.Add(process);
+
+            while (!IsHandleCreated)
+            {
+                this.CreateHandle();
+            }
+
+            process.OutputDataReceived += new DataReceivedEventHandler((s, e) =>
+            {
+                this.BeginInvoke(new MethodInvoker(() =>
+                {
+                    File.AppendAllText(logFile, e.Data + "\n");
+                }));
+            });
+
+            process.ErrorDataReceived += new DataReceivedEventHandler((s, e) =>
+            {
+                this.BeginInvoke(new MethodInvoker(() =>
+                {
+                    File.AppendAllText(logFile, e.Data + "\n");
+                }));
+            });
+
+            process.Start();
+            process.BeginOutputReadLine();
+            process.BeginErrorReadLine();
+            while (!process.HasExited)
+            {
+                Application.DoEvents();
+            }
+
+            processes.Remove(process);
+
+            if (process.ExitCode > 0)
+            {
+                return true;
+            }
+
+            process.Close();
+
+            File.AppendAllText(logFile, "\n");
+
+            return false;
+        }
+
+        List<Process> processes = new List<Process>();
     }
 }
