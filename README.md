@@ -114,3 +114,6 @@ You can hit the `Assign All Input` button to be sequentially moved from input to
 ### Performance
 - Toggle Renderer: Allows you to toggle between the new optimized PPU or the original SNES PPU.
 - Toggle FPS: Toggle a FPS display in the upper left corner of the game.
+
+# Other Tools
+[Super Metroid Launcher](https://github.com/RadzPrower/Super-Metroid-Launcher/releases/latest)
