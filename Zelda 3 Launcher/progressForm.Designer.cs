@@ -169,7 +169,7 @@ namespace Zelda_3_Launcher
         {
             this.Refresh();
 
-            downloadZip("tables", "Python.zip", new Uri("https://www.python.org/ftp/python/3.10.7/python-3.10.7-embed-win32.zip"));
+            downloadZip("tables", "Python.zip", new Uri("https://www.python.org/ftp/python/3.10.7/python-3.10.7-embed-amd64.zip"));
 
             this.Close();
         }
