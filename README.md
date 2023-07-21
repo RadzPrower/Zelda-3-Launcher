@@ -1,5 +1,5 @@
 # Zelda 3 Launcher
-This launcher is intended to be a near 1-click tool for downloading, extracting, and compiling steps required to play the Zelda 3 reimplementation (created by snesrev) on Windows.
+This launcher is intended to be a near 1-click tool for downloading, extracting, and compiling steps required to play the Zelda 3 reimplementation (created by [snesrev](https://github.com/snesrev/zelda3)) on Windows.
 # Prerequisites
 1. A legitimately obtained copy of the Zelda 3 (A Link to the Past) US ROM. `66871d66be19ad2c34c927d6b14cd8eb6fc3181965b6e517cb361f7316009cfb`
 
@@ -7,7 +7,7 @@ And that's it outside of this exectuable itself.
 # Build Instructions
 1. [Download the the latest release](https://github.com/RadzPrower/Zelda-3-Launcher/releases/latest)
 2. Unzip the file.
-3. Run `Zelda 3 Launcher.exe` at which point you will be greated by a window that looks like this:
+3. Run `Zelda 3 Launcher.exe` at which point you will be greeted by a window that looks like this:
 
 ![image](https://user-images.githubusercontent.com/37708128/216780011-98f4ff41-01a6-4b95-9621-f1eef447df77.png)
 
@@ -23,7 +23,7 @@ The top button at this point should say `Restore` which will completely re-do th
 NOTE: There have been no updates since this functionality was programmed, so there is a chance it will not work. If you notice that it is not working, please let me know.
 
 # Settings Menu
-![image](https://user-images.githubusercontent.com/37708128/223177369-dbfd8e1c-3c18-4764-8051-316c96cd493a.png)
+![image](https://user-images.githubusercontent.com/37708128/226472052-a12d4d64-4fe6-443c-85b0-283c5a335d1f.png)
 
 There are a number of settings available for you to change here. I will briefly explain them here.
 
@@ -114,3 +114,6 @@ You can hit the `Assign All Input` button to be sequentially moved from input to
 ### Performance
 - Toggle Renderer: Allows you to toggle between the new optimized PPU or the original SNES PPU.
 - Toggle FPS: Toggle a FPS display in the upper left corner of the game.
+
+# Other Tools
+[Super Metroid Launcher](https://github.com/RadzPrower/Super-Metroid-Launcher/releases/latest)
