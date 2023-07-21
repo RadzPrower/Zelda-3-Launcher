@@ -26,7 +26,7 @@ namespace Zelda_3_Launcher
 
             this.launch.Text = "Running...";
             this.WindowState = FormWindowState.Minimized;
-            if (runProcess(@".\zelda3\zelda3.exe", ""))
+            if (runProcess("cmd.exe", "/C zelda3.exe"))
             {
                 MessageBox.Show("Error occurred while launching Zelda 3.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
             }
@@ -114,23 +114,23 @@ namespace Zelda_3_Launcher
             labelCompileStatus.Visible = true;
 
             var pythonEXE = @".\tables\python.exe";
-            var python310 = @".\zelda3\tables\python310._pth";
-            var python310Old = @".\zelda3\tables\python310._pth.old";
+            var python311 = @".\zelda3\tables\python311._pth";
+            var python311Old = @".\zelda3\tables\python311._pth.old";
 
             File.AppendAllText(Program.currentDirectory + "\\zelda3.log", "Starting commandline processess...");
 
-            labelCompileStatus.Text = "Modifying python310._pth...";
-            // Modify python310._pth to allow for pip installation
-            File.Move(python310, python310Old);
-            using (var pythonFile = File.AppendText(python310))
+            labelCompileStatus.Text = "Modifying python311._pth...";
+            // Modify python311._pth to allow for pip installation
+            File.Move(python311, python311Old);
+            using (var pythonFile = File.AppendText(python311))
             {
-                foreach (var line in File.ReadLines(python310Old))
+                foreach (var line in File.ReadLines(python311Old))
                 {
                     if (line == "#import site") pythonFile.WriteLine("import site");
                     else pythonFile.WriteLine(line);
                 }
             }
-            File.Delete(python310Old);
+            File.Delete(python311Old);
 
             // Download pip
             labelCompileStatus.Text = "Downloading pip...";

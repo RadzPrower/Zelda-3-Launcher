@@ -105,6 +105,10 @@ namespace Zelda_3_Launcher
             {
                 using (var repo = new Repository(repoDir))
                 {
+                    var iniFile = Path.Combine(repoDir, "zelda3.ini");
+                    var iniBackup = Path.Combine(repoDir, "backup", "main.ini");
+                    if (File.Exists(iniFile)) File.Copy(iniFile, iniBackup);
+
                     var trackedBranch = repo.Head.TrackedBranch;
 
                     Commit originHeadCommit = repo.ObjectDatabase.FindMergeBase(repo.Branches[trackedBranch.FriendlyName].Tip, repo.Head.Tip);
@@ -113,6 +117,8 @@ namespace Zelda_3_Launcher
                         {
                             OnCheckoutProgress = (clonePath, completed, total) => CheckoutProgress(clonePath, completed, total)
                         });
+
+                    File.Copy(iniBackup, iniFile, true);
                 }
             }
             catch
@@ -169,7 +175,7 @@ namespace Zelda_3_Launcher
         {
             this.Refresh();
 
-            downloadZip("tables", "Python.zip", new Uri("https://www.python.org/ftp/python/3.10.7/python-3.10.7-embed-win32.zip"));
+            downloadZip("tables", "Python.zip", new Uri("https://www.python.org/ftp/python/3.11.1/python-3.11.1-embed-amd64.zip"));
 
             this.Close();
         }
