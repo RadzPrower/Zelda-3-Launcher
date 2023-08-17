@@ -47,7 +47,7 @@ namespace Zelda_3_Launcher
         {
             this.Refresh();
 
-            if (File.Exists(Path.Combine(Program.repoDir, "tables", "zelda3.sfc")))
+            if (File.Exists(Path.Combine(Program.repoDir, "zelda3.sfc")))
             {
                 this.Close();
                 return;
@@ -55,7 +55,7 @@ namespace Zelda_3_Launcher
 
             if (File.Exists(Path.Combine(Program.currentDirectory, "zelda3.sfc")))
             {
-                File.Move(Path.Combine(Program.currentDirectory, "zelda3.sfc"), Path.Combine(Program.repoDir, "tables", "zelda3.sfc"));
+                File.Move(Path.Combine(Program.currentDirectory, "zelda3.sfc"), Path.Combine(Program.repoDir, "zelda3.sfc"));
                 this.Close();
                 return;
             }
@@ -70,7 +70,7 @@ namespace Zelda_3_Launcher
                     var hashCheck = checkHash(result.FileName);
                     if (hashCheck.success)
                     {
-                        File.Copy(result.FileName, Path.Combine(Program.repoDir, "tables", "zelda3.sfc"));
+                        File.Copy(result.FileName, Path.Combine(Program.repoDir, "zelda3.sfc"));
                         exit = true;
                     }
                     else
@@ -230,7 +230,7 @@ namespace Zelda_3_Launcher
                 {
                     try
                     {
-                        if (filename.Equals("Python.zip")) ZipFile.ExtractToDirectory(zip, Path.Combine(Program.repoDir, "tables"), true);
+                        if (filename.Equals("Python.zip")) ZipFile.ExtractToDirectory(zip, Path.Combine(Program.repoDir, "assets"), true);
                         else ZipFile.ExtractToDirectory(zip, Program.third_partyDir, true);
                         unzipped = true;
                     }
@@ -245,12 +245,11 @@ namespace Zelda_3_Launcher
         {
             this.Refresh();
 
-            var folder = "python";
             var filename = "get-pip.py";
             Uri uri = new Uri("https://bootstrap.pypa.io/get-pip.py");
 
-            var directory = Path.Combine(Program.repoDir, "tables");
-            var destination = Path.Combine(Program.repoDir, "tables", filename);
+            var directory = Path.Combine(Program.repoDir, "assets");
+            var destination = Path.Combine(Program.repoDir, "assets", filename);
 
             if (File.Exists(destination)) File.Delete(destination);
 

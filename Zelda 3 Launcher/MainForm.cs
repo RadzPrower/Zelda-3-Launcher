@@ -70,7 +70,7 @@ namespace Zelda_3_Launcher
                 }
             }
 
-            if (!File.Exists(Path.Combine(Program.repoDir, "tables", "zelda3.sfc")))
+            if (!File.Exists(Path.Combine(Program.repoDir, "zelda3.sfc")))
             {
                 MessageBox.Show("No ROM provided. Process cancelled.", "No ROM", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateMainForm();
@@ -113,9 +113,9 @@ namespace Zelda_3_Launcher
             progressCompile.Visible = true;
             labelCompileStatus.Visible = true;
 
-            var pythonEXE = @".\tables\python.exe";
-            var python311 = @".\zelda3\tables\python311._pth";
-            var python311Old = @".\zelda3\tables\python311._pth.old";
+            var pythonEXE = @".\assets\python.exe";
+            var python311 = @".\zelda3\assets\python311._pth";
+            var python311Old = @".\zelda3\assets\python311._pth.old";
 
             File.AppendAllText(Program.currentDirectory + "\\zelda3.log", "Starting commandline processess...");
 
@@ -134,7 +134,7 @@ namespace Zelda_3_Launcher
 
             // Download pip
             labelCompileStatus.Text = "Downloading pip...";
-            if (runProcess("cmd.exe", "/C " + pythonEXE + @" .\tables\get-pip.py"))
+            if (runProcess("cmd.exe", "/C " + pythonEXE + @" .\assets\get-pip.py"))
             {
                 MessageBox.Show("Error occurred while downloding pip.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
                 return;
@@ -149,7 +149,7 @@ namespace Zelda_3_Launcher
             }
 
             labelCompileStatus.Text = "Extracting assets...";
-            if (runProcess("cmd.exe", @"/C cd .\tables && python restool.py --extract-from-rom"))
+            if (runProcess("cmd.exe", @"/C cd .\assets && python restool.py --extract-from-rom"))
             {
                 MessageBox.Show("Error occurred while extracting resources.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
                 return;
@@ -163,9 +163,9 @@ namespace Zelda_3_Launcher
             {
                 foreach (var line in File.ReadLines(batOld))
                 {
-                    if (line == "pause") ;
-                    else if (line == "echo Running...") ;
-                    else if (line == "zelda3.exe") ;
+                    if (line == "pause");
+                    else if (line == "echo Running...");
+                    else if (line == "zelda3.exe");
                     else pythonFile.WriteLine(line);
                 }
             }
