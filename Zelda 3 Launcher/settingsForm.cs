@@ -46,8 +46,8 @@ namespace Zelda_3_Launcher
 
             var language = GetLanguage();
 
-            if (!File.Exists(Path.Combine(Program.repoDir, "tables", "dialogue_" + language.abbreviated + ".txt")) &&
-                !File.Exists(Path.Combine(Program.repoDir, "tables", "font_" + language.abbreviated + ".png")))
+            if (!File.Exists(Path.Combine(Program.repoDir, "assets", "dialogue_" + language.abbreviated + ".txt")) &&
+                !File.Exists(Path.Combine(Program.repoDir, "assets", "font_" + language.abbreviated + ".png")))
             {
                 var answer = MessageBox.Show("A " + comboBoxLanguage.Text + " ROM is required to extract the dialogue and unique font.\n\n" +
                     "Would you like to select one now?", comboBoxLanguage.Text + " ROM Required", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -70,7 +70,7 @@ namespace Zelda_3_Launcher
                             var hashCheck = pf.checkHash(result.FileName, language.abbreviated);
                             if (hashCheck.success)
                             {
-                                File.Copy(result.FileName, Path.Combine(Program.repoDir, "tables", language.full.ToLower() + ".sfc"), true);
+                                File.Copy(result.FileName, Path.Combine(Program.repoDir, language.full.ToLower() + ".sfc"), true);
                                 exit = true;
                             }
                             else
@@ -90,13 +90,13 @@ namespace Zelda_3_Launcher
                     else exit = true;
                 }
 
-                if (runProcess("cmd.exe", "/C cd .\\tables && python restool.py --extract-dialogue -r " + language.full.ToLower() + ".sfc"))
+                if (runProcess("cmd.exe", "/C cd .\\assets && python restool.py --extract-dialogue -r " + language.full.ToLower() + ".sfc"))
                 {
                     MessageBox.Show("Error occurred while extracting dialog.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
                     return;
                 }
 
-                if (runProcess("cmd.exe", @"/C cd .\tables && python restool.py --languages=" + language.abbreviated))
+                if (runProcess("cmd.exe", @"/C cd .\assets && python restool.py --languages=" + language.abbreviated))
                 {
                     MessageBox.Show("Error occurred while generating language files.\n\nPlease refer to " + Path.Combine(Program.currentDirectory, "zelda3.log") + " for further details.");
                     return;
