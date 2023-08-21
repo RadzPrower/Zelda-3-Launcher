@@ -106,8 +106,8 @@ namespace Zelda_3_Launcher
                 using (var repo = new Repository(repoDir))
                 {
                     var iniFile = Path.Combine(repoDir, "zelda3.ini");
-                    var iniBackup = Path.Combine(repoDir, "backup", "main.ini");
-                    if (File.Exists(iniFile)) File.Copy(iniFile, iniBackup);
+                    var iniBackup = Path.Combine(repoDir, "saves", "zelda3.ini");
+                    if (File.Exists(iniFile)) File.Copy(iniFile, iniBackup, true);
 
                     var trackedBranch = repo.Head.TrackedBranch;
 
