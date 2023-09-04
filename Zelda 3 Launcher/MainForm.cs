@@ -112,6 +112,7 @@ namespace Zelda_3_Launcher
 
             progressCompile.Visible = true;
             labelCompileStatus.Visible = true;
+            progressCompile.Value = 0;
 
             var pythonEXE = @".\assets\python.exe";
             var python311 = @".\zelda3\assets\python311._pth";
@@ -119,6 +120,7 @@ namespace Zelda_3_Launcher
 
             File.AppendAllText(Program.currentDirectory + "\\zelda3.log", "Starting commandline processess...");
 
+            progressCompile.Value++;
             labelCompileStatus.Text = "Modifying python311._pth...";
             // Modify python311._pth to allow for pip installation
             File.Move(python311, python311Old);
@@ -133,6 +135,7 @@ namespace Zelda_3_Launcher
             File.Delete(python311Old);
 
             // Download pip
+            progressCompile.Value++;
             labelCompileStatus.Text = "Downloading pip...";
             if (runProcess("cmd.exe", "/C " + pythonEXE + @" .\assets\get-pip.py"))
             {
@@ -141,6 +144,7 @@ namespace Zelda_3_Launcher
             }
 
             // Install dependencies
+            progressCompile.Value++;
             labelCompileStatus.Text = "Installing dependencies...";
             if (runProcess("cmd.exe", @"/C " + pythonEXE + " -m pip install --upgrade pip pillow pyyaml"))
             {
@@ -148,6 +152,8 @@ namespace Zelda_3_Launcher
                 return;
             }
 
+            // Extract assets
+            progressCompile.Value++;
             labelCompileStatus.Text = "Extracting assets...";
             if (runProcess("cmd.exe", @"/C cd .\assets && python restool.py --extract-from-rom"))
             {
@@ -156,6 +162,7 @@ namespace Zelda_3_Launcher
             }
 
             // Need to make some small modifications to bat before exectuting
+            progressCompile.Value++;
             labelCompileStatus.Text = "Modifying installation bat...";
             var batOld = Path.Combine(Program.repoDir, "run_with_tcc.bat");
             var batNew = Path.Combine(Program.repoDir, "radzprower.bat");
@@ -171,6 +178,7 @@ namespace Zelda_3_Launcher
             }
 
             // build zelda3.exe
+            progressCompile.Value++;
             labelCompileStatus.Text = "Building zelda3.exe...";
             if (runProcess("cmd.exe", @"/C radzprower.bat"))
             {
@@ -323,12 +331,14 @@ namespace Zelda_3_Launcher
             // progressCompile
             // 
             this.progressCompile.Location = new System.Drawing.Point(8, 199);
-            this.progressCompile.Maximum = 3000;
-            this.progressCompile.Minimum = 543;
+            this.progressCompile.MarqueeAnimationSpeed = 10;
+            this.progressCompile.Maximum = 6;
             this.progressCompile.Name = "progressCompile";
             this.progressCompile.Size = new System.Drawing.Size(175, 23);
+            this.progressCompile.Step = 1;
+            this.progressCompile.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressCompile.TabIndex = 2;
-            this.progressCompile.Value = 543;
+            this.progressCompile.UseWaitCursor = true;
             this.progressCompile.Visible = false;
             // 
             // MainForm
@@ -398,12 +408,6 @@ namespace Zelda_3_Launcher
             process.BeginErrorReadLine();
             while (!process.HasExited)
             {
-                if (!filename.Equals(".\\zelda3\\zelda3.exe"))
-                {
-                    var fileCount = Directory.GetFiles(Program.repoDir, "*", SearchOption.AllDirectories).Count();
-                    if (fileCount > 2900) progressCompile.Value = fileCount - 1000;
-                    else progressCompile.Value = fileCount;
-                }
                 Application.DoEvents();
             }
 
