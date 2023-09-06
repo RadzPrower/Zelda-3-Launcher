@@ -286,12 +286,17 @@ namespace Zelda_3_Launcher
             this.Close();
         }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void formClosing(object sender, FormClosingEventArgs e)
         {
             var answer = MessageBox.Show("The changes that you have made will not be saved.\n\nDo you wish to continue?", "Confirmation", MessageBoxButtons.YesNo);
 
-            if (answer == DialogResult.No) return;
+            if (answer == DialogResult.No) e.Cancel = true;
 
+            return;
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
 

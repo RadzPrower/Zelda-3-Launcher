@@ -1206,6 +1206,7 @@
             this.Padding = new System.Windows.Forms.Padding(6);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formClosing);
             this.general.ResumeLayout(false);
             this.general.PerformLayout();
             this.aspectRatio.ResumeLayout(false);

@@ -721,6 +721,7 @@
             this.Padding = new System.Windows.Forms.Padding(6);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Keymapper Utility";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureController)).EndInit();
             this.groupBoxController.ResumeLayout(false);
             this.groupBoxController.PerformLayout();
