@@ -4,6 +4,7 @@ using IniParser.Model.Configuration;
 using IniParser.Parser;
 using Microsoft.VisualBasic.Devices;
 using SDL2;
+using System.Configuration;
 using System.Net.Quic;
 using System.Text;
 using XAct;
@@ -13,6 +14,7 @@ namespace Zelda_3_Launcher
     public partial class keymapper : Form
     {
         bool changed = false;
+        bool saving = false;
         IniData settings = new IniData();
         string iniFile = Path.Combine(Program.repoDir, "zelda3.ini");
         MyController controller = new MyController();
@@ -510,6 +512,8 @@ namespace Zelda_3_Launcher
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            saving = true;
+
             SaveINI();
 
             this.Close();
@@ -553,6 +557,8 @@ namespace Zelda_3_Launcher
 
         private void formClosing(object sender, FormClosingEventArgs e)
         {
+            if (saving) return;
+
             var answer = MessageBox.Show("The changes that you have made will not be saved.\n\nDo you wish to continue?", "Confirmation", MessageBoxButtons.YesNo);
 
             if (answer == DialogResult.No) e.Cancel = true;

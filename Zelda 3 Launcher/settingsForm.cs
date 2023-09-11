@@ -11,7 +11,7 @@ namespace Zelda_3_Launcher
 {
     public partial class settingsForm : Form
     {
-        private string v;
+        private bool saving = false;
 
         private static volatile int progress = 0;
 
@@ -190,6 +190,8 @@ namespace Zelda_3_Launcher
             this.Enabled = true;
 
             this.buttonReset.Text = "Reset";
+
+            saving = false;
         }
 
         private void restoreINI()
@@ -283,11 +285,14 @@ namespace Zelda_3_Launcher
 
             SaveToINI();
 
+            saving = true;
             this.Close();
         }
 
         private void formClosing(object sender, FormClosingEventArgs e)
         {
+            if (saving) return;
+
             var answer = MessageBox.Show("The changes that you have made will not be saved.\n\nDo you wish to continue?", "Confirmation", MessageBoxButtons.YesNo);
 
             if (answer == DialogResult.No) e.Cancel = true;
