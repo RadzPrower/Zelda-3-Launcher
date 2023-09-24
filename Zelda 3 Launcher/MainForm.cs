@@ -366,7 +366,7 @@ namespace Zelda_3_Launcher
             var logFile = Program.currentDirectory + "\\zelda3.log";
 
             bool createdNew;
-            var waitHandle = new EventWaitHandle(false, EventResetMode.AutoReset, arguments, out createdNew);
+            var waitHandle = new EventWaitHandle(false, EventResetMode.AutoReset, "console process", out createdNew);
             var signaled = false;
 
             if(!createdNew)
