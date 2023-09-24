@@ -365,6 +365,15 @@ namespace Zelda_3_Launcher
         {
             var logFile = Program.currentDirectory + "\\zelda3.log";
 
+            bool createdNew;
+            var waitHandle = new EventWaitHandle(false, EventResetMode.AutoReset, arguments, out createdNew);
+            var signaled = false;
+
+            if(!createdNew)
+            {
+                waitHandle.Set();
+            }
+
             File.AppendAllText(logFile, "\n" + DateTime.Now.ToString() + "\n----------------------------\n");
 
             File.AppendAllText(logFile, "Executing via " + filename + ":\n " + arguments + "\n");
@@ -406,10 +415,12 @@ namespace Zelda_3_Launcher
             process.Start();
             process.BeginOutputReadLine();
             process.BeginErrorReadLine();
-            while (!process.HasExited)
+            do
             {
                 Application.DoEvents();
-            }
+
+                signaled = waitHandle.WaitOne(TimeSpan.FromSeconds(1));
+            } while (!process.HasExited);
 
             processes.Remove(process);
 
