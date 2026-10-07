@@ -166,7 +166,7 @@ namespace Zelda_3_Launcher
         {
             this.Refresh();
 
-            downloadZip("SDL2-2.26.3", "SDL2.zip", new Uri("https://github.com/libsdl-org/SDL/releases/download/release-2.26.3/SDL2-devel-2.26.3-VC.zip"));
+            downloadZip("SDL2-2.28.2", "SDL2.zip", new Uri("https://github.com/libsdl-org/SDL/releases/download/release-2.28.2/SDL2-devel-2.28.2-VC.zip"));
 
             this.Close();
         }
