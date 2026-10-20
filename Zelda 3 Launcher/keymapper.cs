@@ -2,10 +2,7 @@
 using IniParser.Model;
 using IniParser.Model.Configuration;
 using IniParser.Parser;
-using Microsoft.VisualBasic.Devices;
 using SDL2;
-using System.Configuration;
-using System.Net.Quic;
 using System.Text;
 using XAct;
 
@@ -337,7 +334,7 @@ namespace Zelda_3_Launcher
                             !line.Equals("# This default is suitable for QWERTZ keyboards.") &&
                             !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, y, s, a, c, v") &&
                             !line.Equals("# This one is suitable for AZERTY keyboards.") &&
-                            !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, w, s, q, c, v") && 
+                            !line.Equals("#Controls = Up, Down, Left, Right, Right Shift, Return, x, w, s, q, c, v") &&
                             !line.Equals("# Language = de"))
                         {
                             modifiedFile.WriteLine(line);

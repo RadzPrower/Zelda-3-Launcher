@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Zelda_3_Launcher
+﻿namespace Zelda_3_Launcher
 {
-    public partial class progressForm : Form
+    public partial class ProgressForm : Form
     {
-        public progressForm()
+        public ProgressForm()
         {
             InitializeComponent();
         }
@@ -30,7 +20,6 @@ namespace Zelda_3_Launcher
             this.progBar.Name = "progBar";
             this.progBar.Size = new System.Drawing.Size(500, 25);
             this.progBar.TabIndex = 0;
-            this.progBar.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // updateLabel
             // 
@@ -41,7 +30,7 @@ namespace Zelda_3_Launcher
             this.updateLabel.Text = "Update Status";
             this.updateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // progressForm
+            // ProgressForm
             // 
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -53,12 +42,6 @@ namespace Zelda_3_Launcher
             this.Padding = new System.Windows.Forms.Padding(12, 6, 12, 6);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
-
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

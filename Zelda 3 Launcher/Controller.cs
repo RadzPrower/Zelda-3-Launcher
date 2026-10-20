@@ -1,6 +1,4 @@
-﻿using System;
-using SDL2;
-using Timer = System.Timers.Timer;
+﻿using SDL2;
 
 namespace Zelda_3_Launcher
 {

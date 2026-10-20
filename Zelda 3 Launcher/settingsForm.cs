@@ -1,10 +1,10 @@
-﻿using System.Data;
+﻿using IniParser;
+using IniParser.Model.Configuration;
+using IniParser.Parser;
+using System.Data;
 using System.Diagnostics;
 using System.Net;
 using System.Text;
-using IniParser;
-using IniParser.Model.Configuration;
-using IniParser.Parser;
 using XAct;
 
 namespace Zelda_3_Launcher
@@ -65,7 +65,7 @@ namespace Zelda_3_Launcher
                 {
                     if (result.ShowDialog() == DialogResult.OK)
                     {
-                        using (progressForm pf = new progressForm())
+                        using (ProgressForm pf = new ProgressForm())
                         {
                             var hashCheck = pf.checkHash(result.FileName, language.abbreviated);
                             if (hashCheck.success)
@@ -77,7 +77,7 @@ namespace Zelda_3_Launcher
                             {
                                 answer = MessageBox.Show("ROM hash is not valid for the " + language.full + " version.\n\n" +
                                     "The hash of the file selected is " + hashCheck.yourHash + ".\n\n" +
-                                    "The correct hash is " + hashCheck.hash + ".\n\n" + 
+                                    "The correct hash is " + hashCheck.hash + ".\n\n" +
                                     "Would you like to select another?", "Invalid ROM Hash", MessageBoxButtons.YesNo, MessageBoxIcon.Error); ;
                                 if (answer == DialogResult.No)
                                 {
@@ -165,7 +165,7 @@ namespace Zelda_3_Launcher
                 this.buttonReset.Text = "Reset";
                 return;
             }
-            
+
             restoreINI();
             try
             {
@@ -235,7 +235,7 @@ namespace Zelda_3_Launcher
             var directory = Path.Combine(Program.repoDir, "saves");
             var destination = Path.Combine(Program.repoDir, "saves", filename);
 
-            if (!progressForm.IsConnectedToInternet())
+            if (!ProgressForm.IsConnectedToInternet())
             {
                 MessageBox.Show("Your INI backup file is missing and you are unable to connect to the internet to download a fresh copy.\n\nPlease ensure you have a stable internet connection before attempting to reset settings.",
                     "No Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -723,7 +723,7 @@ namespace Zelda_3_Launcher
             settings["Graphics"]["IgnoreAspectRatio"] = Convert.ToInt32(checkStretch.Checked).ToString();
             settings["Graphics"]["WindowScale"] = Convert.ToInt32(numericWindowScale.Value).ToString();
             settings["Graphics"]["DimFlashes"] = Convert.ToInt32(checkBoxDimFlashing.Checked).ToString();
-            
+
             switch (comboRenderMethod.SelectedIndex)
             {
                 case 0:
@@ -784,7 +784,7 @@ namespace Zelda_3_Launcher
             }
 
             var MSUDir = Path.Combine(Program.repoDir, "msu");
-            
+
             var msu = textBoxMSUDirectory.Text.Split("/");
             if (!msu[0].Equals("msu"))
             {

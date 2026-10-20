@@ -8,12 +8,12 @@ using System.IO.Compression;
 
 namespace Zelda_3_Launcher
 {
-    partial class progressForm : Form
+    partial class ProgressForm : Form
     {
         private volatile int progress = 0;
         private volatile int max = 999999;
 
-        public progressForm(string title, string message)
+        public ProgressForm(string title, string message)
         {
             InitializeComponent();
 
@@ -78,7 +78,7 @@ namespace Zelda_3_Launcher
                         var answer = MessageBox.Show("ROM hash is not valid for the English (US) version.\n\n" +
                             "The hash of the file selected is " + hashCheck.yourHash + ".\n\n" + 
                             "The correct hash is " + hashCheck.hash + ".\n\n" +
-                            "Would you like to select another?", "Invalid ROM Hash", MessageBoxButtons.YesNo, MessageBoxIcon.Error); ;
+                            "Would you like to select another?", "Invalid ROM Hash", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                         if (answer == DialogResult.No) exit = true;
                     }
                 }
@@ -153,95 +153,266 @@ namespace Zelda_3_Launcher
             progress = completed;
         }
 
-        private void downloadTCC(object sender, EventArgs e)
+        private async void downloadTCC(object sender, EventArgs e)
         {
             this.Refresh();
 
-            downloadZip("tcc", "TCC.zip", new Uri("https://github.com/FitzRoyX/tinycc/releases/download/tcc_20221020/tcc_20221020.zip"));
-
-            this.Close();
-        }
-
-        private void downloadSDL2(object sender, EventArgs e)
-        {
-            this.Refresh();
-
-            downloadZip("SDL2-2.28.2", "SDL2.zip", new Uri("https://github.com/libsdl-org/SDL/releases/download/release-2.28.2/SDL2-devel-2.28.2-VC.zip"));
-
-            this.Close();
-        }
-
-        private void downloadPython(object sender, EventArgs e)
-        {
-            this.Refresh();
-
-            downloadZip("assets", "Python.zip", new Uri("https://www.python.org/ftp/python/3.11.1/python-3.11.1-embed-amd64.zip"));
-
-            this.Close();
-        }
-
-        private void downloadZip(string folder, string filename, Uri uri)
-        {
-            var directory = Path.Combine(Program.third_partyDir, folder);
-            var zip = Path.Combine(Program.third_partyDir, filename);
-
-            if (File.Exists(zip)) File.Delete(zip);
-            if (Directory.Exists(directory)) Directory.Delete(directory, true);
-
-            if (!IsConnectedToInternet())
+            IProgress<int> progressReporter = new Progress<int>(percentage =>
             {
-                MessageBox.Show("Unable to connect to the internet.\n\nPlease ensure you have a stable internet connection before downloading TCC files.",
-                    "No Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Dispose();
-                return;
-            }
-
-            Task.Run(() =>
-            {
-                using (var client = new WebClient())
-                {
-                    if (!Directory.Exists(Program.third_partyDir))
-                    {
-                        Directory.CreateDirectory(Program.third_partyDir);
-                    }
-                    client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(downloadProgress);
-                    client.DownloadFileAsync(uri, zip);
-                }
+                progBar.Value = Math.Clamp(percentage, 0, 100);
             });
 
-            while (!File.Exists(zip))
+            var directory = Path.Combine(
+                Program.third_partyDir,
+                "tcc");
+
+            var filePath = Path.Combine(
+                directory,
+                "TCC.zip");
+
+            try
             {
-                Application.DoEvents();
-            }
+                await DownloadFileAsync(
+                    new Uri("https://github.com/FitzRoyX/tinycc/releases/download/tcc_20221020/tcc_20221020.zip"),
+                    filePath,
+                    progressReporter
+                );
 
-            progBar.Maximum = 100;
+                updateLabel.Text = $"Unzipping...";
 
-            do
-            {
-                progBar.Value = progress;
-            } while (progress < 100);
-
-            this.updateLabel.Text = "Extracting " + filename + " to " + folder + "...";
-
-            Task.Run(() =>
-            {
-                bool unzipped = false;
-                do
+                try
                 {
-                    try
+                    await Task.Run(() =>
                     {
-                        if (filename.Equals("Python.zip")) ZipFile.ExtractToDirectory(zip, Path.Combine(Program.repoDir, "assets"), true);
-                        else ZipFile.ExtractToDirectory(zip, Program.third_partyDir, true);
-                        unzipped = true;
-                    }
-                    catch { }
-                } while (!unzipped);
-            }).Wait();
+                        Directory.CreateDirectory(directory);
 
-            File.Delete(zip);
+                        ZipFile.ExtractToDirectory(
+                            filePath,
+                            Program.third_partyDir,
+                            overwriteFiles: true);
+                    });
+                }
+                finally
+                {
+                    if (File.Exists(filePath))
+                    {
+                        File.Delete(filePath);
+                    }
+                }
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"The download failed:\n\n{ex.Message}",
+                    "Download Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                this.Close();
+            }
         }
 
-        private void downloadPip(object sender, EventArgs e)
+        private async void downloadSDL2(object sender, EventArgs e)
+        {
+            this.Refresh();
+
+            IProgress<int> progressReporter = new Progress<int>(percentage =>
+            {
+                progBar.Value = Math.Clamp(percentage, 0, 100);
+            });
+
+            var directory = Path.Combine(
+                Program.third_partyDir,
+                "SDL2-2.28.2");
+
+            var filePath = Path.Combine(
+                directory,
+                "SDL2.zip");
+
+            try
+            {
+                await DownloadFileAsync(
+                    new Uri("https://github.com/libsdl-org/SDL/releases/download/release-2.28.2/SDL2-devel-2.28.2-VC.zip"),
+                    filePath,
+                    progressReporter
+                );
+
+                updateLabel.Text = $"Unzipping...";
+
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        Directory.CreateDirectory(directory);
+
+                        ZipFile.ExtractToDirectory(
+                            filePath,
+                            Program.third_partyDir,
+                            overwriteFiles: true);
+                    });
+                }
+                finally
+                {
+                    if (File.Exists(filePath))
+                    {
+                        File.Delete(filePath);
+                    }
+                }
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"The download failed:\n\n{ex.Message}",
+                    "Download Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                this.Close();
+            }
+        }
+
+        private async void downloadPython(object sender, EventArgs e)
+        {
+            this.Refresh();
+
+            IProgress<int> progressReporter = new Progress<int>(percentage =>
+            {
+                progBar.Value = Math.Clamp(percentage, 0, 100);
+            });
+
+            var directory = Path.Combine(
+                Program.repoDir,
+                "assets");
+
+            var filePath = Path.Combine(
+                directory,
+                "Python.zip");
+
+            try
+            {
+                await DownloadFileAsync(
+                    new Uri("https://www.python.org/ftp/python/3.11.1/python-3.11.1-embed-amd64.zip"),
+                    filePath,
+                    progressReporter
+                );
+
+                updateLabel.Text = $"Unzipping...";
+
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        Directory.CreateDirectory(directory);
+
+                        ZipFile.ExtractToDirectory(
+                            filePath,
+                            directory,
+                            overwriteFiles: true);
+                    });
+                }
+                finally
+                {
+                    if (File.Exists(filePath))
+                    {
+                        File.Delete(filePath);
+                    }
+                }
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"The download failed:\n\n{ex.Message}",
+                    "Download Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                this.Close();
+            }
+        }
+
+        private static readonly HttpClient httpClient = new()
+        {
+            Timeout = TimeSpan.FromMinutes(10)
+        }; 
+
+        private async Task DownloadFileAsync(
+            Uri uri,
+            string destination,
+            IProgress<int> progressReporter = null)
+        {
+            var directory = Path.GetDirectoryName(destination);
+
+            if (!string.IsNullOrEmpty(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            var temporaryDestination = destination + ".download";
+
+            try
+            {
+                using HttpResponseMessage response = await httpClient.GetAsync(
+                    uri,
+                    HttpCompletionOption.ResponseHeadersRead);
+
+                response.EnsureSuccessStatusCode();
+
+                var contentLength = response.Content.Headers.ContentLength;
+
+                await using Stream source = await response.Content.ReadAsStreamAsync();
+
+                await using FileStream target = new(
+                    temporaryDestination,
+                    FileMode.Create,
+                    FileAccess.Write,
+                    FileShare.None,
+                    bufferSize: 81920,
+                    useAsync: true);
+
+                var buffer = new byte[81920];
+                long totalBytesRead = 0;
+                int bytesRead;
+
+                while ((bytesRead = await source.ReadAsync(buffer)) > 0)
+                {
+                    await target.WriteAsync(buffer.AsMemory(0, bytesRead));
+
+                    totalBytesRead += bytesRead;
+
+                    if (contentLength is > 0)
+                    {
+                        int percentage = (int)(totalBytesRead * 100 / contentLength.Value);
+                        progressReporter?.Report(percentage);
+                    }
+                }
+
+                progressReporter?.Report(100);
+            }
+            catch
+            {
+                if (File.Exists(temporaryDestination))
+                {
+                    File.Delete(temporaryDestination);
+                }
+
+                throw;
+            }
+
+            if (File.Exists(destination))
+            {
+                File.Delete(destination);
+            }
+
+            File.Move(temporaryDestination, destination);
+        }
+
+        private async void downloadPip(object sender, EventArgs e)
         {
             this.Refresh();
 
@@ -253,45 +424,40 @@ namespace Zelda_3_Launcher
 
             if (File.Exists(destination)) File.Delete(destination);
 
-            if (!IsConnectedToInternet())
-            {
-                MessageBox.Show("Unable to connect to the internet.\n\nPlease ensure you have a stable internet connection before downloading TCC files.",
-                    "No Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Dispose();
-                return;
-            }
+            progBar.Minimum = 0;
+            progBar.Maximum = 100;
+            progBar.Value = 0;
 
-            Task.Run(() =>
+            IProgress<int> progressReporter = new Progress<int>(percentage =>
             {
-                using (var client = new WebClient())
-                {
-                    if (!Directory.Exists(directory))
-                    {
-                        Directory.CreateDirectory(directory);
-                    }
-                    client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(downloadProgress);
-                    client.DownloadFileAsync(uri, destination);
-                }
+                progBar.Value = Math.Clamp(percentage, 0, 100);
             });
 
-            while (!File.Exists(destination))
+            try
             {
-                Application.DoEvents();
+                await DownloadFileAsync(uri, destination, progressReporter);
+                this.Close();
             }
-
-            progBar.Maximum = 100;
-
-            do
+            catch (HttpRequestException)
             {
-                progBar.Value = progress;
-            } while (progress < 100);
+                MessageBox.Show(
+                    "Unable to download the file. Please ensure you have a stable internet connection.",
+                    "Download Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
 
-            this.Close();
-        }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"The download failed:\n\n{ex.Message}",
+                    "Download Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
 
-        private void downloadProgress(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progress = e.ProgressPercentage;
+                this.Close();
+            }
         }
 
         public static bool IsConnectedToInternet()
@@ -324,7 +490,7 @@ namespace Zelda_3_Launcher
 
         public (Boolean success, string hash, string yourHash) checkHash(string file, string version="us")
         {
-            using (SHA1Managed sha1Hasher = new SHA1Managed())
+            using (System.Security.Cryptography.SHA1 sha1Hasher = System.Security.Cryptography.SHA1.Create())
             using (FileStream stream = new FileStream(file, FileMode.Open))
             using (BufferedStream buffer = new BufferedStream(stream))
             {
